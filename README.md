@@ -19,4 +19,6 @@ A full-stack application built with the MERN stack (MongoDB, Express, React, Nod
 5. Email Integration: Nodemailer(for email reminders)
 
 # Setup Instructions
+1.Clone the Repository
+   https://github.com/ankitdeveloper7/Job-Application-Tracker.git
 
