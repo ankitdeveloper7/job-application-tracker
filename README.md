@@ -26,12 +26,6 @@ A full-stack application built with the MERN stack (MongoDB, Express, React, Nod
 
     cd Job-Application-Tracker
 
-3.Install Dependencies
-   * Frontend
-     
-       cd backend
-     
-       npm install
 
 
      
