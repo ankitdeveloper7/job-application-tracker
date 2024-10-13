@@ -1,51 +1,39 @@
-# Job Tracker
+# Job-Application-Tracker
+A full-stack application built with the MERN stack (MongoDB, Express, React, Node.js) to help users manage and track job applications.
 
-## Table of Contents
-- [Description](#description)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Usage](#usage)
-- [Navigation](#navigation)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+# Features
 
-## Description
-The Job Tracker is a full-stack application built with the MERN stack (MongoDB, Express, React, Node.js) that helps users manage their job applications. Users can log applications, track their statuses, and receive email reminders for upcoming interviews.
+1.Log new job applications with company details and status.
 
-## Features
-- Add and manage job applications
-- Track application statuses (e.g., applied, interview scheduled)
-- Receive email notifications for upcoming interviews
+2.Update application statuses (e.g., applied, interview scheduled, offer received).
 
-## Tech Stack
-- **Frontend**: React
-- **Backend**: Node.js, Express
-- **Database**: MongoDB
+3.Receive email reminders for upcoming interviews.
 
-## Getting Started
+4.Centralized platform for tracking all job applications.
 
-### Prerequisites
-- Node.js
-- MongoDB
+# Technologies Used
+1. Frontend: React
+2. Backend: Node.js, Express
+3. Database: MongoDB
+4. Styling : CSS / Talwind / Materia-UI
+5. Email Integration: Nodemailer(for email reminders)
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
+# Setup Instructions
+1.Clone the Repository
+   https://github.com/ankitdeveloper7/Job-Application-Tracker.git
+   
+2.Navigate to the Project Directory
 
-### Explanation of New Sections
-- **Contributing**: A section inviting others to contribute to your project, encouraging collaboration.
-- **Navigation**: Describes how users can navigate through the app.
-- **License**: Clearly states the licensing under which the project is released.
-- **Acknowledgements**: Recognizes tools, libraries, or individuals who contributed to the project.
+    cd Job-Application-Tracker
 
-### Adding Sections
-To add new sections, simply:
-1. Create a new header using Markdown syntax (`## Section Title` for major sections, `### Subsection Title` for subsections).
-2. Provide relevant content below the header.
+3.Install Dependencies
+   * Frontend
+     
+       cd client     
+       npm install
 
-You can keep adding more sections as needed to make your README comprehensive!
+     
+   
+
+
 
