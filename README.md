@@ -30,6 +30,7 @@ A full-stack application built with the MERN stack (MongoDB, Express, React, Nod
    * Frontend
      
        cd backend
+     
        npm install
 
 
