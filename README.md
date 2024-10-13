@@ -22,6 +22,7 @@ A full-stack application built with the MERN stack (MongoDB, Express, React, Nod
 1.Clone the Repository
    https://github.com/ankitdeveloper7/Job-Application-Tracker.git
 2.Navigate to the Project Directory
+
     cd Job-Application-Tracker
 
 
