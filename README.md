@@ -31,6 +31,7 @@ A full-stack application built with the MERN stack (MongoDB, Express, React, Nod
      
        cd client     
        npm install
+     
 
      
    
