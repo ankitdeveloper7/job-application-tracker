@@ -7,8 +7,13 @@ module.exports = {
     extend: {
       colors: {
         customColor: '#6a4feb',
-        color2:'#190445'
+        color2:'#190445',
+        t1:'rgba(25, 4, 69, 0.8)',
+        t2:'rgba(25, 4, 69, 0.5)'
       },
+      fontSize:{
+        heading:'100px'
+      }
     },
   },
   plugins: [],
