@@ -24,7 +24,24 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 })
 
+const documentSchema = new mongoose.Schema({
+    title:String,
+    description:String
+})
+
+const contactSchema = new mongoose.Schema({
+    name:String,
+    jobtitle:String,
+    companies:String,
+    location:String,
+    email:String, 
+    phone:Number,
+    social:String
+})
+
 const User = mongoose.model("User", userSchema);
+const Document = mongoose.model("Document", documentSchema);
+const Contact = mongoose.model("Contact", contactSchema);
 
 const userauthenicateJwt = (req, res, next) =>{
     const autheader = req.headers.authorization;
@@ -84,6 +101,49 @@ app.post("/signin", async (req, res) =>{
     }catch(err){
         console.log(err);
         res.status(403).json({error:"some error has occured"})
+    }
+})
+
+app.post("/application", async(req, res)=>{
+    try{
+        const{company, jobtitle, jobdescription} = req.body;
+        
+
+    }catch(err){
+        console.log(err);
+        res.status(400).json({error:"some error has occured"});
+    }
+})
+
+app.post('/document', async (req, res) =>{
+    
+    try{
+        const{title, description} = req.body;
+        const tit = await Document.findOne({title});
+          if(tit){
+            res.status(400).json({message:"this title already exist"})
+          }
+          const newdoc = new Document({title, description})
+          await newdoc.save();
+        res.status(200).json({message:"document saved successfully"});
+    } catch(err){
+        console.log(err)
+        res.status(400).json({error:"some error has occured"})
+    }
+})
+app.post("/contact", async(req, res)=>{
+    try{
+      const{name,jobtitle,companies,location,email,phone,social} = req.body;
+      const cont = await Contact.findOne({phone});
+      if(cont){
+        res.status(400).json({message:"this contact already exists check the mobile number and try again"});
+      }
+      const newcon = new Contact({name,jobtitle,companies,location,email,phone,social});
+      await newcon.save();
+      res.status(200).json({message:"contact saved successfully"});
+    }catch(err){
+        console.log(err);
+        res.status(400).json({error:"some error has occured"});
     }
 })
 

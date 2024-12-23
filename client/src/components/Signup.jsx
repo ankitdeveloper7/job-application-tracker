@@ -26,10 +26,10 @@ export default function Signup() {
       const data = response.data;
       getExit(data.token);
       localStorage.setItem("token", data.token);
-      alert("you have successfully signup")
+      // alert("you have successfully signup")
     }catch(err){
       console.log("some error has occured!",err);
-      alert("failed to singup")
+      // alert("failed to singup")
     }
   }
 

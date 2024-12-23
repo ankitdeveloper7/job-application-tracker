@@ -26,7 +26,6 @@ import { Box, Grid, Button } from '@mui/material';
 import p1 from "../../public/images/1.png";
 import airesume from "../../public/images/ai-resume-builder.png";
 import exttension from "../../public/images/browser-extension.png";
-import JobTracker from './Tracker/JobTracker'
 
 const products = [
     { name: 'Job Tracker', href: '#', icon: ChartPieIcon },
