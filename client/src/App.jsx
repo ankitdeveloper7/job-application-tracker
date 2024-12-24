@@ -7,7 +7,6 @@ import Home from './components/Home';
 import Signin from './components/Signin';
 import Signup from './components/Signup'
 import JobTracker from './components/Tracker/JobTracker';
-import Dashboard from './components/Tracker/Dashboard'
 
 function App() {
  

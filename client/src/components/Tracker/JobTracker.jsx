@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { SEGMENTS } from './constants'; // Import constants
-import Sidebar from "./Sidebar"; // Import Sidebar component
-import Index from "./Tracker-components/Index";
-import ResumeBuilder from "./Tracker-components/ResumeBuilder";
-import AICoverLetters from "./Tracker-components/AICoverLetters";
-import AutofillApplications from "./Tracker-components/AutofillApplications";
-import Profile from "./Tracker-components/Profile";
-import Contacts from "./Tracker-components/Contacts";
-import Documents from "./Tracker-components/Documents";
-import MyJobTracker from "./Tracker-components/MyJobTracker";
+import { SEGMENTS } from './constants'; 
+import Sidebar from "./Sidebar"; 
+import Index from "./pages/Index";
+import ResumeBuilder from "./pages/ResumeBuilder";
+import AICoverLetters from "./pages/AICoverLetters";
+import AutofillApplications from "./pages/AutofillApplications";
+import Profile from "./pages/Profile";
+import Contacts from "./pages/Contacts";
+import Documents from "./pages/Documents";
+import MyJobTracker from "./pages/MyJobTracker";
 
 export default function JobTracker() {
   const [activeSegment, setActiveSegment] = useState(SEGMENTS.HOME);
@@ -51,18 +51,18 @@ export default function JobTracker() {
           </span>
         </button>
 
-        {/* Sidebar Component */}
+        
         <Sidebar
           isMenuOpen={isMenuOpen}
           setIsMenuOpen={setIsMenuOpen}
           setActiveSegment={setActiveSegment}
         />
 
-        {/* Main Content Area */}
+        
         <div
           className={`flex-1 transition-all duration-300 ease-in-out ${
             isMenuOpen ? "ml-56" : "ml-0"
-          }`} // Adds margin when sidebar is open
+          }`} 
         >
           <main>{renderContent()}</main>
         </div>
