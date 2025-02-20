@@ -1,8 +1,7 @@
 export const SEGMENTS = {
     HOME: 'home',
-    RESUME_BUILDER: 'resumebuilder',
-    AI_COVER_LETTERS: 'aicoverletters',
-    AUTOFILL_APPLICATIONS: 'autofillapplications',
+    SKILL_TRACKER: 'skill tracker',
+    TASK_SCHEDULER: 'task scheduler',
     PROFILE: 'profile',
     CONTACTS: 'contacts',
     DOCUMENTS: 'documents',

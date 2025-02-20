@@ -22,28 +22,17 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen, setActiveSegment }) => {
         </li>
         <li
           className="m-3 text-t1"
-          onClick={() => setActiveSegment(SEGMENTS.RESUME_BUILDER)}
+          onClick={() => setActiveSegment(SEGMENTS.SKILL_TRACKER)}
         >
           <span className="material-symbols-outlined align-bottom">description</span>
-          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Resume Builder</span>
+          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Skill Tracker</span>
         </li>
         <li
           className="m-3 text-t1"
-          onClick={() => setActiveSegment(SEGMENTS.AI_COVER_LETTERS)}
+          onClick={() => setActiveSegment(SEGMENTS.TASK_SCHEDULER)}
         >
           <span className="material-symbols-outlined align-bottom">hotel_class</span>
-          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">AI Cover Letters</span>
-        </li>
-        <li
-          className="m-3 text-t1"
-          onClick={() => setActiveSegment(SEGMENTS.AUTOFILL_APPLICATIONS)}
-        >
-          <span className="material-symbols-outlined align-bottom">apps</span>
-          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Autofill Applications</span>
-        </li>
-        <li className="m-3 text-t1" onClick={onPressExtension}>
-          <span className="material-symbols-outlined align-bottom">extension</span>
-          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Chrome Extension</span>
+          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Task Scheduler</span>
         </li>
         <hr />
         <li

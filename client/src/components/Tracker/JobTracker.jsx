@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { SEGMENTS } from './constants'; 
 import Sidebar from "./Sidebar"; 
 import Index from "./pages/Index";
-import ResumeBuilder from "./pages/ResumeBuilder";
-import AICoverLetters from "./pages/AICoverLetters";
-import AutofillApplications from "./pages/AutofillApplications";
 import Profile from "./pages/Profile";
 import Contacts from "./pages/Contacts";
 import Documents from "./pages/Documents";
 import MyJobTracker from "./pages/MyJobTracker";
+import TaskScheduler from "./pages/TaskScheduler";
+import Skilltracker from "./pages/Skilltracker";
 
 export default function JobTracker() {
   const [activeSegment, setActiveSegment] = useState(SEGMENTS.HOME);
@@ -18,12 +17,10 @@ export default function JobTracker() {
     switch (activeSegment) {
       case SEGMENTS.HOME:
         return <Index />;
-      case SEGMENTS.RESUME_BUILDER:
-        return <ResumeBuilder />;
-      case SEGMENTS.AI_COVER_LETTERS:
-        return <AICoverLetters />;
-      case SEGMENTS.AUTOFILL_APPLICATIONS:
-        return <AutofillApplications />;
+      case SEGMENTS.SKILL_TRACKER:
+        return <Skilltracker />;
+      case SEGMENTS.TASK_SCHEDULER:
+        return <TaskScheduler />;
       case SEGMENTS.PROFILE:
         return <Profile />;
       case SEGMENTS.CONTACTS:
