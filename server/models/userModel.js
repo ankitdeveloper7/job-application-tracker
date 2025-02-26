@@ -14,25 +14,12 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    jobs:[{type:mongoose.Schema.Types.ObjectId, ref:'Job'}]
 
 });
 
-const otpSchema = new mongoose.Schema({
-    email: {
-        type: String,
-        required: true
-    },
-    otp: {
-        type: String,
-        required: true
-    },
-    expiresAt: {
-        type: Date,
-        required: true
-    }
-});
+
 
 const User = mongoose.model("User", userSchema);
-const OTP = mongoose.model("OTP", otpSchema);
-module.exports = {User,OTP};
+module.exports = User;

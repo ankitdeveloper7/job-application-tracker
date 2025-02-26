@@ -1,6 +1,6 @@
 const asynchandler = require("express-async-handler");
 const User = require("../models/userModel");
-const OTP = require("../models/userModel");
+const OTP = require("../models/otpModel");
 const sendMail = require("../utils/emailService");
 const bcrypt = require("bcrypt");
 
@@ -20,12 +20,12 @@ const registeruser = asynchandler(async (req, res) => {
    const hashpassword = await bcrypt.hash(password, 10);
    const newuser = new User({ name, email, password: hashpassword });
    await newuser.save();
-    res.statusCode(200).json({ message: "you have registered successfully" });
+    res.status(200).json({ message: "you have registered successfully" });
 });
 
 const loginuser = asynchandler(async (req, res) => {
    const { email, password } = req.body;
-   const user = User.findOne({ email });
+   const user = await User.findOne({ email });
    if (!user) {
       return res.status(403).json({ message: "account not found pleaase register" });
    }
@@ -39,14 +39,18 @@ const loginuser = asynchandler(async (req, res) => {
 
 const sendOtp = asynchandler(async (req, res) => {
    const { email } = req.body;
-   const isValidemail = User.findOne({email});
-   if (!email || isValidemail) {
+   const isValidemail = await User.findOne({email});
+   console.log(isValidemail);
+   console.log(email);
+   if (!email || !isValidemail) {
+      console.log("how this will be printed if both have some value")
       return res.status(300).json({ message: "email is required" });
    };
 
    const otp = Math.floor(Math.random() * 1000000);
    await OTP.create({ email, otp, expiresAt: Date.now() + 3 * 60 * 1000 });
-   sendMail(email, "Password Reset OTP", `Your OTP is ${otp}`);
+   const info  = await sendMail(email, "Password Reset OTP", `Your OTP is ${otp}`);
+   console.log("this is info from sendotp section", info);
      res.status(200).json({ message: "OTP sent successfully" });
 });
 
@@ -63,9 +67,10 @@ const verifyOtp = asynchandler(async( req, res)=>{
     res.status(200).json({message:"OTP verified successfully"});   
 
 });
+
 const updatePassword = asynchandler( async(req, res)=>{
    const{email,newPassword,confirmPassword} = req.body;
-
+console.log("till this code ran successfuly");
    if(!email){
       return res.status(400).json({message:"Email is required to update password"});
    }
@@ -83,4 +88,34 @@ const updatePassword = asynchandler( async(req, res)=>{
    await User.updateOne({email},{$set:{password:hashpassword}})
     res.status(200).json({message:"password has updated successfully"});
 });
-module.exports = { registeruser, loginuser, sendOtp,verifyOtp, updatePassword };
+
+const uploadProfile =   async function (req, res, next) {
+    try {
+      
+       if(!req.file){
+        return res.status(500).json({message:"profile photo not uploaded"});
+       }
+
+       const localPathFile = req.file.path;
+      const uploadfile  =  await uploadOnCloudinary(localPathFile);
+
+      if (!uploadfile || !uploadfile.url) {
+         return res.status(500).json({ message: "Error uploading file to cloud" });
+     }
+
+       fs.unlink(localPathFile ,(err)=>{
+        if(err){
+            console.error("error deleting profile photo", err);
+        }else{
+            console.log("profile photo has been deleted from the storage:",localPathFile);
+        }
+       });
+
+       res.status(200).json({message:"profile photo uploaded successfully!", uploadfile});
+    } catch (error) {
+        console.log("some error has occured", error);
+        res.status(500).json({error:"profile photo upload has failed"})
+    }
+  }
+
+module.exports = { registeruser, loginuser, sendOtp,verifyOtp, updatePassword, uploadProfile };

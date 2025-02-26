@@ -1,19 +1,20 @@
+
+require('dotenv').config();
 const express = require("express");
+const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
-const JobRoutes = require("./routes/JobRoutes");
+// const JobRoutes = require("./routes/JobRoutes");
 const app = express();
 app.use(express.json());
-const PORT = process.env.PORT;
+const PORT = Number(process.env.PORT) || 4000;
 
-app.use(express.urlencoded({ extended: true })); // Optional, for form data
-// app.use(cors());
-
-console.log(userRoutes);
-console.log(typeof userRoutes);
+connectDB();
+// console.log(userRoutes);
+// console.log(typeof userRoutes);
 
 
 app.use("/api/users", userRoutes);
-app.use("/api/job", JobRoutes);
+// app.use("/api/job", JobRoutes);
 
 
 app.listen(PORT, ()=>{
