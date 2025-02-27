@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const OTP = require("../models/otpModel");
 const sendMail = require("../utils/emailService");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 
 
@@ -20,7 +21,8 @@ const registeruser = asynchandler(async (req, res) => {
    const hashpassword = await bcrypt.hash(password, 10);
    const newuser = new User({ name, email, password: hashpassword });
    await newuser.save();
-    res.status(200).json({ message: "you have registered successfully" });
+   const token = jwt.sign({email, user:email}, process.env.SECRET, {expiresIn:'1h'});
+    res.status(200).json({ message: "you have registered successfully", token });
 });
 
 const loginuser = asynchandler(async (req, res) => {
@@ -33,7 +35,20 @@ const loginuser = asynchandler(async (req, res) => {
    if (!isMatch) {
       return res.status(403).json({ message: "Invalid password" });
    }
-     res.status(200).json({ message: "login succesfully" });
+   const token = jwt.sign({email, user:email}, process.env.SECRET, {expiresIn:'1h'});
+     res.status(200).json({ message: "login succesfully",token });
+});
+
+const getUserDetails = asynchandler(async(req, res)=>{
+   const user = req.user.email;
+   if(!user){
+       return res.status(403).json({message:"Some Invalid error has occured !"});
+   }
+   console.log("this is the value of user", user);
+   const userData = await User.findOne({email:user});
+   console.log("this is the value of userdata", userData);
+   console.log("program ran till here");
+   return res.status(200).json(userData);
 });
 
 
@@ -118,4 +133,4 @@ const uploadProfile =   async function (req, res, next) {
     }
   }
 
-module.exports = { registeruser, loginuser, sendOtp,verifyOtp, updatePassword, uploadProfile };
+module.exports = { registeruser, loginuser, sendOtp,verifyOtp, updatePassword, uploadProfile, getUserDetails };

@@ -4,7 +4,7 @@ const fs = require("fs");
 const uploadOnCloudinary = require("../utils/Cloudinary");
 const User = require("../models/userModel");
 
-const listJob = asynchandler(async(req, res)=>{
+const addJob = asynchandler(async(req, res)=>{
     try {
         const {title, company, urlAddress,status} = req.body;
         if(!title || !company){
@@ -24,6 +24,17 @@ const listJob = asynchandler(async(req, res)=>{
         return res.status(403).json({message:"some Invalid error has occured , try again "})
     }
 });
+
+const getJobDetails = asynchandler(async(req, res)=>{
+    const user = req.user.email;
+    if(!user){
+        return res.status(403).json({message:"Some Invalid error has occured !"});
+    }
+    const userData = await User.findOne({email:user}).populate('jobs');
+    const jobslist = userData.jobs;
+    console.log("this is the job list of the user", jobslist);
+    return res.status(200).json({message:"you successfully fetched all the jobs"});
+})
 
 const uploadDocument =   async function (req, res, next) {
     try {
@@ -54,4 +65,4 @@ const uploadDocument =   async function (req, res, next) {
     }
   }
 
-module.exports = {listJob, uploadDocument};
+module.exports = {addJob, uploadDocument, getJobDetails};
