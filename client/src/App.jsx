@@ -3,10 +3,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Home from './components/Home';
-import Signin from './components/Signin';
-import Signup from './components/Signup'
-import JobTracker from './components/Tracker/JobTracker';
+import Home from './pages/LandingPage/Home'
+import Signin from './pages/Auth/Signin'
+import Signup from './pages/Auth/Signup'
+import JobTracker from './pages/Dashboard/JobTracker'
 
 function App() {
  

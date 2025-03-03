@@ -5,7 +5,10 @@ import { faLinkedinIn, faInstagram, faFacebookF, faTwitter, faYoutube } from '@f
 
 function Footer() {
     return (
-        <div className="mx-auto flex max-w-7xl items-center justify-between pb-6 lg:px-8">
+        <>
+        
+         <hr className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8' />
+         <div className="mx-auto flex max-w-7xl items-center justify-between pb-6 lg:px-8">
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7'>
                 <div>
                     <p className='text-[#190445] text-[16px] text-[600] mb-2.5'>JobQuest</p>
@@ -51,6 +54,8 @@ function Footer() {
             </div>
 
         </div>
+        </>
+       
     )
 }
 export default Footer;

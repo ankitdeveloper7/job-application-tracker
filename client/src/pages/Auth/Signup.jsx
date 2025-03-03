@@ -1,19 +1,19 @@
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
+import { API_URL } from "../../API_URL";
 import axios from "axios";
-import { API_URL } from "../API_URL";
 
 
-export default function Signin() {
+export default function Signup() {
   const[username, setUsername] = useState("");
   const[password, setPassword] = useState("");
   const[user, getExit] = useState("");
 
-  const onPress = async (e) => {
+  const onPress1 = async (e) => {
     e.preventDefault(); 
     try {
-      const response = await axios.post(`${API_URL}/signin`, {
+      const response = await axios.post(`${API_URL}/signup`, {
           username:username,
           password:password
         },{
@@ -26,12 +26,10 @@ export default function Signin() {
       const data = response.data;
       getExit(data.token);
       localStorage.setItem("token", data.token);
-      setUsername(" ");
-      setPassword(" ");
-      alert("you have successfully signin")
+      // alert("you have successfully signup")
     }catch(err){
       console.log("some error has occured!",err);
-      alert("failed to singin")
+      // alert("failed to singup")
     }
   }
 
@@ -47,9 +45,10 @@ export default function Signin() {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Sign in to your account
+              Create a new Account
             </h2>
           </div>
+  
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form action="#" method="POST" className="space-y-6">
               <div>
@@ -76,11 +75,6 @@ export default function Signin() {
                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                     Password
                   </label>
-                  <div className="text-sm">
-                    <a href="/tracker" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Forgot password?
-                    </a>
-                  </div>
                 </div>
                 <div className="mt-2">
                   <input
@@ -99,12 +93,11 @@ export default function Signin() {
   
               <div>
                 <button
-                type="button"
-                onClick={onPress}
+                 type="button"
+                 onClick={onPress1}
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                 
                 >
-                  Sign in
+                  Sign up
                 </button>
                
                    <center className="mt-4 mb-4">or</center>
@@ -123,12 +116,6 @@ export default function Signin() {
                 
                 </div>
                 </form>
-            <p className="mt-10 text-center text-sm text-gray-500">
-              Don't have account?{' '}
-              <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500" >
-               Sign up
-              </a>
-            </p>
           </div>
         </div>
       </>

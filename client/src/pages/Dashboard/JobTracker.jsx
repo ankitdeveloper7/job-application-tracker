@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { SEGMENTS } from './constants'; 
-import Sidebar from "./Sidebar"; 
-import Index from "./pages/Index";
-import Profile from "./pages/Profile";
-import Contacts from "./pages/Contacts";
-import Documents from "./pages/Documents";
-import MyJobTracker from "./pages/MyJobTracker";
-import TaskScheduler from "./pages/TaskScheduler";
-import Skilltracker from "./pages/Skilltracker";
+import { SEGMENTS } from "../../layouts/constants";
+import Sidebar from "../../layouts/Sidebar";
+import Index from "./sections/Index";
+import Profile from "./sections/Profile";
+import Contacts from "./sections/Contacts";
+import Documents from "./sections/Documents";
+import MyJobTracker from "../JobTracker/MyJobTracker";
+import TaskScheduler from "./sections/TaskScheduler";
+import Skilltracker from "./sections/Skilltracker";
 
 export default function JobTracker() {
   const [activeSegment, setActiveSegment] = useState(SEGMENTS.HOME);

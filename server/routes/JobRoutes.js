@@ -2,9 +2,9 @@ const express = require('express');
 const multer  = require('multer');
 const upload = multer({ dest: 'uploads/' })
 const router = express.Router();
-const uploadDocument = require("../controllers/JobController");
+// const  = require("../controllers/JobController");
 const authenticationJwt = require("../middleware/auth");
-const{addJob, getJobDetails} = require("../controllers/JobController");
+const{addJob, getJobDetails, uploadDocument} = require("../controllers/JobController");
 
 
 router.post('/addjob',authenticationJwt, addJob);

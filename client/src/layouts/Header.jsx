@@ -1,5 +1,3 @@
-'use client'
-import Footer from './Footer'
 import { useState } from 'react'
 import {
     Dialog,
@@ -21,11 +19,9 @@ import {
     SquaresPlusIcon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Box, Grid, Button } from '@mui/material';
-import p1 from "../../public/images/1.png";
-import airesume from "../../public/images/ai-resume-builder.png";
-import exttension from "../../public/images/browser-extension.png";
+import p1 from "../../public/images/1.png"
 
 const products = [
     { name: 'Job Tracker', href: '#', icon: ChartPieIcon },
@@ -35,12 +31,11 @@ const products = [
     { name: 'Resume Checker',href: '#', icon: ArrowPathIcon },
 ]
 
-export default function Home() {
+export default function Header(){
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-    return (
+    return(
         <>
-            <section id="navbar">
+         <section id="navbar">
                 <header className="bg-white">
                     <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                         <div className="flex lg:flex-1">
@@ -82,7 +77,7 @@ export default function Home() {
                                         {products.map((item) => (
                                             <div
                                                 key={item.name}
-                                                className="group relative flex items-center gap-x-6 rounded-lg p-3 text-sm leading-6 hover:bg-gray-50"
+                                                className="group relative flex items-center gap-x-5 rounded-lg p-1 text-sm leading-6 hover:bg-gray-50"
                                             >
                                                 <div className="flex flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                                     <item.icon aria-hidden="true" className=" text-gray-600 group-hover:text-indigo-600" />
@@ -218,158 +213,6 @@ export default function Home() {
 </Box>
 
             </section>
-            <section>
-            <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl p-6 lg:px-8">
-    <Grid container spacing={4} className="items-center">
-        {/* Image Section */}
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-4 md:p-0">
-                <img src={p1} className="w-full h-auto rounded-lg shadow-lg" alt="Job Search" />
-            </div>
-        </Grid>
-
-        {/* Text Section */}
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-8 md:p-20">
-                <p className="text-3xl md:text-4xl text-[#190445CC] mb-2">Job Tracker</p>
-                <p className="text-5xl md:text-7xl text-color2 font-extrabold leading-tight mb-4">Keeps Your Job Search Organized</p>
-                <p className="text-lg md:text-2xl mb-6 text-[#190445CC]">
-                  No more messy spreadsheets. Huntr keeps track of every detail about your job opportunities-notes,tasks,job descriptions, salaries, locations,company data and more.
-                    </p>
-                <button className="rounded-lg p-3 bg-customColor text-white hover:bg-customColor-dark transition-colors">
-                    Explore Job Tracker
-                </button>
-            </div>
-        </Grid>
-    </Grid>
-</Box>
-
-            </section>
-            <section>
-            <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-    <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-20">
-                <p className="text-4xl text-[#190445CC]">AI Resume Builder</p>
-                <p className="text-7xl text-color2 font-[800] text-heading leading-3">Craft An Interview-Worthy Resume</p>
-                <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
-                   Create a standout resume with Huntr's simple resume builder packed with professional templates, AI suggestions, and proofreading features. Customize your resume with key insights and export in one click.
-                </p>
-                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
-                    Learn about AI Resume Builder
-                </button>
-            </div>
-        </Grid>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-6 sm:p-24">
-                <img src={airesume} className="w-full h-auto" alt="Job Search" />
-            </div>
-        </Grid>
-    </Grid>
-</Box>
-            </section>
-            <section>
-            <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl p-6 lg:px-8">
-    <Grid container spacing={4} className="items-center">
-        {/* Image Section */}
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-4 md:p-0">
-                <img src={p1} className="w-full h-auto rounded-lg shadow-lg" alt="Job Search" />
-            </div>
-        </Grid>
-
-        {/* Text Section */}
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-8 md:p-20">
-                <p className="text-3xl md:text-4xl text-[#190445CC] mb-2">Resume Tailoring</p>
-                <p className="text-5xl md:text-7xl text-color2 font-extrabold leading-tight mb-4">Build Job Tailored Resumes,Faster</p>
-                <p className="text-lg md:text-2xl mb-6 text-[#190445CC]">
-                    Tailoring your resume to each application land you more interviews. Use Huntr's AI to help you better optimize your resume for the right skills, qualifications, and experiences with highlighted keywords and one-click AI suggestions.
-                </p>
-                <button className="rounded-lg p-3 bg-customColor text-white hover:bg-customColor-dark transition-colors">
-                    Explore Resume Tailor
-                </button>
-            </div>
-        </Grid>
-    </Grid>
-</Box>
-
-            </section>
-            <section>
-            <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-    <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-20">
-                <p className="text-4xl text-[#190445CC]">Resume Checker</p>
-                <p className="text-7xl text-color2 font-[800] text-heading leading-3">Get Your Free Resume Score</p>
-                <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
-                  Huntr checks your resume for spelling, length, impactful use of metrics, repetition and more, ensuring your resume gets noticed by employers.
-                   </p>
-                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
-                   Learn about Resume Checker
-                </button>
-            </div>
-        </Grid>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-6 sm:p-24">
-                <img src={p1} className="w-full h-auto" alt="Job Search" />
-            </div>
-        </Grid>
-    </Grid>
-</Box>
-            </section>
-            <section>
-            <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl p-6 lg:px-8">
-    <Grid container spacing={4} className="items-center">
-        {/* Image Section */}
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-4 md:p-0">
-                <img src={exttension} className="w-full h-auto rounded-lg shadow-lg" alt="Job Search" />
-            </div>
-        </Grid>
-
-        {/* Text Section */}
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-8 md:p-20">
-                <p className="text-3xl md:text-4xl text-[#190445CC] mb-2">Browser Extension</p>
-                <p className="text-5xl md:text-7xl text-color2 font-extrabold leading-tight mb-4">Save Jobs and Autofill Applications, Anywhere</p>
-                <p className="text-lg md:text-2xl mb-6 text-[#190445CC]">
-                    A powerful companion for your job search, our extension extracts keywords from messy job descriptions, autofills application forms with tailored materials and saves all job details automatically.All without ever switching tabs!
-                </p>
-                <button className="rounded-lg p-3 bg-customColor text-white hover:bg-customColor-dark transition-colors">
-                    Get the Extension
-                </button>
-            </div>
-        </Grid>
-    </Grid>
-</Box>
-
-            </section>
-            <section>
-            <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-    <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-20">
-                <p className="text-4xl text-[#190445CC]">Job Application Autofill</p>
-                <p className="text-7xl text-color2 font-[800] text-heading leading-3">Fill Out Applications in Seconds</p>
-                <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
-                   Save hours applying to jobs each week by auto filling job applications with the same key information that thousands of sites ask job seekers. This feature work on 1000s of websites, so you can apply to more jobs faster.
-                </p>
-                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
-                    Explore Application Autofill
-                </button>
-            </div>
-        </Grid>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-6 sm:p-24">
-                <img src={p1} className="w-full h-auto" alt="Job Search" />
-            </div>
-        </Grid>
-    </Grid>
-</Box>
-            </section>
-            <hr className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8' />
-            <Footer />
         </>
     )
 }

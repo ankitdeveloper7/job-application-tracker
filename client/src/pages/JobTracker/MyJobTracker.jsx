@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from "react";
 
-import Contacts from "./Contacts";
-import Documents from "./Documents";
-import Modal from "./Modal";
-import Activities from "./jobsearch/Activities";
-import Board from "./jobsearch/Board";
+import Contacts from "../Dashboard/sections/Contacts";
+import Documents from "../Dashboard/sections/Documents";
+import Modal from "../../components/Modal";
+import Activities from "./Activities";
+import Board from "./Board";
 
 
 export default function MyJobTracker() {

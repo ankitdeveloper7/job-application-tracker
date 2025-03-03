@@ -9,8 +9,8 @@ app.use(express.json());
 const PORT = Number(process.env.PORT) || 4000;
 
 connectDB();
-console.log( "this is the section of the result of jobroutes",JobRoutes);
-console.log("this is the section of the type of the jobroutes",typeof JobRoutes);
+// console.log( "this is the section of the result of jobroutes",JobRoutes);
+// console.log("this is the section of the type of the jobroutes",typeof JobRoutes);
 
 
 app.use("/api/users", userRoutes);
