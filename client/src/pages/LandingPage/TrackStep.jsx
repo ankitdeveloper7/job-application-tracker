@@ -6,7 +6,7 @@ export default function TrackStep() {
         <>
             <section className=" mx-auto max-w-7xl p-3 lg:px-8">
                 <center>
-                    <p className="text-customColor">job application tracker</p>
+                    <p className="text-base/7 font-semibold text-indigo-600">job application tracker</p>
                     <h3 className=" text-3xl sm:text-4xl text-color2 font-semibold py-2">Everything You Need to Track Your Job Search</h3>
                     <p className="max-w-2xl text-lg font-medium">Trackify keeps your job search organized by managing applications, storing documents, and tracking contacts—all in one place. Stay ahead effortlessly! 🚀</p>
                     </center>

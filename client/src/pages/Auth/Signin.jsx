@@ -24,7 +24,8 @@ export default function Signin() {
         
       )
       const data = response.data;
-      console.log(user);
+      console.log("this is data info", data)
+      console.log("this is user  data ", user);
       getExit(data.token);
       console.log(user)
       localStorage.setItem("token", data.token);
