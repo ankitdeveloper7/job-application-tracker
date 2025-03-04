@@ -57,7 +57,7 @@ export default function Header(){
                         <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                                 Home
                             </a>
-                            <a href="/job" className="text-sm font-semibold leading-6 text-gray-900">
+                            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                                 Job Tracker
                             </a>
                             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
@@ -136,7 +136,7 @@ export default function Header(){
                                            Home
                                         </a>
                                         <a
-                                            href="/job"
+                                            href="#"
                                             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                         >
                                            Job Tracker
@@ -194,8 +194,8 @@ export default function Header(){
     <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={6}>
             <div className="p-20">
-                <p className="text-4xl text-[#190445CC]">Less Hassle,</p>
-                <p className="text-7xl text-color2 font-[800] text-heading leading-3">More Interviews</p>
+                <p className="text-2xl sm:text-4xl text-[#190445CC]">Less Hassle,</p>
+                <p className="text-4xl sm:text-7xl text-color2 font-[800] text-heading leading-3">More Interviews</p>
                 <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
                     Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
                 </p>

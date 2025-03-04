@@ -2,7 +2,7 @@ import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../../API_URL";
+import {API_URL} from "../../API_URL";
 
 
 export default function Signin() {
@@ -13,7 +13,7 @@ export default function Signin() {
   const onPress = async (e) => {
     e.preventDefault(); 
     try {
-      const response = await axios.post(`${API_URL}/signin`, {
+      const response = await axios.post(`${API_URL}/api/users/login`, {
           username:username,
           password:password
         },{
@@ -24,7 +24,9 @@ export default function Signin() {
         
       )
       const data = response.data;
+      console.log(user);
       getExit(data.token);
+      console.log(user)
       localStorage.setItem("token", data.token);
       setUsername(" ");
       setPassword(" ");
@@ -77,7 +79,7 @@ export default function Signin() {
                     Password
                   </label>
                   <div className="text-sm">
-                    <a href="/tracker" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
                       Forgot password?
                     </a>
                   </div>
