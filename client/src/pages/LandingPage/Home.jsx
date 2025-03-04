@@ -19,7 +19,7 @@ export default function Home() {
            <Header />
            <JobTracksection />
            <TrackStep />
-           <Review />
+           {/* <Review /> */}
            <Features />
            <PriceTag />
            <Questions />                        

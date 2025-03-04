@@ -2,7 +2,7 @@ const asynchandler = require("express-async-handler");
 const User = require("../models/userModel");
 const OTP = require("../models/otpModel");
 const sendMail = require("../utils/emailService");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 
