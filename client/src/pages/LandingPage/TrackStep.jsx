@@ -6,9 +6,9 @@ export default function TrackStep() {
         <>
             <section className=" mx-auto max-w-7xl p-3 lg:px-8">
                 <center>
-                    <p className="text-base/7 font-semibold text-indigo-600">job application tracker</p>
-                    <h3 className=" text-3xl sm:text-4xl text-color2 font-semibold py-2">Everything You Need to Track Your Job Search</h3>
-                    <p className="max-w-2xl text-lg font-medium">Trackify keeps your job search organized by managing applications, storing documents, and tracking contacts—all in one place. Stay ahead effortlessly! 🚀</p>
+                <h2 className="text-base/7 font-semibold text-indigo-600">job application tracker</h2>
+                    <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-heading-600 sm:text-6xl">Everything You Need to Track Your Job Search</p>
+                    <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-[#190445CC] sm:text-xl/8">Trackify keeps your job search organized by managing applications, storing documents, and tracking contacts—all in one place. Stay ahead effortlessly! 🚀</p>
                     </center>
                 <div className="grid grid-cols-1 md:grid-rows-2 md:grid-cols-3  gap-4 pt-4">
                     <div className="bg-white rounded border-2 md:row-span-2 px-3 pt-3">

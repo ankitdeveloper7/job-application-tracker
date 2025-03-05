@@ -35,7 +35,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function PriceTag() {
+export default function Pricing() {
     return (
         // <section className="mx-auto flex max-w-7xl p-6 lg:px-8">
 
@@ -129,5 +129,80 @@ export default function PriceTag() {
 
         // </section>
 
-    )
-}
+    )}
+
+
+// export default function Pricing() {
+//     return (
+//         <>
+//             <section className="mx-auto  max-w-7xl p-6 lg:px-8">
+//                 <center>
+//                     <p className="text-base/7 font-semibold text-indigo-600">Pricing</p>
+//                     <h3 className=" text-3xl sm:text-4xl text-color2 font-semibold py-2">Stay Organized & Take Control</h3>
+//                     <p className="max-w-2xl text-lg font-medium">Track your job applications effortlessly. Choose the Free Plan for essential tools or upgrade to Premium for advanced features to streamline your job search.</p>
+//                     </center>
+//                     <div className="grid grid-cols-1 sm:grid-cols-2 p-4">
+//                         <div className="rounded-xl border-2">
+//                             <p className="text-base/7 font-semibold text-indigo-600">Free Plan 🆓 (Best for casual job seekers)</p>
+//                             <p>$0/month</p>
+//                             <p>Perfect for casual job seekers to track a few applications and store essential documents.</p>
+//                             <ul>
+//                                 <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />
+//                                     Add up to 5 job applications </li>
+//                                     <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Store up to 3 resumes and 5 contacts</li>
+//                                    <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Set job reminders and track application status</li>
+//                                    <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Basic job search insights</li>
+//                             </ul>
+//                             <center>
+//                             <button className="rounded-lg block p-2 m-3 bg-customColor text-white">
+//                                 Sign up for free
+//                             </button>
+//                             </center>
+//                         </div>
+
+//                         <div className="rounded-xl border-2 bg-color2 text-white">
+//                             <p className="text-base/7 font-semibold text-indigo-600">Premium Plan ⭐ (For serious job seekers)</p>
+//                             <p>$10
+//                             /month</p>
+//                             <p>Designed for serious job seekers with unlimited tracking, cloud storage, and advanced features.</p>
+//                             <ul>
+//                                 <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />
+//                                     Unlimited job applications </li>
+//                                     <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Unlimited document storage on the cloud</li>
+//                                    <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Unlimited recruiter contacts</li>
+//                                    <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Advanced tracking filters & custom job status</li>
+//                                      <li className="flex gap-x-3"><CheckIcon
+//                                     aria-hidden="true"
+//                                     className='text-indigo-600 h-6 w-5 flex-none' />Priority support & data backup</li>
+//                             </ul>
+//                             <center>
+//                             <button className="rounded-lg block p-2 m-3 bg-customColor text-white">
+//                                 Sign up for free
+//                             </button>
+//                             </center>
+                            
+//                         </div>
+//                     </div>
+                
+
+//             </section>
+
+//         </>
+//     )
+// }

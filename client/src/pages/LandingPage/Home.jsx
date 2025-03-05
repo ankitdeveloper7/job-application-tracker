@@ -4,7 +4,7 @@ import Header from '../../layouts/Header';
 import TrackStep from './TrackStep';
 import Review from './Review';
 import Features from './Features';
-import PriceTag from './PriceTag';
+import Pricing from './Pricing';
 import Questions from './Questions';
 import { Box, Grid, Button } from '@mui/material';
 import p1 from "../../../public/images/1.png";
@@ -22,7 +22,7 @@ export default function Home() {
            <TrackStep />
            {/* <Review /> */}
            <Features />
-           <PriceTag />
+           <Pricing />
            <Questions />                        
             <Footer />
         </div>

@@ -5,13 +5,20 @@ const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const JobRoutes = require("./routes/JobRoutes");
 const cors = require("cors");
+<<<<<<< HEAD
 
+=======
+>>>>>>> a1cf885 (Save changes before pull)
 
 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1cf885 (Save changes before pull)
 const PORT = Number(process.env.PORT) || 4000;
 
 connectDB();

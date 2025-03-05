@@ -39,7 +39,7 @@ export default function Header(){
                 <header className="bg-white">
                     <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                         <div className="flex lg:flex-1">
-                            <a href="#" className="-m-1.5 p-1.5 text-4xl">
+                            <a href="#" className="-m-1.5 p-1.5 text-4xl font-semibold">
                             Trackify
                             </a>
                         </div>
@@ -193,9 +193,9 @@ export default function Header(){
                 <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
     <Grid container spacing={2}>
         <Grid item xs={12} sm={12} md={6}>
-            <div className="p-20">
+            <div className="p-10 sm:p-20">
                 <p className="text-2xl sm:text-4xl text-[#190445CC]">Less Hassle,</p>
-                <p className="text-4xl sm:text-7xl text-color2 font-[800] text-heading leading-3">More Interviews</p>
+                <p className="text-4xl sm:text-7xl !important text-color2 font-[800]  leading-tight">More Interviews</p>
                 <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
                     Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
                 </p>
