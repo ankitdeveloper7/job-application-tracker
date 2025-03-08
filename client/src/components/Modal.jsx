@@ -4,10 +4,7 @@ import { Dialog } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Modal({ isModalopen, onClose }) {
-  
-  function getData(){
-    alert("this data has submmited succesfully")
-  }
+
   return (
     <Dialog open={isModalopen} onClose={onClose} className="relative z-10">
       {/* Backdrop */}

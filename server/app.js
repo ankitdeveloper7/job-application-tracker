@@ -4,6 +4,8 @@ const express = require("express");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const JobRoutes = require("./routes/JobRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+
 const cors = require("cors");
 <<<<<<< HEAD
 
@@ -28,6 +30,7 @@ connectDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/job", JobRoutes);
+app.use("/api/contact", contactRoutes);
 
 
 app.listen(PORT, ()=>{

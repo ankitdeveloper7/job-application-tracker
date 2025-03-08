@@ -4,10 +4,14 @@ import App from './App.jsx'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './output.css';
+import { RecoilRoot } from 'recoil';
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <RecoilRoot>
     <App />
+    </RecoilRoot>
+    
   </StrictMode>,
 )

@@ -57,7 +57,7 @@ export default function Header(){
                         <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                                 Home
                             </a>
-                            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                            <a href="/dashboard" className="text-sm font-semibold leading-6 text-gray-900">
                                 Job Tracker
                             </a>
                             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">

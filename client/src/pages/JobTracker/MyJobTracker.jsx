@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 
-import Contacts from "../Dashboard/sections/Contacts";
-import Documents from "../Dashboard/sections/Documents";
+import Contact from "../Dashboard/DashboardPages/Contact";
+import Document from "../Dashboard/DashboardPages/Document";
 import Modal from "../../components/Modal";
 import Activities from "./Activities";
 import Board from "./Board";
@@ -19,9 +19,9 @@ export default function MyJobTracker() {
       case "activities":
         return <Activities />
       case "contacts":
-        return <Contacts />;
+        return <Contact />;
       case "documents":
-        return <Documents />;
+        return <Document />;
       default:
         return;
     }

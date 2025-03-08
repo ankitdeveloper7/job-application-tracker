@@ -9,7 +9,8 @@ module.exports = {
         customColor: '#6a4feb',
         color2:'#190445',
         t1:'rgba(25, 4, 69, 0.8)',
-        t2:'rgba(25, 4, 69, 0.5)'
+        t2:'rgba(25, 4, 69, 0.5)',
+        formoutline:'#6A4FEB'
       },
       fontSize:{
         heading:'100px'
