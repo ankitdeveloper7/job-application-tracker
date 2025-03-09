@@ -14,11 +14,11 @@ export default function Contact() {
 
   return (
    <>
-<div className='mt-3 mx-3 flex flex-row justify-between'>
-  <div className='text'>Contacts</div>
+<div className='m-1 flex flex-row justify-between'>
+  <div className='text-color2 font-semibold text-center'>Contacts</div>
   <div className='last-order'>
-    <button className='p-2 rounded bg-customColor text-white' onClick={onPressC}>
-      Save Contacts
+    <button className='p-1 rounded bg-customColor text-white' onClick={onPressC}>
+      +contacts
     </button>
   </div>
 </div>

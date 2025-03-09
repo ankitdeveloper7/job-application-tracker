@@ -5,6 +5,10 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Modal({ isModalopen, onClose }) {
 
+  function saveData(){
+    alert("data saved")
+  }
+
   return (
     <Dialog open={isModalopen} onClose={onClose} className="relative z-10">
       {/* Backdrop */}
@@ -13,89 +17,105 @@ export default function Modal({ isModalopen, onClose }) {
       {/* Modal Panel */}
       <div className="fixed inset-0 z-10 overflow-y-auto">
         <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-          <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-              <div className="sm:flex sm:items-start">
+          <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+          <div className='border-2 rounded p-2'>   
+    <center className='text-color1 font-semibold'>
+      Add new job
+    </center>
+    <hr />
+   <form  action="#" method="POST" className="space-y-6">
+    <div className='inline-block'>
+      <label className='font-semibold text-t1'>
+        Job title:
+      </label>
+      <div>
+        <input
+        type="text"
+        id='jobtitle'
+        placeholder='i.e: Software Engineer'
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+ />
+      </div>
+    </div>
+    <div className='sm:ml-4 inline-block'>
+      <label className='font-semibold text-t1'>
+        Company:
+      </label>
+      <div className=''>
+        <input
+        type="text"
+        id='company'
+        placeholder='i.e: Google'
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+      </div>
+    </div>
+    <div>
+      <label className='font-semibold text-t1'>
+        Job url:
+      </label>
+      <div className=''>
+        <input
+        type="text"
+        id='joburl'
+        placeholder='i.e: naukari.com/google/software_engineer' 
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+      </div>
+    </div>
+    <div>
+      <label className='font-semibold text-t1'>
+        Location:
+      </label>
+      <div className=''>
+        <input
+        type="text"
+        id='location'
+        placeholder='i.e:New Delhi' 
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+      </div>
+    </div>
+    <div>
+      <label className='font-semibold text-t1'>
+        Work Mode:
+      </label>
+      <div className=''>
+       <select className='p-1 border-2 rounded w-full'>
+        <option value="">onSite</option>
+        <option value="">Hybrid</option>
+        <option value="">Remote</option>
+       </select>
+      </div>
+    </div>
+    <div>
+      <label className='font-semibold text-t1'>
+        Status
+      </label>
+      <div className=''>
+        <select className='w-full p-1 border-2 rounded'>
+         <option value="">wishlist</option>
+         <option value="">applied</option>
+         <option value="">interview</option>
+         <option value="">offer</option>
+         <option value="">rejected</option>
 
-                <div className="mt-1 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                  <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
+        </select>
+        </div>
+    </div>
+   <hr />
+   <center>
+    <div className='m-2'>
+    <button className="rounded-lg p-2 bg-customColor text-white" onClick={onClose}>
+                    Discard
+                </button>
+    
+    <button className="rounded-lg p-2 ml-3 bg-customColor text-white" onClick={saveData}>
                     Add Job
-                  </Dialog.Title>
-                  <hr />
-                  <div className="mt-2">
-                  <form action="#" method="POST" className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Company
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={((e)=>{
-                      setUsername(e.target.value)
-                    })}
-                  />
-                </div>
-              </div>
-               <div>
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Job Title
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={((e)=>{
-                      setUsername(e.target.value)
-                    })}
-                  />
-                </div>
-              </div>
-              <div className="col-span-full">
-              <label htmlFor="about" className="block text-sm/6 font-medium text-gray-900">
-                Job Description
-              </label>
-              <div className="mt-2">
-                <textarea
-                  id="about"
-                  name="about"
-                  rows={3}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  defaultValue={''}
-                />
-              </div>
-</div>
-              </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
-              <button
-                type="button"
-                onClick={getData}
-                className="inline-flex w-full justify-center rounded-md bg-customColor px-3 py-2 text-sm font-semibold text-white shadow-sm  sm:ml-3 sm:w-auto"
-              >
-                Submit
-              </button>
-              <button
-                type="button"
-                onClick={onClose}
-                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-              >
-                Discard
-              </button>
-            </div>
-          </Dialog.Panel>
+                </button>
+    </div>
+  
+   </center>
+   </form>
+   </div>
+          </div>
         </div>
       </div>
     </Dialog>

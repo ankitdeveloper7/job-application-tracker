@@ -9,7 +9,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className=' border-r-2 flex flex-col justify-between'>
+      <div className=' border-r-2 flex flex-col'>
         <div className='p-3'>
         <p
           className="mt-1  text-t1hover:rounded hover:bg-transparent" onClick={()=>setActiveSegment("welcome")}
@@ -70,7 +70,7 @@ export default function Sidebar() {
                     Upgrade Now
                 </button>
           </div>
-        <div className='p-3 order-last'>
+        <div className='p-3'>
          
             <p
           className="mt-1 text-t1 border p-2 rounded flex flex-row justify-between"
