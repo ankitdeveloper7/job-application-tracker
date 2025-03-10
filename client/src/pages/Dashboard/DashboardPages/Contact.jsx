@@ -1,8 +1,30 @@
-import React, { useState } from 'react'
-import ContactModal from '../../../components/ContactModal'
+import React, { useEffect, useState } from 'react'
+import ContactModal from '../../../components/ContactModal';
+import axios from 'axios';
+import { API_URL } from '../../../API_URL';
 
 export default function Contact() {
   const[isModalOpen, setModalopen] = useState(false);
+  const[contactdetail, getContactdetail] = useState([]);
+
+  useEffect(()=>{
+    const getData = async () => {
+      const response = await axios({
+        method:'get',
+        url:`${API_URL}/api/contact/getcontact`,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      });
+      const data = response.data;
+       getContactdetail(data);
+       console.log("data fetch succesfully", response.data);
+    }
+    getData();
+
+  },[]);
+ 
 
  function onPressC(){
   setModalopen(true);
@@ -24,6 +46,13 @@ export default function Contact() {
 </div>
 
 <hr/>
+
+<div className='m-3'>
+  <p>contact details will be shown here</p>
+  {/* {contactdetail.map((item)=>{
+    <p>name:{item.name}</p>
+  })} */}
+</div>
 
 <ContactModal isModalOpen={isModalOpen} onClose={handleclick} />
 

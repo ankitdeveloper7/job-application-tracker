@@ -16,23 +16,23 @@ export default function Welcome() {
       </div>
       </div>
       <div>
-        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg cursor-pointer'>
+        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg hover:bg-lightbg cursor-pointer'>
           <p className='text-color2 font-semibold'>Install Chrome Extension</p>
           <p className='text-t1'>Get Huntr's chrome extension to bookmark jobs, view job insights and autofill applications.</p>
         </div>
-        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg cursor-pointer'>
+        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg hover:bg-lightbg cursor-pointer'>
           <p className='text-color2 font-semibold'>Install Chrome Extension</p>
           <p className='text-t1'>Get Huntr's chrome extension to bookmark jobs, view job insights and autofill applications.</p>
         </div>
-        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg cursor-pointer'>
+        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg hover:bg-lightbg cursor-pointer'>
           <p className='text-color2 font-semibold'>Install Chrome Extension</p>
           <p className='text-t1'>Get Huntr's chrome extension to bookmark jobs, view job insights and autofill applications.</p>
         </div>
-        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg cursor-pointer'>
+        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg hover:bg-lightbg cursor-pointer'>
           <p className='text-color2 font-semibold'>Install Chrome Extension</p>
           <p className='text-t1'>Get Huntr's chrome extension to bookmark jobs, view job insights and autofill applications.</p>
         </div>
-        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg cursor-pointer'>
+        <div className='mt-1 p-2 hover:border-2 hover:border-customColor hover:rounded-lg hover:bg-lightbg cursor-pointer'>
           <p className='text-color2 font-semibold'>Install Chrome Extension</p>
           <p className='text-t1'>Get Huntr's chrome extension to bookmark jobs, view job insights and autofill applications.</p>
         </div>

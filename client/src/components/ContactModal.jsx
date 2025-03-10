@@ -1,12 +1,47 @@
 import { Dialog } from '@headlessui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { API_URL } from '../API_URL';
+import axios from 'axios';
 
 export default function ContactModal({isModalOpen, onClose}) {
+  const[name, getName] = useState();
+  const[jobtitle, getJobtitle] = useState();
+  const[companies, getCompanie] = useState();
+  const[location, getLocation] = useState();
+  const[email,getEmail] = useState();
+  const[phonenumber, getPhonenumber] = useState();
 
-    function saveData(){
-        console.log("data saved on contact details")
+    
+function saveData(){
+  useEffect(()=>{
+    const sendData = async () => {
+     const response = await axios({
+      method:'post',
+      url:`${API_URL}/api/contact/addcontact`,
+      body:{
+        name:name,
+        jobtitle:jobtitle,
+        companies:companies,
+        location:location,
+        email:email,
+        phonenumber:phonenumber
+      },
+      header:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer " + localStorage.getItem("token")
+      }
+     });
+     const data = response.data;
+     console.log("data send successfully");
+     console.log(data);
     }
+    sendData();
+  },[]);
+  
+  onClose();
 
+}
+  
   return (
     <>
     <Dialog open={isModalOpen} onClose={onClose}className="relative z-10">
@@ -32,6 +67,9 @@ export default function ContactModal({isModalOpen, onClose}) {
         id='name'
         placeholder='i.e:Ankur Kumar'
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+        onChange={(e)=>{
+          getName(e.target.value)
+        }}
  />
       </div>
     </div>
@@ -44,7 +82,11 @@ export default function ContactModal({isModalOpen, onClose}) {
         type="text"
         id='jobtitle'
         placeholder='i.e:Software Engineer'
-        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+        onChange={(e)=>{
+          getJobtitle(e.target.value)
+        }}
+        />
       </div>
     </div>
     <div>
@@ -56,7 +98,11 @@ export default function ContactModal({isModalOpen, onClose}) {
         type="text"
         id='companies'
         placeholder='i.e:Microsoft' 
-        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+        onChange={(e)=>{
+          getCompanie(e.target.value)
+        }}
+        />
       </div>
     </div>
     <div>
@@ -68,7 +114,11 @@ export default function ContactModal({isModalOpen, onClose}) {
         type="text"
         id='location'
         placeholder='i.e:New Delhi' 
-        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+        onChange={(e)=>{
+          getCompanie(e.target.value)
+        }}
+        />
       </div>
     </div>
     <div>
@@ -80,7 +130,11 @@ export default function ContactModal({isModalOpen, onClose}) {
         type="text"
         id='email'
         placeholder='i.e:example@gmail.com' 
-        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+        onChange={(e)=>{
+          getEmail(e.target.value)
+        }}
+        />
       </div>
     </div>
     <div>
@@ -89,20 +143,24 @@ export default function ContactModal({isModalOpen, onClose}) {
       </label>
       <div className=''>
         <input
-        type="number"
+        type="text"
         id='phoneno'
         placeholder='i.e: +913456789837'
-        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"/>
+        className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
+        onChange={(e)=>{
+          getPhonenumber(e.target.value)
+        }}
+        />
       </div>
     </div>
    <hr />
    <center>
     <div className='m-2'>
-    <button className="rounded-lg p-2 bg-customColor text-white" onClick={onClose}>
+    <button className="rounded p-1 bg-customColor text-white" onClick={onClose}>
                     Discard
                 </button>
     
-    <button className="rounded-lg p-2 ml-3 bg-customColor text-white" onClick={saveData}>
+    <button className="rounded p-1 ml-3 bg-customColor text-white" onClick={saveData}>
                     Save Contacts
                 </button>
     </div>

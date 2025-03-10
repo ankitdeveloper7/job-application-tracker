@@ -7,20 +7,16 @@ const JobRoutes = require("./routes/JobRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 
 const cors = require("cors");
-<<<<<<< HEAD
 
-=======
->>>>>>> a1cf885 (Save changes before pull)
+
+
 
 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-<<<<<<< HEAD
-=======
 
->>>>>>> a1cf885 (Save changes before pull)
 const PORT = Number(process.env.PORT) || 4000;
 
 connectDB();

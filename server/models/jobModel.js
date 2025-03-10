@@ -11,7 +11,16 @@ const jobSchema = new mongoose.Schema({
     },
     urlAddress:{
         type:String,
-        required:true
+        required:false
+    },
+    location:{
+        type:String,
+        required:false
+    },
+    workMode:{
+        type:String,
+        required:true,
+        enum:["onSite","Hybrid", "Remote"]
     },
     status:{
         type:String,
