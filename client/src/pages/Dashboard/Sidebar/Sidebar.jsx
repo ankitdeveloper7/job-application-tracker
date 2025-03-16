@@ -12,7 +12,7 @@ export default function Sidebar() {
       <div className=' border-r-2 flex flex-col'>
         <div className='p-3'>
         <p
-          className="mt-1  text-t1hover:rounded hover:bg-transparent" onClick={()=>setActiveSegment("welcome")}
+          className="mt-1  text-t1 hover:rounded hover:bg-transparent" onClick={()=>setActiveSegment("welcome")}
         >
           <span className="material-symbols-outlined align-bottom">home</span>
           <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Home</span>
@@ -51,9 +51,9 @@ export default function Sidebar() {
        
         <div className="flex justify-between mt-3 text-t2 text-xs">
           My Job Trackers?
-          <button aria-label="Add a new job tracker">
+          {/* <button aria-label="Add a new job tracker">
             <span className="material-symbols-outlined align-bottom">add</span>
-          </button>
+          </button> */}
         </div>
         <p
           className="mt-3 text-t1" onClick={()=>setActiveSegment("jobtracker")}
@@ -73,9 +73,9 @@ export default function Sidebar() {
         <div className='p-3'>
          
             <p
-          className="mt-1 text-t1 border p-2 rounded flex flex-row justify-between"
+          className="mt-1  text-t1 border p-2 rounded flex flex-row justify-between"
         > 
-        <div>
+        <div className=''>
         <span className="material-symbols-outlined align-bottom">account_circle</span>
         <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Ankit</span>
         </div>

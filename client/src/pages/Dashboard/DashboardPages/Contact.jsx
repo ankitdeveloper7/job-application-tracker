@@ -6,6 +6,7 @@ import { API_URL } from '../../../API_URL';
 export default function Contact() {
   const[isModalOpen, setModalopen] = useState(false);
   const[contactdetail, getContactdetail] = useState([]);
+ 
 
   useEffect(()=>{
     const getData = async () => {

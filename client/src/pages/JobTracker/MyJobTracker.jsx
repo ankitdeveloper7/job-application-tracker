@@ -86,7 +86,7 @@ export default function MyJobTracker() {
       <Modal isModalopen={isModalopen} onClose={handleCloseModal} />
 
 
-      <div className="flex absolute top-0 bottom-0 mt-14">
+      <div className="pt-14">
         {renderContent()}
       </div>
     </div>

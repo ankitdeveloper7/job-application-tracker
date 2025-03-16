@@ -5,12 +5,22 @@ import UploadfileModal from './UploadfileModal';
 
 export default function Documentoption({isModalOpen, onClose}) {
   const[modalopen, setModalopen] = useState(false);
+  const[fileuploadmodal, setUploadfile] = useState(false);
 
   function writeDocument(){
     setModalopen(true);
+    onClose();
   }
 function handleclickdocument(){
   setModalopen(false);
+}
+function uploadfilef(){
+  setUploadfile(true);
+  onClose();
+}
+
+function handleclickupload(){
+  setUploadfile(false);
 }
 
 
@@ -19,9 +29,9 @@ function handleclickdocument(){
     onClose();
   }
 
-  function uploadfilef(){
-    console.log("file has been uploaded successfully")
-  }
+  // function uploadfilef(){
+  //   console.log("file has been uploaded successfully")
+  // }
 
   
   return (
@@ -33,7 +43,7 @@ function handleclickdocument(){
     <div className="fixed inset-0 z-10 overflow-y-auto">
       <div className="flex  justify-center p-4  sm:p-0">
     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-       <div className=''>
+       <div>
        <div className='font-semibold text-color2 text-center p-2'> New Document</div>
        <hr />
        <div className='p-3 cursor-pointer'>
@@ -60,7 +70,8 @@ function handleclickdocument(){
         </div>
         </Dialog>
 
-        {/* <DocumentModal modalopen={modalopen} onClose={handleclickdocument} /> */}
+        <DocumentModal modalopen={modalopen} onClose={handleclickdocument} />
+        <UploadfileModal fileuploadmodal={fileuploadmodal} onClose={handleclickupload} />
     </>
   )
 }
