@@ -2,6 +2,7 @@ import React from 'react';
 import { Dialog } from '@headlessui/react';
 
 export default function DocumentModal({modalopen,onClose}) {
+  const titleval = "this is okay to be a title";
   return (
    <>
     <Dialog open={modalopen} onClose={onClose}className="relative z-10">
@@ -27,15 +28,18 @@ export default function DocumentModal({modalopen,onClose}) {
       <label>
         Description:
       </label>
-      <input
+      <textarea
       type="text"
       id="description"
+      placeholder='Sum of two Number'
       className='p-2 w-full h-64'
        />
     </div>
-    <button onClick={onClose} className='bg-cus'>
+    <center className='p-2'>
+    <button onClick={onClose} className='border-2 rounded p-1'>
     cancel</button>
-    <button>save</button>
+    <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white'>save</button>
+    </center>
    </div>
    
        </div>

@@ -31,7 +31,7 @@ export default function MyJobTracker() {
   return (
     <>
     <div>
-      <nav className="list-none border-b-2 fixed flex w-[100vw]">
+      <nav className="list-none border-b-2 fixed flex  w-[100vw]">
         <ul className="inline-block flex justify-between">
         <li className="m-3 text-t1 inline-block">
           <span className="pl-1 align-bottom text-base font-[600]">Job Search 2024</span>

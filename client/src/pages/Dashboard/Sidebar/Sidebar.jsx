@@ -9,7 +9,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className=' border-r-2 flex flex-col'>
+      <div className=' border-r-2 flex flex-col  min-h-screen'>
         <div className='p-3'>
         <p
           className="mt-1  text-t1 hover:rounded hover:bg-transparent" onClick={()=>setActiveSegment("welcome")}
