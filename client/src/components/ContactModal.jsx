@@ -2,23 +2,25 @@ import { Dialog } from '@headlessui/react'
 import React, { useEffect, useState } from 'react'
 import { API_URL } from '../API_URL';
 import axios from 'axios';
+import { faGetPocket } from '@fortawesome/free-brands-svg-icons';
 
 export default function ContactModal({isModalOpen, onClose}) {
-  const[name, getName] = useState();
-  const[jobtitle, getJobtitle] = useState();
-  const[companies, getCompanie] = useState();
-  const[location, getLocation] = useState();
-  const[email,getEmail] = useState();
-  const[phonenumber, getPhonenumber] = useState();
+  const[name, getName] = useState("");
+  const[jobtitle, getJobtitle] = useState("");
+  const[companies, getCompanie] = useState("");
+  const[location, getLocation] = useState("");
+  const[email,getEmail] = useState("");
+  const[phonenumber, getPhonenumber] = useState("");
 
-    
-function saveData(){
-  useEffect(()=>{
-    const sendData = async () => {
-     const response = await axios({
+
+
+const sendData = async(e)=>{
+  e.preventDefault(); 
+  try{
+    const response = await axios({
       method:'post',
       url:`${API_URL}/api/contact/addcontact`,
-      body:{
+      data:{
         name:name,
         jobtitle:jobtitle,
         companies:companies,
@@ -26,21 +28,20 @@ function saveData(){
         email:email,
         phonenumber:phonenumber
       },
-      header:{
-        "Content-Type":"application/json",
-        "Authorization":"Bearer " + localStorage.getItem("token")
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token")
       }
      });
      const data = response.data;
      console.log("data send successfully");
      console.log(data);
-    }
-    sendData();
-  },[]);
-  
-  onClose();
-
+     onClose();
+  }catch(error){
+    console.log(error);
+  }
 }
+
   
   return (
     <>
@@ -116,7 +117,7 @@ function saveData(){
         placeholder='i.e:New Delhi' 
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
-          getCompanie(e.target.value)
+          getLocation(e.target.value)
         }}
         />
       </div>
@@ -160,7 +161,7 @@ function saveData(){
                     Discard
                 </button>
     
-    <button className="rounded p-1 ml-3 bg-customColor text-white" onClick={saveData}>
+    <button className="rounded p-1 ml-3 bg-customColor text-white" onClick={sendData}>
                     Save Contacts
                 </button>
     </div>

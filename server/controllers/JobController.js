@@ -6,11 +6,11 @@ const User = require("../models/userModel");
 
 const addJob = asynchandler(async (req, res) => {
 
-    const { title, company, urlAddress,location, workmode, status } = req.body;
-    if (!title || !company || !status || !workmode) {
+    const { title, company, urlAddress,location, workMode, status } = req.body;
+    if (!title || !company || !status || !workMode) {
         return res.status(403).json({ message: "Both title and comapny is required to list the job" })
     }
-    const newJob =  new Job({ title, company, urlAddress,location, workmode, status });
+    const newJob =  new Job({ title, company, urlAddress,location, workMode, status });
     await newJob.save();
     const admin = await User.findOne({ email: req.user.email });
     if (!admin) {

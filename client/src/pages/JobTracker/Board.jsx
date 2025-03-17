@@ -1,9 +1,51 @@
-import React, { useState } from 'react';
-import Modal from '../../components/Modal';
+import React, { useEffect, useState } from 'react';
+import Modal from '../../components/JobModal';
+import axios from 'axios';
+import { API_URL } from '../../API_URL';
+import JobBox from '../../components/JobBox';
+
+function useJobdetail(n){
+  const[job, setJob]= useState([]);
+  useEffect(()=>{
+     const data = setInterval(()=>{
+      axios.get(`${API_URL}/api/job/getjobdetails`,{ headers:{
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }}).then(res=>{
+        setJob(res.data)
+      }
+        
+      )
+     }, n*1000);
+     
+     axios.get(`${API_URL}/api/job/getjobdetails`,{ headers:{
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token")
+    }}).then(res=>{
+      setJob(res.data)
+    }
+     
+     
+    )
+
+    return()=>{
+      clearInterval(data)
+    }
+
+  },[])
+  return job;
+}
 
 function Board() {
   const[wishlist, setWishlist] = useState(0);
   const[isModalopen, setModalopen] = useState(false);
+  const jobdetail = useJobdetail(3);
+  const jobwishlist = jobdetail.filter( e => e.status==="wishlist");
+  const jobapplied = jobdetail.filter( e => e.status==="applied");
+  const jobinteview = jobdetail.filter( e => e.status==="interview");
+  const joboffer = jobdetail.filter( e => e.status==="offer");
+  const jobrejected = jobdetail.filter( e => e.status==="rejected");
+  console.log("this is jobwishlist section", jobwishlist);
 
 
   function onpress2(){
@@ -22,13 +64,15 @@ function Board() {
               <span class="material-symbols-outlined">
                 star
               </span>
-              {/* <center className=''> */}
                <span className='ml-[40px] text-t1 font-[600]'> WISHLIST</span>
-                {/* </center> */}
                 <center>{wishlist} JOBS</center>
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
+           {jobwishlist.map((item)=>(
+            <JobBox title={item.title} company={item.company} />
+           ))}
+            
 
           </div>
 

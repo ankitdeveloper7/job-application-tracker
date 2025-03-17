@@ -2,29 +2,45 @@ import React, { useEffect, useState } from 'react'
 import ContactModal from '../../../components/ContactModal';
 import axios from 'axios';
 import { API_URL } from '../../../API_URL';
+import Contactbox from '../../../components/Contactbox';
 
-export default function Contact() {
-  const[isModalOpen, setModalopen] = useState(false);
-  const[contactdetail, getContactdetail] = useState([]);
- 
+function useContact(n){
+  const[contactdetail, setContactdetail] = useState([]);
 
-  useEffect(()=>{
-    const getData = async () => {
-      const response = await axios({
-        method:'get',
-        url:`${API_URL}/api/contact/getcontact`,
-        headers: {
+  useEffect(()=>{   
+      const data = setInterval(()=>{
+        axios.get(`${API_URL}/api/contact/getcontact`,{ headers:{
           "Content-Type": "application/json",
           "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-      });
-      const data = response.data;
-       getContactdetail(data);
-       console.log("data fetch succesfully", response.data);
-    }
-    getData();
+        }})
+        .then(res=>{
+            setContactdetail(res.data);
+            console.log("till now code has ran successfully");
+        })
+      }, n*1000);
 
+      axios.get(`${API_URL}/api/contact/getcontact`,{ headers:{
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }}
+  )
+      .then(res=>{
+          setContactdetail(res.data);
+          console.log("till now code has ran successfully");
+      })
+
+      return()=>{
+        clearInterval(data);
+      }
+   
   },[]);
+  return contactdetail;
+}
+
+export default function Contact() {
+  const[isModalOpen, setModalopen] = useState(false); 
+  const contactdetails = useContact(5);
+  console.log("the value of contactdetails", contactdetails);
  
 
  function onPressC(){
@@ -49,10 +65,18 @@ export default function Contact() {
 <hr/>
 
 <div className='m-3'>
-  <p>contact details will be shown here</p>
-  {/* {contactdetail.map((item)=>{
-    <p>name:{item.name}</p>
-  })} */}
+  {contactdetails.map((item)=>(
+ <Contactbox 
+ key={item._id}
+ name={item.name} 
+ jobtitle={item.jobtitle} 
+ companies={item.companies} 
+ location={item.location} 
+ email={item.email} 
+ phoneno={item.phonenumber}/>
+  )
+   
+  )}
 </div>
 
 <ContactModal isModalOpen={isModalOpen} onClose={handleclick} />
