@@ -28,17 +28,15 @@ export default function Signup() {
       const data = response.data;
       getExit(data.token);
       localStorage.setItem("token", data.token);
-      alert("you have successfully signup")
     }catch(err){
       console.log("some error has occured!",err);
-      alert("failed to singup")
     }
   }
 
   if(user){
     return(
       <>
-      {window.open("/tracker")}
+      {window.open("/dashboard")}
       </>
     )
   }
@@ -64,7 +62,7 @@ export default function Signup() {
                     type="email"
                     required
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     onChange={((e)=>{
                       setName(e.target.value)
                     })}
@@ -83,7 +81,7 @@ export default function Signup() {
                     type="email"
                     required
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     onChange={((e)=>{
                       setEmail(e.target.value)
                     })}
@@ -104,7 +102,7 @@ export default function Signup() {
                     type="password"
                     required
                     autoComplete="current-password"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     onChange={((e)=>{
                       setPassword(e.target.value)
                     })}

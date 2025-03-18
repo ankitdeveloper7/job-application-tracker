@@ -14,6 +14,7 @@ const storage = multer.diskStorage({
       cb(null, TEMP_DIR)
     },
     filename: function (req, file, cb) {
+      console.log("the name of file is",file.originalname);
       cb(null, file.originalname);
     }
   })

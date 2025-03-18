@@ -31,31 +31,37 @@ export default function MyJobTracker() {
   return (
     <>
     <div>
-      <nav className="list-none border-b-2 fixed flex  w-[100vw]">
-        <ul className="inline-block flex justify-between">
-        <li className="m-3 text-t1 inline-block">
+      <div className="list-none border-b-2 fixed flex  w-[100vw]">
+        <div className="inline-block flex justify-between">
+        {/* <li className="m-3 text-t1 inline-block">
           <span className="pl-1 align-bottom text-base font-[600]">Job Search 2024</span>
-        </li>
-        <li className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("boards")}>
+        </li> */}
+        <div className="order-2">
+        <div className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("boards")}>
           <span className="material-symbols-outlined align-bottom">home</span>
           <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Board</span>
-        </li>
-        <li className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("activities")}>
+        </div>
+        <div className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("activities")}>
           <span className="material-symbols-outlined align-bottom">description</span>
           <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Activities</span>
-        </li>
-        <li className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("aicoverletters")}>
+        </div>
+        </div>
+        
+        {/* <li className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("aicoverletters")}>
           <span className="material-symbols-outlined align-bottom">hotel_class</span>
           <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Metricsics</span>
-        </li>
-          <li className="m-1 text-t1 inline-block order-last">
+        </li> */}
+        <div className="order-3">
+        <div className="m-1 text-t1 inline-block ">
             <button className="rounded-lg p-1 mt-2 bg-customColor text-white" onClick={onpress2}>
               <span className="material-symbols-outlined align-bottom">add</span>
               Create
             </button>
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </div>
+          
+        </div>
+      </div>
 
 
        

@@ -1,7 +1,5 @@
 const asynchandler = require("express-async-handler");
 const Job = require("../models/jobModel");
-const fs = require("fs");
-const uploadOnCloudinary = require("../utils/Cloudinary");
 const User = require("../models/userModel");
 
 const addJob = asynchandler(async (req, res) => {
@@ -31,37 +29,9 @@ const getJobDetails = asynchandler(async (req, res) => {
     }
     const userData = await User.findOne({ email: user }).populate('jobs');
     const jobslist = userData.jobs;
-    console.log("this is the job list of the user", jobslist);
+    // console.log("this is the job list of the user", jobslist);
     return res.status(200).json(jobslist);
 })
 
-const uploadDocument = async function (req, res, next) {
-    try {
 
-        if (!req.file) {
-            return res.status(500).json({ message: "file not uploaded" });
-        }
-
-        const localPathFile = req.file.path;
-        const uploadfile = await uploadOnCloudinary(localPathFile);
-
-        if (!uploadfile || !uploadfile.url) {
-            return res.status(500).json({ message: "Error uploading file to cloud" });
-        }
-
-        fs.unlink(localPathFile, (err) => {
-            if (err) {
-                console.error("error deleting temp file:", err);
-            } else {
-                console.log("temporary file deleted:", localPathFile);
-            }
-        });
-
-        res.status(200).json({ message: "file uploaded successfully!", uploadfile });
-    } catch (error) {
-        console.log("some error has occured", error);
-        res.status(500).json({ error: "file upload has failed" })
-    }
-}
-
-module.exports = { addJob, uploadDocument, getJobDetails };
+module.exports = { addJob, getJobDetails };
