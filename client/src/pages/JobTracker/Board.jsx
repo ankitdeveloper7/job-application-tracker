@@ -37,7 +37,6 @@ function useJobdetail(n){
 }
 
 function Board() {
-  const[wishlist, setWishlist] = useState(0);
   const[isModalopen, setModalopen] = useState(false);
   const jobdetail = useJobdetail(3);
   const jobwishlist = jobdetail.filter( e => e.status==="wishlist");

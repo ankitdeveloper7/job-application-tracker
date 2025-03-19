@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative bg-[#fdfdff] flex">
+    <div className="relative bg-[#fdfdff] min-h-screen flex">
       <button
         className="md:hidden fixed top-4 left-4 z-50 border-2 p-2 rounded bg-white shadow-md border-gray-300"
         onClick={() => setIsOpen(!isOpen)}

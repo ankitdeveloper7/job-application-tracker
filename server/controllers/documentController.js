@@ -16,11 +16,12 @@ const uploadDocument = async function (req, res, next) {
 
         const uploadfile = await uploadOnCloudinary(localPathFile);
         const docurl = uploadfile.secure_url;
+        console.log("this is url of uploaded file", docurl);
         const uploadoc = new Document({ filename: docurl });
         await uploadoc.save();
         const admin = await User.findOne({ email: req.user.email });
         if (!admin) {
-            return res.status(403).json({ message: "Invalid user, try logging in again after add jobs" })
+            return res.status(403).json({ message: "Invalid user, try logging in again" })
         }
         admin.document.push(uploadoc);
         await admin.save();
@@ -44,7 +45,13 @@ const uploadDocument = async function (req, res, next) {
 }
 
 const getDocument = asynchandler(async(req,res)=>{
-        
+        const user = req.user.email;
+        if(!user){
+            return res.status(403).json({ message: "Invalid user, try logging in again" })
+        }
+        const docData = await User.findOne({email:user}).populate('document');
+        const Docdata = docData.document;
+        res.status(200).send(Docdata);
 })
 
-module.exports = { uploadDocument };
+module.exports = { uploadDocument,getDocument };
