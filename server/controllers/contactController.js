@@ -31,6 +31,7 @@ const getContact = asynchandler(async(req, res)=>{
        }
        const contactdata = await User.findOne({email:user}).populate('contact');
        const data = contactdata.contact;
+       console.log("this is contact details of backend code", data);
        res.status(200).json(data);
 })
 
