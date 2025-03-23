@@ -1,7 +1,7 @@
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
-import { API_URL } from "../../API_URL";
+// import { API_URL } from "../../API_URL";
 import axios from "axios";
 
 
@@ -11,10 +11,12 @@ export default function Signup() {
   const[password, setPassword] = useState("");
   const[user, getExit] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const onPress1 = async (e) => {
     e.preventDefault(); 
     try {
-      const response = await axios.post(`${API_URL}/api/users/register`, {
+      const response = await axios.post(`${API_BASE_URL}/api/users/register`, {
           name:name,
           email:email,
           password:password
