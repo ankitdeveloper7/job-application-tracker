@@ -13,13 +13,14 @@ export default function JobModal({ isModalopen, onClose }) {
   const[workmode, setWorkmode] = useState("");
   const[status, setStatus] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
  
   const saveData = async(e)=>{
     e.preventDefault(); 
     try{
       const response = await axios({
         method:'post',
-        url:`${API_URL}/api/job/addjob`,
+        url:`${API_BASE_URL}/api/job/addjob`,
         data:{
          title:jobtitle,
          company:company,

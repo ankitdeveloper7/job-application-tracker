@@ -7,9 +7,11 @@ import Contactbox from '../../../components/Contactbox';
 function useContact(n){
   const[contactdetail, setContactdetail] = useState([]);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(()=>{   
       const data = setInterval(()=>{
-        axios.get(`${API_URL}/api/contact/getcontact`,{ headers:{
+        axios.get(`${API_BASE_URL}/api/contact/getcontact`,{ headers:{
           "Content-Type": "application/json",
           "Authorization": "Bearer " + localStorage.getItem("token")
         }})
@@ -19,7 +21,7 @@ function useContact(n){
         })
       }, n*1000);
 
-      axios.get(`${API_URL}/api/contact/getcontact`,{ headers:{
+      axios.get(`${API_BASE_URL}/api/contact/getcontact`,{ headers:{
         "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("token")
       }}

@@ -63,37 +63,6 @@ export default function Header(){
                             <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                                 AI Resume Builder
                             </a>
-                            <Popover className="relative">
-                                <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                                    All features
-                                    <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
-                                </PopoverButton>
-
-                                <PopoverPanel
-                                    transition
-                                    className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
-                                >
-                                    <div className="p-4">
-                                        {products.map((item) => (
-                                            <div
-                                                key={item.name}
-                                                className="group relative flex items-center gap-x-5 rounded-lg p-1 text-sm leading-6 hover:bg-gray-50"
-                                            >
-                                                <div className="flex flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                                    <item.icon aria-hidden="true" className=" text-gray-600 group-hover:text-indigo-600" />
-                                                </div>
-                                                <div className="flex-auto">
-                                                    <a href={item.href} className="block font-semibold text-gray-900">
-                                                        {item.name}
-                                                        <span className="absolute inset-0" />
-                                                    </a>
-                                                    {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </PopoverPanel>
-                            </Popover>
                         </PopoverGroup>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                             <a href="/signin" className="text-sm mt-2 font-semibold leading-6 text-gray-900">
@@ -148,7 +117,7 @@ export default function Header(){
                                             AI Resume Builder
                                         </a>
                                        
-                                        <Disclosure as="div" className="-mx-3">
+                                        {/* <Disclosure as="div" className="-mx-3">
                                             <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 bg-cutsomColor text-gray-900 hover:bg-gray-50">
                                                 All Features
                                                 <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
@@ -165,7 +134,7 @@ export default function Header(){
                                                     </DisclosureButton>
                                                 ))}
                                             </DisclosurePanel>
-                                        </Disclosure>
+                                        </Disclosure> */}
                                         
                                     </div>
                                     <div>

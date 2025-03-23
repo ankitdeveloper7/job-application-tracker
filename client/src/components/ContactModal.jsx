@@ -12,14 +12,14 @@ export default function ContactModal({isModalOpen, onClose}) {
   const[email,getEmail] = useState("");
   const[phonenumber, getPhonenumber] = useState("");
 
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const sendData = async(e)=>{
   e.preventDefault(); 
   try{
     const response = await axios({
       method:'post',
-      url:`${API_URL}/api/contact/addcontact`,
+      url:`${API_BASE_URL}/api/contact/addcontact`,
       data:{
         name:name,
         jobtitle:jobtitle,

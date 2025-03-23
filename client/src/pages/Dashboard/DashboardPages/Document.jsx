@@ -7,10 +7,12 @@ import axios from 'axios';
 function useDocument(n){
   const[documentdata, setDocumentdata] = useState([]);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   useEffect(()=>{
 
    const response = setInterval(()=>{
-       axios.get(`${API_URL}/api/document/getdocument`, { headers:{
+       axios.get(`${API_BASE_URL}/api/document/getdocument`, { headers:{
         "Content-Type":"application/json",
         "Authorization":"Bearer " + localStorage.getItem("token")
        }}).then(res =>{
@@ -19,7 +21,7 @@ function useDocument(n){
        })
    }, n*1000)
 
-    axios.get(`${API_URL}/api/document/getdocument`, { headers:{
+    axios.get(`${API_BASE_URL}/api/document/getdocument`, { headers:{
       "Content-Type":"application/json",
       "Authorization":"Bearer " + localStorage.getItem("token")
     }}).then(res=>{
@@ -66,7 +68,7 @@ console.log(docdata)
 
      <div>
       {docdata.map((item)=>(
-        <iframe src={item.filename}  className=' w-full max-w-80 min-h-full m-2'></iframe>
+        <img src={item.filename}  className=' w-full max-w-80 min-h-full m-2' />
       ))}
       
      </div>

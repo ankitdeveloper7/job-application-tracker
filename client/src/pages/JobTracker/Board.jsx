@@ -6,9 +6,11 @@ import JobBox from '../../components/JobBox';
 
 function useJobdetail(n){
   const[job, setJob]= useState([]);
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   useEffect(()=>{
      const data = setInterval(()=>{
-      axios.get(`${API_URL}/api/job/getjobdetails`,{ headers:{
+      axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
         "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("token")
       }}).then(res=>{
@@ -18,7 +20,7 @@ function useJobdetail(n){
       )
      }, n*1000);
      
-     axios.get(`${API_URL}/api/job/getjobdetails`,{ headers:{
+     axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
       "Content-Type": "application/json",
       "Authorization": "Bearer " + localStorage.getItem("token")
     }}).then(res=>{
@@ -59,7 +61,7 @@ function Board() {
         <div className="flex flex-row">
           <div className="min-h-screen box-border  border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 star
               </span>
                <span className='ml-[40px] text-t1 font-[600]'> WISHLIST</span>
@@ -76,7 +78,7 @@ function Board() {
 
           <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 draft
               </span>
                <span className='ml-11 text-t1 font-[600]'>APPLIED</span>
@@ -90,7 +92,7 @@ function Board() {
           </div>
           <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 business_center
               </span>
                <span className='ml-11 text-t1 font-[600]'>INTERVIEW</span>
@@ -104,7 +106,7 @@ function Board() {
           </div>
           <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 emoji_events
               </span>
                <span className='ml-11 text-t1 font-[600]'>OFFER</span>
@@ -118,7 +120,7 @@ function Board() {
           </div>
           <div className="min-h-screen box-border  inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
-              <span class="material-symbols-outlined">
+              <span className="material-symbols-outlined">
                 thumb_down
               </span>
                <span className='ml-11 text-t1 font-[600]'>REJECTED</span>
