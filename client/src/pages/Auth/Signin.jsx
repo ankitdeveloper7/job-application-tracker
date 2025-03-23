@@ -2,20 +2,17 @@ import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 import axios from "axios";
-
-// require('dotenv').config();
-import {API_URL} from "../../API_URL";
-
-
 export default function Signin() {
   const[username, setUsername] = useState("");
   const[password, setPassword] = useState("");
   const[user, getExit] = useState("");
 
+  const API_URL = process.env.API_URL;
+
   const onPress = async (e) => {
     e.preventDefault(); 
     try {
-      const response = await axios.post(`https://job-application-tracker-g8z6.onrender.com/api/users/login`, {
+      const response = await axios.post(`${API_URL}/api/users/login`, {
           email:username,
           password:password
         },{
