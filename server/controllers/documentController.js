@@ -44,7 +44,7 @@ const uploadDocument = async function (req, res, next) {
     }
 }
 
-const getDocument = asynchandler(async(req,res)=>{
+const getFile = asynchandler(async(req,res)=>{
         const user = req.user.email;
         if(!user){
             return res.status(403).json({ message: "Invalid user, try logging in again" })
@@ -52,6 +52,35 @@ const getDocument = asynchandler(async(req,res)=>{
         const docData = await User.findOne({email:user}).populate('document');
         const Docdata = docData.document;
         res.status(200).send(Docdata);
+});
+
+
+const writeDocument = asynchandler(async(req, res)=>{
+    const{title, description} = req.body;
+    if(!title || !description){
+        return res.status(203).json({message:"please write something"});
+    }
+    const user = req.user.email;
+    if(!user){
+        return res.status(203).json({message:"Invalid error occured !"})
+    }
+    const writedoc = new Document({title:title, description:description});
+    await writedoc.save();
+    const admin = await User.findOne({email:user});
+    if(!admin){
+        return res.status(303).json({message:"some invalid error has occured"});
+    }
+    admin.document.push(writedoc);
+    await admin.save();
+    res.status(200).json({message:"successfullys submited document"})
+});
+
+
+const getDocument = asynchandler(async(req, res)=>{
+    const user = req.user.email;
+    const admin = await User.findOne({email:user}).populate('document');
+    const docdata = admin.document;
+    return res.status(200).json(docdata);
 })
 
-module.exports = { uploadDocument,getDocument };
+module.exports = { uploadDocument,getFile, writeDocument, getDocument };
