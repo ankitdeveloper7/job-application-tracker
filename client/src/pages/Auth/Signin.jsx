@@ -2,6 +2,8 @@ import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 import axios from "axios";
+
+// require('dotenv').config();
 import {API_URL} from "../../API_URL";
 
 
