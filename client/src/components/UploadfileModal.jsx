@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
+import { API_URL } from '../API_URL';
+import axios from 'axios';
 
 export default function UploadfileModal({fileuploadmodal, onClose}) {
   const[doc, getDoc] = useState(null);
  
-  function getFile(event){
+   async function getFile(event){
     getDoc(event.target.files[0]);
   }
 
-  function uploadfile(){
-    alert("file has been submitted")
+  async function uploadfile(){
+    
+    const response =  await axios({
+      method:'post',
+      url:`${API_URL}/api/document/uploaddocument`,
+      data:{
+        file:doc
+      },
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"bearer " + localStorage.getItem("token")
+      }
+    }).then(res=>{
+      console.log(res.data);
+      console.log("data uploaded succesfully")
+    });
+    consol.log(response)
     onClose();
 
   }

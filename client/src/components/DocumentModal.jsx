@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
+import { API_URL } from '../API_URL';
+import axios from 'axios';
 
 export default function DocumentModal({modalopen,onClose}) {
-  const titleval = "this is okay to be a title";
+      const[title, setTitle] = useState();
+      const[description, setDescription]=  useState();
+
+    async function saveDoc(){
+      const response = await axios({
+        method:'post',
+        url:`${API_URL}/api/document/writedocument`,
+        data:{
+          title,
+          description
+        },
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":"bearer " + localStorage.getItem("token")
+        }
+      }).then(res=>{
+        console.log(res.json);
+        console.log("doc uploaded succesfully")
+      });
+      console.log(response)
+    }
+
   return (
    <>
     <Dialog open={modalopen} onClose={onClose}className="relative z-10">
@@ -21,7 +44,9 @@ export default function DocumentModal({modalopen,onClose}) {
       id="title"
       type="text"
       placeholder="i.e, Important Leetcode Question"
-      className='p-2 w-full' />
+      className='p-2 w-full' 
+      onChange={e=> setTitle(e.target.value)}
+      />
        
     </div>
     <div>
@@ -33,12 +58,13 @@ export default function DocumentModal({modalopen,onClose}) {
       id="description"
       placeholder='Sum of two Number'
       className='p-2 w-full h-64'
+      onChange={e=> setDescription(e.target.value)}
        />
     </div>
     <center className='p-2'>
     <button onClick={onClose} className='border-2 rounded p-1'>
     cancel</button>
-    <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white'>save</button>
+    <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white' onClick={saveDoc}>save</button>
     </center>
    </div>
    
