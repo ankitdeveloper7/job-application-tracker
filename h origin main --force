@@ -1,0 +1,81 @@
+* [33m19404b8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Updated document controller and routes
+* [33md1b39e3[m updated api in the frontend section
+* [33m2a74bfd[m updated api in frontend
+* [33m1afb46d[m updated api
+* [33m471b453[m Update .env
+* [33m15701cd[m Update Signup.jsx
+* [33mfdd1a7f[m Update Signin.jsx
+* [33ma27b07c[m Update .env
+* [33mcfb873b[m Update Signin.jsx
+* [33mb885161[m Update and rename API_URL.js to .env
+* [33m551f7fc[m Update Signin.jsx
+* [33mfc00ab9[m Update API_URL.js
+* [33m5a3d674[m Rename .env to API_URL.js
+* [33m5eba2b0[m Update Signin.jsx
+* [33me8facdc[m Update .env
+* [33m50b54f3[m Rename API_URL.js to .env
+* [33m1a74c08[m Update API_URL.js
+* [33m54a716b[m Update contactController.js
+* [33m85c4185[m Update app.js
+* [33m6a48b75[m Update contactController.js
+* [33m4205272[m Update app.js
+[31m|[m * [33mbe24e52[m[33m ([m[1;31morigin/main[m[33m)[m Updated document controller and routes
+[31m|[m * [33m15d7cdb[m Saving my changes before pull
+[31m|[m * [33m026aee3[m updated backend connectivity in the frontend file
+[31m|[m[31m/[m  
+* [33m18565a5[m developed the document section
+* [33m48da2c2[m completed and test uploading file on cloudinary using multer
+* [33m236084d[m updated job section
+* [33mb2a301e[m completed contact section
+* [33m12a0bd2[m make responsive of sidebar
+* [33m3db9e6b[m completed contact section
+* [33mc26adb4[m worked on frontend dashboard component section
+* [33m5bf07a6[m created dashboard and written contact code (fronted as well backend)
+* [33mce676a3[m made some style update in landing page
+* [33m76368e1[m made changes in landing page
+* [33m385ee36[m Update app.js
+* [33md0986a2[m style landing page and fixed backend error
+* [33m0fe075f[m replace bcrypt with bcryptjs
+* [33m30d4334[m made some change in landing page of frontend part
+* [33m6cafc27[m made some change and tested some some backend code
+* [33m50e142e[m modified some code and implemented authentication and tested some code on postman
+* [33m4f85752[m[33m ([m[1;32mcheckout[m[33m)[m implemented upload file on cloudinary using multer
+* [33me8b451e[m[33m ([m[1;31morigin/recovery-branch[m[33m, [m[1;32mrecovery-branch[m[33m)[m wrote code of update password section and job entry
+[32m|[m * [33mff47129[m[33m ([m[1;32mfrontend[m[33m)[m wrote code of update password section and job entry
+[32m|[m *   [33m29ff42e[m Merge pull request #1 from ankitdeveloper7/frontend
+[32m|[m [34m|[m[32m\[m  
+[32m|[m [34m|[m[32m/[m  
+[32m|[m[32m/[m[34m|[m   
+* [34m|[m [33m0b6502f[m[33m ([m[1;31morigin/frontend[m[33m)[m updated home page of dashboard
+[34m|[m[34m/[m  
+*   [33mc57d46b[m Merge branch 'main' of https://github.com/ankitdeveloper7/job-application-tracker
+[36m|[m[1;31m\[m  
+[36m|[m * [33mca60c0f[m Initial commit
+* [33m5f368c4[m changes the structure of the server directory and build some frontend part
+*   [33mbe1ee11[m Merge remote-tracking branch 'origin/main' into main
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m5d826e2[m Update README.md
+[1;32m|[m * [33m2664192[m Update README.md
+[1;32m|[m * [33m0747a39[m Update README.md
+[1;32m|[m * [33m8582a32[m Update README.md
+[1;32m|[m * [33m3571638[m Update README.md
+[1;32m|[m * [33m2ce2036[m Update README.md
+[1;32m|[m * [33m6427ef9[m Update README.md
+[1;32m|[m * [33m3d72afb[m Update README.md
+[1;32m|[m * [33m6d2ef00[m Update README.md
+[1;32m|[m * [33mcc931b2[m Update README.md
+[1;32m|[m * [33m98ae4a9[m Update README.md
+[1;32m|[m * [33mdf8945e[m Update README.md
+[1;32m|[m * [33m84f27fa[m Update README.md
+[1;32m|[m * [33mf622a45[m Update README.md
+[1;32m|[m * [33m90b4c40[m Update README.md
+[1;32m|[m * [33mc6e32f8[m Update README.md
+[1;32m|[m * [33mac87f68[m Update README.md
+[1;32m|[m * [33md079041[m Update README.md
+[1;32m|[m * [33m0515732[m Update README.md
+[1;32m|[m * [33mdabcd18[m Update README.md
+[1;32m|[m * [33m052696f[m Update README.md
+[1;32m|[m * [33m94879cf[m Update README.md
+[1;32m|[m * [33ma384da2[m Initial commit
+* [33m594e4b8[m implemented the signin and signup section
+* [33m7866d73[m Add entire folder contents

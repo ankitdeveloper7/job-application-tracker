@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
-import { API_URL } from '../API_URL';
+// import { API_URL } from '../API_URL';
 import axios from 'axios';
 
 export default function UploadfileModal({fileuploadmodal, onClose}) {
@@ -10,11 +10,13 @@ export default function UploadfileModal({fileuploadmodal, onClose}) {
     getDoc(event.target.files[0]);
   }
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   async function uploadfile(){
     
     const response =  await axios({
       method:'post',
-      url:`${API_URL}/api/document/uploaddocument`,
+      url:`${API_BASE_URL}/api/document/uploaddocument`,
       data:{
         file:doc
       },

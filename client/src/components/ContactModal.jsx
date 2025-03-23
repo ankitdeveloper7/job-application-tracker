@@ -1,6 +1,6 @@
 import { Dialog } from '@headlessui/react'
 import React, { useEffect, useState } from 'react'
-import { API_URL } from '../API_URL';
+// import { API_URL } from '../API_URL';
 import axios from 'axios';
 import { faGetPocket } from '@fortawesome/free-brands-svg-icons';
 

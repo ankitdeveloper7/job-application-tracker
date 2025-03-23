@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
-import { API_URL } from '../API_URL';
+// import { API_URL } from '../API_URL';
 import axios from 'axios';
 
 export default function DocumentModal({modalopen,onClose}) {
       const[title, setTitle] = useState();
       const[description, setDescription]=  useState();
 
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
     async function saveDoc(){
       const response = await axios({
         method:'post',
-        url:`${API_URL}/api/document/writedocument`,
+        url:`${API_BASE_URL}/api/document/writedocument`,
         data:{
           title,
           description
