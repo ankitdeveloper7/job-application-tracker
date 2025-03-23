@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ContactModal from '../../../components/ContactModal';
 import axios from 'axios';
-import { API_URL } from '../../../API_URL';
+// import { API_URL } from '../../../API_URL';
 import Contactbox from '../../../components/Contactbox';
 
 function useContact(n){

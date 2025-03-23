@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Documentoption from '../../../components/Documentoption';
 import { use } from 'react';
-import { API_URL } from '../../../API_URL';
+// import { API_URL } from '../../../API_URL';
 import axios from 'axios';
 
 function useDocument(n){
@@ -21,7 +21,7 @@ function useDocument(n){
        })
    }, n*1000)
 
-    axios.get(`${API_URL}/api/document/getdocument`, { headers:{
+    axios.get(`${API_BASE_URL}/api/document/getdocument`, { headers:{
       "Content-Type":"application/json",
       "Authorization":"Bearer " + localStorage.getItem("token")
     }}).then(res=>{

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '../../components/JobModal';
 import axios from 'axios';
-import { API_URL } from '../../API_URL';
+// import { API_URL } from '../../API_URL';
 import JobBox from '../../components/JobBox';
 
 function useJobdetail(n){
