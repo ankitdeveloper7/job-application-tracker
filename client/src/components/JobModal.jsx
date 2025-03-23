@@ -1,7 +1,7 @@
 'use client';
 import { Dialog } from '@headlessui/react';
 import { useState } from 'react';
-import { API_URL } from '../API_URL';
+// import { API_URL } from '../API_URL';
 import axios from 'axios';
 
 
