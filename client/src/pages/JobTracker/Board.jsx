@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '../../components/JobModal';
 import axios from 'axios';
-// import { API_URL } from '../../API_URL';
 import JobBox from '../../components/JobBox';
 
 function useJobdetail(n){
@@ -41,11 +40,11 @@ function useJobdetail(n){
 function Board() {
   const[isModalopen, setModalopen] = useState(false);
   const jobdetail = useJobdetail(3);
-  const jobwishlist = jobdetail.filter( e => e.status==="wishlist");
-  const jobapplied = jobdetail.filter( e => e.status==="applied");
-  const jobinteview = jobdetail.filter( e => e.status==="interview");
-  const joboffer = jobdetail.filter( e => e.status==="offer");
-  const jobrejected = jobdetail.filter( e => e.status==="rejected");
+  const jobwishlist = jobdetail.filter( (item) => (item.status==="wishlist"));
+  const jobapplied = jobdetail.filter( (item) => (item.status==="applied"));
+  const jobinteview = jobdetail.filter( (item) => (item.status==="interview"));
+  const joboffer = jobdetail.filter( (item) => (item.status==="offer"));
+  const jobrejected = jobdetail.filter( (item) => (item.status==="rejected"));
 
 
   function onpress2(){

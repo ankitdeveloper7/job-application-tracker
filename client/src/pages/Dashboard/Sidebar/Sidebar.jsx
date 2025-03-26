@@ -9,7 +9,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className=' border-r-2 flex flex-col  min-h-screen'>
+      <div className=' relative border-r-2 flex flex-col  min-h-screen'>
         <div className='p-3'>
         <p
           className="mt-1  text-t1 hover:rounded hover:bg-transparent" onClick={()=>setActiveSegment("welcome")}
@@ -63,6 +63,7 @@ export default function Sidebar() {
         </p>
        
         </div>
+        <div className='absolute bottom-0 left-0'>
         <div className='rounded border-1 border-dashed border-t1 m-2  p-1'>
           <p className='text-t1 font-semibold'>Trackify Pro</p>
           <p className='text-gray-400'>Level Up Your job search</p>
@@ -72,21 +73,21 @@ export default function Sidebar() {
           </div>
         <div className='p-3'>
          
-            <p
-          className="mt-1  text-t1 border p-2 rounded flex flex-row justify-between"
-        > 
+            <p className="mt-1  text-t1 border p-2 rounded flex flex-row justify-between"> 
         <div className=''>
         <span className="material-symbols-outlined align-bottom">account_circle</span>
         <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Ankit</span>
-        </div>
-        <div className='order-last'>
+        
+        {/* <div className=''>
         <button className="" aria-label="Settings">
             <span className="material-symbols-outlined align-bottom">settings</span>
           </button> 
+        </div> */}
         </div>
         
           
          </p>
+        </div>
         </div>
       </div>
     </>
