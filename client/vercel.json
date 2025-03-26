@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "routes": [
       { "src": "/(.*)", "dest": "/index.html" }
     ],
@@ -15,3 +16,20 @@
     ]
   }
   
+=======
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
+>>>>>>> fc2e0ebf9b57dcf2cb7ec35d2988eebf0b31be63

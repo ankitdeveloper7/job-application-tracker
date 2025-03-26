@@ -14,6 +14,8 @@ import p1 from "../../../public/images/1.png";
 export default function Home() {
     
 
+
+console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
     return (
         <>
         <div className='bg-gray-50 ml-4'>
