@@ -2,7 +2,7 @@ import photo1 from "../../../public/images/1.png";
 import josbsave from "../../../public/images/jobsave.png";
 import cloud from "../../../public/images/cloud-storage.png";
 import dashboard from "../../../public/images/dashboard.jpeg";
-import monitorprogress from "../../../public/images/monitorprogress.png";
+import monitorprogress from "../../../public/images/monitorProgress.png";
 
 export default function TrackStep() {
     return (
