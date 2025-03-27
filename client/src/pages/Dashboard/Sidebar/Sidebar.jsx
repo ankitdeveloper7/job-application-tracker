@@ -76,14 +76,14 @@ export default function Sidebar() {
             <p className="mt-1  text-t1 border p-2 rounded flex flex-row justify-between"> 
         <div className=''>
         <span className="material-symbols-outlined align-bottom">account_circle</span>
-        <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Ankit</span>
-        
-        {/* <div className=''>
+        <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Ankit </span>
+        </div>
+        <div className='inline-block'>
         <button className="" aria-label="Settings">
             <span className="material-symbols-outlined align-bottom">settings</span>
           </button> 
-        </div> */}
         </div>
+        
         
           
          </p>

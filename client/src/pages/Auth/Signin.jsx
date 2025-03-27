@@ -8,10 +8,12 @@ export default function Signin() {
   const[username, setUsername] = useState("");
   const[password, setPassword] = useState("");
   const[user, getExit] = useState("");
+  const[loading, setloading] = useState(false);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const onPress = async (e) => {
+    setloading(true)
     e.preventDefault(); 
     try {
       const response = await axios.post(`${API_BASE_URL}/api/users/login`, {
@@ -101,7 +103,7 @@ export default function Signin() {
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                  
                 >
-                  Sign in
+                 {loading? "Signing..." : "Sign up"}
                 </button>
                
                    <center className="mt-4 mb-4">or</center>
