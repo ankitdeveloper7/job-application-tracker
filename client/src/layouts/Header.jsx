@@ -1,36 +1,9 @@
 import { useState } from 'react'
-import {
-    Dialog,
-    DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Popover,
-    PopoverButton,
-    PopoverGroup,
-    PopoverPanel,
-} from '@headlessui/react'
-import {
-    ArrowPathIcon,
-    Bars3Icon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import {Dialog,DialogPanel, PopoverGroup,} from '@headlessui/react'
+import {Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
 import { Box, Grid, Button } from '@mui/material';
 import p1 from "../../public/images/1.png";
-import { ToastContainer, toast } from 'react-toastify';
 
-const products = [
-    { name: 'Job Tracker', href: '#', icon: ChartPieIcon },
-    { name: 'Contact Tracker', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'Interview Tracker', href: '#', icon: FingerPrintIcon },
-    { name: 'Job Search Metrics', href: '#', icon: SquaresPlusIcon },
-    { name: 'Resume Checker', href: '#', icon: ArrowPathIcon },
-]
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -127,26 +100,6 @@ export default function Header() {
                                         >
                                             Pricing
                                         </a>
-
-                                        {/* <Disclosure as="div" className="-mx-3">
-                                            <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 bg-cutsomColor text-gray-900 hover:bg-gray-50">
-                                                All Features
-                                                <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
-                                            </DisclosureButton>
-                                            <DisclosurePanel className="mt-2 space-y-2">
-                                                {[...products,].map((item) => (
-                                                    <DisclosureButton
-                                                        key={item.name}
-                                                        as="a"
-                                                        href={item.href}
-                                                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                                    >
-                                                        {item.name}
-                                                    </DisclosureButton>
-                                                ))}
-                                            </DisclosurePanel>
-                                        </Disclosure> */}
-
                                     </div>
                                     <div>
                                         <a
@@ -161,9 +114,6 @@ export default function Header() {
                                         >
                                             Sign up for free
                                         </a>
-                                        {/* <a className=" rounded-lg p-2  bg-customColor text-white">
-                                    Sign up for free
-                                </a> */}
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +129,7 @@ export default function Header() {
                                 <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
                                     Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
                                 </p>
-                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white" onClick={onpress}>
+                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
                                     Sign up for free
                                 </button>
                             </div>
