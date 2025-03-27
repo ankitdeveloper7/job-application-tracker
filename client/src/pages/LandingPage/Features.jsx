@@ -1,52 +1,50 @@
-import feature from "../../../public/images/1.png";
-import contact from "../../../public/images/contact-checker.jpg";
+import feature from "../../../public/images/features.png";
+import { MdCloudUpload } from "react-icons/md";
+import { MdPushPin } from "react-icons/md";
+import { IoNotifications } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
+import { IoMdSave } from "react-icons/io";
 
-export default  function Features(){
-  return(
+export default function Features() {
+  return (
     <>
-    <section className="mx-auto max-w-7xl p-3 lg:px-8 mt-[120px]">
-      <center>
-      <h2 className="text-base/7 font-semibold text-indigo-600">Features</h2>
-      <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-heading-600 sm:text-6xl">Effortless Job Application Management</p>
-      <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-[#190445CC] sm:text-xl/8">Trackify simplifies job tracking by letting you add, update, and monitor applications in one place—no more messy spreadsheets!</p>
-      </center>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
-      <div className="br-white rounded border-2  p-3">
-        <img src={feature} className=" w-full max-h-40" />
-      <p className="font-semibold text-lg"> Job Tracking</p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6 ">Easily add and manage job applications with custom statuses.</p>
-      </div>
-      <div className="br-white rounded border-2 p-3">
-      <img src={feature} p-2 className="p-2 w-full max-h-40" />
-      <p className="font-semibold text-lg"> Document Storage</p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6 ">Save and access resumes, cover letters, and job-related documents.</p>
-      </div>
-      <div className="br-white rounded border-2  p-3">
-      <img src={feature} p-2 className="p-2 w-full max-h-40"/>
-      <p className="font-semibold text-lg">Contact Management</p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6 ">Store recruiter details and track communication history.</p>
-      </div>
-      <div className=" md:col-span-2 br-white rounded border-2 p-3">
-      <img src={contact} p-2 className="p-2 w-full max-h-40" />
-      <p className="font-semibold text-lg">Reminders & Follow-ups</p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6 ">Set reminders to follow up on job applications and interviews.</p>
-      </div>
-      <div className="br-white rounded border-2 p-3">
-      <img src={feature} p-2 className="p-2 w-full max-h-40"/>
-      <p className="font-semibold text-lg">Cloud Storage</p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6 ">Securely store documents and access them anytime, anywhere.</p>
-      </div>
-      <div className="br-white rounded border-2 p-3">
-      <img src={feature} p-2 className="p-2 w-full max-h-40"/>
-      <p className="font-semibold text-lg">Advanced Filters & Custom Tags </p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6 ">Organize and track applications with custom job statuses and filters.</p>
-      </div>
-      <div className=" md:col-span-2 br-white rounded border-2 p-3">
-      <img src={contact} p-2 className="p-2 w-full max-h-40"/>
-      <p className="font-semibold text-lg">Priority Support & Data Backup</p>
-      <p className=" mt-1 max-w-lg font-medium text-[#190445CC] text-sm/6">Get dedicated support and automatic data backups for a smooth experience.</p>
-      </div>
-      </div>
+      <section id="feature" className="mx-auto max-w-7xl p-3 lg:pl-8 mt-[120px]">
+
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="">
+            <div className="text-base/7 font-semibold text-indigo-600"> Features</div>
+            <div className="mt-2 text-4xl font-semibold tracking-tight text-balance">A better job tracking experience</div>
+            <div className="mx-auto mt-6 max-w-2xl text-[#190445CC] font-medium">Stay organized, track your progress, and never miss an opportunity with our smart job application management tools. Effortlessly manage your applications, prepare for interviews, and stay connected with recruiters—all in one place.</div>
+            <div className="p-4">
+              <div className="m-2">
+                <p className="font-semibold inline-block"><MdCloudUpload className="inline-block text-indigo-600 pr-2" size={34} />Upload Resume to Cloud</p>
+                <p className="">Securely store and manage multiple versions of your resume, making it easy to apply for different job roles.</p>
+              </div>
+              <div className="m-2">
+                <p className="font-semibold"><MdPushPin className="inline-block text-indigo-600 pr-2" size={34} />  Track Your Job Applications</p>
+                <p className="">Keep a detailed record of your job applications, including statuses, deadlines, and follow-up dates.
+
+                </p>
+              </div>
+              <div className="m-2">
+                <p className="font-semibold"> <IoNotifications className="inline-block text-indigo-600 pr-2" size={34} />  Get Notified Before Interviews</p>
+                <p className="">Receive timely reminders before your scheduled interviews so you can prepare and never miss an opportunity.</p>
+              </div>
+              <div className="m-2">
+                <p className="font-semibold"><FaUser  className="inline-block text-indigo-600 pr-2" size={34} /> Manage Your Profile</p>
+                <p className="">Update your professional details, job preferences, and portfolio to attract the right opportunities.</p>
+              </div>
+              <div className="m-2">
+                <p className="font-semibold"><IoMdSave className="inline-block text-indigo-600 pr-2" size={34} /> Save Recruiter Contact Details</p>
+                <p className="">Store and organize recruiter contact information, making it easy to follow up and stay connected.
+
+                </p>
+              </div>
+            </div>
+          </div>
+          <div><img src={feature} className="h-full w-full pl-4"/></div>
+        </div>
+
       </section>
     </>
   )

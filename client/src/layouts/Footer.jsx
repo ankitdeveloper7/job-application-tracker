@@ -6,7 +6,7 @@ import { faLinkedinIn, faInstagram, faFacebookF, faTwitter, faYoutube } from '@f
 function Footer() {
     return (
         <>
-            <section className="mx-auto max-w-7xl p-3 lg:px-8">
+            <section className="mx-auto max-w-7xl p-3 md:pb-[250px] lg:px-8">
             <hr className='mx-auto flex  items-center justify-between p-6' />
             <div className="mx-auto flex items-center justify-between pb-6">
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7'>
@@ -25,20 +25,20 @@ function Footer() {
                         <ul className='text-[#190445b3] text-[16px] text-[400] leading-6'>
                             {/* <li> <Link className='no-underline' href="#home">home</Link></li> */}
                             <li><a className='no-underline' href="#home">Home</a> </li>
-                            <li><a className='no-underline' href="#home">Profile</a></li>
-                            <li> <a className='no-underline' href="#team">contact</a></li>
-                            <li> <a className='no-underline' href="#achieve">Document</a></li>
-                            <li> <a className='no-underline' href="#contact">Job tracker</a></li>
+                            <li className="mt-2"> <a className='no-underline' href="#team">Job tracker</a></li>
+                            <li className="mt-2"> <a className='no-underline' href="#achieve">Feature</a></li>                            
+                            <li className="mt-2"><a className='no-underline' href="#home"></a>Pricing</li>
+                            <li className="mt-2"> <a className='no-underline' href="#contact">Q&A</a></li>
                         </ul>
                     </div>
                     <div >
                         <p className='text-[#190445]-700 text-xl font-semibold mb-2.5'>Product</p>
                         <ul className='text-[#190445b3] text-[16px] text-[400] leading-6'>
-                            <li> <a className='no-underline' href="#home">Skill tracker</a></li>
-                            <li><a className='no-underline' href="#home">Task scheduler</a></li>
-                            <li> <a className='no-underline' href="#team">Profile</a></li>
-                            <li> <a className='no-underline' href="#achieve">Contacts</a></li>
-                            <li> <a className='no-underline' href="#contact">FAQS</a></li>
+                            <li className="mt-2" > <a className='no-underline' href="#home">Skill tracker</a></li>
+                            <li className="mt-2"><a className='no-underline' href="#home">Task scheduler</a></li>
+                            <li className="mt-2"> <a className='no-underline' href="#team">Profile</a></li>
+                            <li className="mt-2"> <a className='no-underline' href="#achieve">Contacts</a></li>
+                            <li className="mt-2"> <a className='no-underline' href="#contact">FAQS</a></li>
                         </ul>
                     </div>
                     <div>

@@ -25,22 +25,22 @@ import p1 from "../../public/images/1.png"
 
 const products = [
     { name: 'Job Tracker', href: '#', icon: ChartPieIcon },
-    { name: 'Contact Tracker',href: '#', icon: CursorArrowRaysIcon },
+    { name: 'Contact Tracker', href: '#', icon: CursorArrowRaysIcon },
     { name: 'Interview Tracker', href: '#', icon: FingerPrintIcon },
-    { name: 'Job Search Metrics',href: '#', icon: SquaresPlusIcon },
-    { name: 'Resume Checker',href: '#', icon: ArrowPathIcon },
+    { name: 'Job Search Metrics', href: '#', icon: SquaresPlusIcon },
+    { name: 'Resume Checker', href: '#', icon: ArrowPathIcon },
 ]
 
-export default function Header(){
+export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    return(
+    return (
         <>
-         <section id="navbar">
+            <section id="navbar">
                 <header className="bg-white">
                     <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                         <div className="flex lg:flex-1">
                             <a href="#" className="-m-1.5 p-1.5 text-4xl font-semibold">
-                            Trackify
+                                Trackify
                             </a>
                         </div>
                         <div className="flex lg:hidden">
@@ -54,14 +54,17 @@ export default function Header(){
                             </button>
                         </div>
                         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                                 Home
                             </a>
-                            <a href="/dashboard" className="text-sm font-semibold leading-6 text-gray-900">
+                            <a href="#trackstep" className="text-sm font-semibold leading-6 text-gray-900">
                                 Job Tracker
                             </a>
-                            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                                AI Resume Builder
+                            <a href="#feature" className="text-sm font-semibold leading-6 text-gray-900">
+                                Feature
+                            </a>
+                            <a href="#pricing" className="text-sm font-semibold leading-6 text-gray-900">
+                                Pricing
                             </a>
                         </PopoverGroup>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -69,9 +72,9 @@ export default function Header(){
                                 Log in <span aria-hidden="true">&rarr;</span>
                             </a>
                             <a href="/signup" className="text-sm font-semibold leading-6  rounded-lg p-2 ml-4 bg-customColor text-white">
-                                Sign up for free 
+                                Sign up for free
                             </a>
-                            
+
                         </div>
                     </nav>
                     <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -98,25 +101,31 @@ export default function Header(){
                             <div className="mt-6 flow-root">
                                 <div className="-my-6 divide-y divide-gray-500/10">
                                     <div className="space-y-2 py-6">
-                                    <a
+                                        <a
                                             href="#"
                                             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                         >
-                                           Home
+                                            Home
                                         </a>
                                         <a
                                             href="#"
                                             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                         >
-                                           Job Tracker
+                                            Job Tracker
                                         </a>
                                         <a
                                             href="#"
                                             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                         >
-                                            AI Resume Builder
+                                            Feature
                                         </a>
-                                       
+                                        <a
+                                            href="#"
+                                            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                        >
+                                            Pricing
+                                        </a>
+
                                         {/* <Disclosure as="div" className="-mx-3">
                                             <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 bg-cutsomColor text-gray-900 hover:bg-gray-50">
                                                 All Features
@@ -135,7 +144,7 @@ export default function Header(){
                                                 ))}
                                             </DisclosurePanel>
                                         </Disclosure> */}
-                                        
+
                                     </div>
                                     <div>
                                         <a
@@ -160,26 +169,26 @@ export default function Header(){
                     </Dialog>
                 </header>
                 <Box sx={{ flexGrow: 1 }} className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
-    <Grid container spacing={2}>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-10 sm:p-20">
-                <p className="text-2xl sm:text-4xl text-[#190445CC]">Less Hassle,</p>
-                <p className="text-4xl sm:text-7xl !important text-color2 font-[800]  leading-tight">More Interviews</p>
-                <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
-                    Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
-                </p>
-                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
-                    Sign up for free
-                </button>
-            </div>
-        </Grid>
-        <Grid item xs={12} sm={12} md={6}>
-            <div className="p-6 sm:p-24">
-                <img src={p1} className="w-full h-auto" alt="Job Search" />
-            </div>
-        </Grid>
-    </Grid>
-</Box>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} sm={12} md={6}>
+                            <div className="p-10 sm:p-20">
+                                <p className="text-2xl sm:text-4xl text-[#190445CC]">Less Hassle,</p>
+                                <p className="text-4xl sm:text-7xl !important text-color2 font-[800]  leading-tight">More Interviews</p>
+                                <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
+                                    Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
+                                </p>
+                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
+                                    Sign up for free
+                                </button>
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6}>
+                            <div className="p-6 sm:p-24">
+                                <img src={p1} className="w-full h-auto" alt="Job Search" />
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Box>
 
             </section>
         </>

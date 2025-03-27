@@ -37,7 +37,7 @@ function classNames(...classes) {
 
 export default function Pricing() {
     return (
-        // <section className="mx-auto flex max-w-7xl p-6 lg:px-8">
+        <section id='pricing'>
 
         <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
             <div aria-hidden="true" className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl">
@@ -51,7 +51,7 @@ export default function Pricing() {
             </div>
             <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-base/7 font-semibold text-indigo-600">Pricing</h2>
-                <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-heading-600 sm:text-6xl">
+                <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-heading-600 ">
                     Stay Organized & Take Control
                 </p>
             </div>
@@ -127,7 +127,7 @@ export default function Pricing() {
         </div>
 
 
-        // </section>
+         </section>
 
     )}
 
