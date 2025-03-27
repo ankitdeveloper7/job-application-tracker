@@ -1,7 +1,7 @@
 import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
-// import { API_URL } from "../../API_URL";
+import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios";
 
 
@@ -15,6 +15,9 @@ export default function Signup() {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const onPress1 = async (e) => {
+    const id = toast.loading('registering the user', {
+      position:'bottom-left'
+    })
     setloading(true)
     e.preventDefault(); 
     try {
@@ -30,9 +33,14 @@ export default function Signup() {
         
       )
       const data = response.data;
+      if(data){
+        toast.update(id, { render: `${data.message}`, type: "success", isLoading: false });
+      }
       getExit(data.token);
       localStorage.setItem("token", data.token);
     }catch(err){
+      toast.update(id, { render: `${data.error}`, type: "success", isLoading: false });
+      
       console.log("some error has occured!",err);
     }
   }
@@ -40,7 +48,7 @@ export default function Signup() {
   if(user){
     return(
       <>
-      {window.open("/dashboard")}
+     {window.open("/dashboard", "_self")}
       </>
     )
   }
@@ -141,6 +149,7 @@ export default function Signup() {
                 </form>
           </div>
         </div>
+        <ToastContainer />
       </>
     )
   }

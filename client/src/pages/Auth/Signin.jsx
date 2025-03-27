@@ -2,6 +2,7 @@ import { faApple, faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function Signin() {
@@ -13,6 +14,9 @@ export default function Signin() {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const onPress = async (e) => {
+    const id = toast.loading('please wait signing in ...', {
+      position: 'bottom-left',
+    })
     setloading(true)
     e.preventDefault(); 
     try {
@@ -27,9 +31,13 @@ export default function Signin() {
         
       )
       const data = response.data;
+      if(data){
+        toast.update(id, { render: `${data.message}`, type: "success", isLoading: false });
+      }
       getExit(data.token);
       localStorage.setItem("token", data.token);
     }catch(err){
+      toast.update(id, { render: `${data.error}`, type: "success", isLoading: false });
       console.log("some error has occured!",err);
     }
   }
@@ -37,7 +45,7 @@ export default function Signin() {
   if(user){
     return(
       <>
-      {window.open("/dashboard")}
+     {window.open("/dashboard", "_self")}
       </>
     )
   }
@@ -130,6 +138,7 @@ export default function Signin() {
             </p>
           </div>
         </div>
+        <ToastContainer />
       </>
     )
   }

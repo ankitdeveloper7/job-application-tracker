@@ -21,7 +21,8 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Box, Grid, Button } from '@mui/material';
-import p1 from "../../public/images/1.png"
+import p1 from "../../public/images/1.png";
+import { ToastContainer, toast } from 'react-toastify';
 
 const products = [
     { name: 'Job Tracker', href: '#', icon: ChartPieIcon },
@@ -32,7 +33,8 @@ const products = [
 ]
 
 export default function Header() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     return (
         <>
             <section id="navbar">
@@ -177,7 +179,7 @@ export default function Header() {
                                 <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
                                     Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
                                 </p>
-                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
+                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white" onClick={onpress}>
                                     Sign up for free
                                 </button>
                             </div>
@@ -189,7 +191,6 @@ export default function Header() {
                         </Grid>
                     </Grid>
                 </Box>
-
             </section>
         </>
     )
