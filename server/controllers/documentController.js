@@ -3,6 +3,7 @@ const fs = require("fs");
 const uploadOnCloudinary = require("../utils/Cloudinary");
 const Document = require("../models/documentModel");
 const User = require("../models/userModel");
+const Filedata = require("../models/fileModel");
 
 
 const uploadDocument = async function (req, res, next) {
@@ -17,13 +18,13 @@ const uploadDocument = async function (req, res, next) {
         const uploadfile = await uploadOnCloudinary(localPathFile);
         const docurl = uploadfile.secure_url;
         console.log("this is url of uploaded file", docurl);
-        const uploadoc = new Document({ filename: docurl });
+        const uploadoc = new Filedata({ filename: docurl });
         await uploadoc.save();
         const admin = await User.findOne({ email: req.user.email });
         if (!admin) {
             return res.status(403).json({ message: "Invalid user, try logging in again" })
         }
-        admin.document.push(uploadoc);
+        admin.file.push(uploadoc);
         await admin.save();
         if (!uploadfile || !uploadfile.url) {
             return res.status(500).json({ message: "Error uploading file to cloud" });
@@ -49,22 +50,22 @@ const getFile = asynchandler(async(req,res)=>{
         if(!user){
             return res.status(403).json({ message: "Invalid user, try logging in again" })
         }
-        const docData = await User.findOne({email:user}).populate('document');
-        const Docdata = docData.document;
+        const docData = await User.findOne({email:user}).populate('filedata');
+        const Docdata = docData.filedata;
         res.status(200).send(Docdata);
 });
 
 
 const writeDocument = asynchandler(async(req, res)=>{
-    const{title, description} = req.body;
-    if(!title || !description){
+    const{title, description, category} = req.body;
+    if(!title || !description || !category){
         return res.status(203).json({message:"please write something"});
     }
     const user = req.user.email;
     if(!user){
         return res.status(203).json({message:"Invalid error occured !"})
     }
-    const writedoc = new Document({title:title, description:description});
+    const writedoc = new Document({title:title, description:description, category:category});
     await writedoc.save();
     const admin = await User.findOne({email:user});
     if(!admin){
@@ -79,6 +80,9 @@ const writeDocument = asynchandler(async(req, res)=>{
 const getDocument = asynchandler(async(req, res)=>{
     const user = req.user.email;
     const admin = await User.findOne({email:user}).populate('document');
+    if(!admin){
+        return res.status(203).json({message:"some invalid error has occured try or login in again"})
+    }
     const docdata = admin.document;
     return res.status(200).json(docdata);
 })

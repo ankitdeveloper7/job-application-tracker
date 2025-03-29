@@ -12,6 +12,7 @@ export default function Signin() {
   const[loading, setloading] = useState(false);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  console.log("this is api url", API_BASE_URL);
 
   const onPress = async (e) => {
     const id = toast.loading('please wait signing in ...', {

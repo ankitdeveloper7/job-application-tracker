@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
     },
     jobs:[{type:mongoose.Schema.Types.ObjectId, ref:'Job'}],
     contact:[{type:mongoose.Schema.Types.ObjectId, ref:'Contact'}],
-    document:[{type:mongoose.Schema.Types.ObjectId, ref:'Document'}]
+    document:[{type:mongoose.Schema.Types.ObjectId, ref:'Document'}],
+    filedata:[{type:mongoose.Schema.Types.ObjectId, ref:'Filedata'}]
 
 });
 

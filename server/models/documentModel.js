@@ -9,9 +9,10 @@ const documentSchema = new mongoose.Schema({
         type:String,
         require:false
     },
-    filename:{
+    category:{
         type:String,
-        require:false
+        require:true,
+        enum:["Resume", "Cover Letter", "Transcript"]
     }
 });
 

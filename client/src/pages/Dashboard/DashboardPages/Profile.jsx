@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+// import Documentbox from '../../../components/Documentbox';
 
 export default function Profile() {
   
   return (
-    <img src='https://res.cloudinary.com/dmdegpnq2/image/upload/v1742300681/ufymcwh39adizuuhdb3h.pdf' />
+    <>
+    this is profile file
+    </>
   )
 }
