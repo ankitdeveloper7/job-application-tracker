@@ -25,10 +25,11 @@ export default function DocumentModal({modalopen,onClose}) {
         }
       }).then(res=>{
         console.log(res.json);
-        console.log("doc uploaded succesfully")
+        console.log("doc uploaded succesfully");
+        onClose();
       });
       console.log(response);
-      onClose();
+      
     }
 
   return (

@@ -19,7 +19,6 @@ function useDocument(n) {
         }
       }).then(res => {
         setDocumentdata(res.data);
-        console.log("this data is running many times")
       })
     }, n * 1000)
 
@@ -44,7 +43,7 @@ function useDocument(n) {
 export default function Document() {
   const [isModalOpen, setModal] = useState(false);
   const docdata = useDocument(3);
-  console.log(docdata)
+  console.log("this is document data", docdata)
 
 
   function onPressD() {
@@ -71,7 +70,7 @@ export default function Document() {
         </div>
 
         <div>
-       {docdata.map( item =>(
+       {docdata.map( (item) =>(
       <Documentbox title={item.title} category={item.category} />
        ))}
 
