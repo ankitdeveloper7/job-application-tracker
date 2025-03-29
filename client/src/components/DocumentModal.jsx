@@ -23,13 +23,10 @@ export default function DocumentModal({modalopen,onClose}) {
           "Content-Type":"application/json",
           "Authorization":"bearer " + localStorage.getItem("token")
         }
-      }).then(res=>{
-        console.log(res.json);
-        console.log("doc uploaded succesfully");
-        onClose();
       });
-      console.log(response);
-      
+        console.log(response.data);
+        console.log("doc uploaded succesfully");
+        onClose();      
     }
 
   return (
