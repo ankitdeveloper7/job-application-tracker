@@ -83,9 +83,9 @@ export default function DocumentModal({modalopen,onClose}) {
                   </label>
                   <div className=''>
                     <select className='p-1 border-2 rounded w-full'  onChange={(e)=>setCategory(e.target.value)}>
-                      <option value="onSite">Resume</option>
-                      <option value="Hybrid">Cover Letter</option>
-                      <option value="Remote">Transcript</option>
+                      <option value="Resume">Resume</option>
+                      <option value="Cover Letter">Cover Letter</option>
+                      <option value="Transcript">Transcript</option>
                     </select>
                   </div>
                 </div>
