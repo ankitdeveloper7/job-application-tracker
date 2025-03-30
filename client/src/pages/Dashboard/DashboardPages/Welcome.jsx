@@ -1,5 +1,7 @@
 import React from 'react';
+import React from 'react';
 import { useRecoilValue } from 'recoil';
+import { userAtom } from '../../store/atom';
 
 export default function Welcome() {
   const user = useRecoilValue(userAtom);
