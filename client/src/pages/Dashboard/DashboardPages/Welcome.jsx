@@ -1,6 +1,8 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 
 export default function Welcome() {
+  const user = useRecoilValue(userAtom);
   return (
     <>
     <div className='p-4 border-3 border-customColor rounded-lg   grid grid-cols-1 md:grid-cols-2 lg:m-[120px]'>
@@ -8,7 +10,7 @@ export default function Welcome() {
       <div>
       <div className='p-3'>
       <p className='text-t1 text-2xl'>Welcome</p>
-       <p className='text-color2 text-4xl'>Your Name !</p>
+       <p className='text-color2 text-4xl'>{user.name}</p>
        <p className='text-t1 text-lg'>Stay organized and in control of your job search with Trackify. Effortlessly manage applications, store important documents, and track your progress—all in one place. Upgrade to premium for unlimited access and powerful insights to land your dream job faster.</p>
       
       </div>

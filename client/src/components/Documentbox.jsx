@@ -23,7 +23,7 @@ export default function Documentbox(props) {
  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   async function deletedoc(){
-    await axios({
+   const response =  await axios({
       method:'delete',
       url:`${API_BASE_URL}/api/document/deletedocumet/${props.id}`,
       headers:{
@@ -31,7 +31,9 @@ export default function Documentbox(props) {
         "Authorization":"Bearer " + localStorage.getItem("tokens")
       }
     });
-
+    console.log(props.id)
+    console.log(response);
+    setoption(!option);
  }
  
 

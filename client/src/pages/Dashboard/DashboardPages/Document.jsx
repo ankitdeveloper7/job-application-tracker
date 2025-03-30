@@ -69,9 +69,9 @@ export default function Document() {
           </div>
         </div>
 
-        <div>
+        <div className='ml-8'>
        {docdata.map( (item) =>(
-      <Documentbox id={item._id} title={item.title} category={item.category} />
+      <Documentbox id={item._id} title={item.title} description={item.description} category={item.category} />
        ))}
 
         </div>

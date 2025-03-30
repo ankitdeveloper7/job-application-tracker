@@ -10,7 +10,7 @@ router.post('/uploaddocument',authenticationJwt, upload.single('file'),uploadDoc
 router.get("/getfile", authenticationJwt, getFile);
 router.post("/writedocument", authenticationJwt, writeDocument);
 router.get("/getdocument", authenticationJwt, getDocument);
-router.put("/updatedoc/:docid", authenticationJwt, updateDocument);
+router.put("/updatedocument/:docid", authenticationJwt, updateDocument);
 router.delete("/deletedocument/:deleteid", authenticationJwt,deleteDocument )
 
 

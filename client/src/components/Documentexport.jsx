@@ -1,6 +1,8 @@
 import { Dialog } from '@headlessui/react'
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from '../pages/store/atom';
 
 export default function Documentexport({ismodal, onClose,id , initialtitle, initialdescription, initialcategory }) {
    const[title, setTitle] = useState("");
@@ -13,22 +15,17 @@ export default function Documentexport({ismodal, onClose,id , initialtitle, init
        setTitle(initialtitle);
        setDescription(initialdescription);
        setCategory(initialcategory);
+       console.log("this is initial title", initialtitle);
+       console.log("this is initial description", initialdescription);
+       console.log("this is initial category", initialcategory)
    }, [initialtitle, initialdescription, initialcategory]);
   
    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+   const user = useRecoilValue(userAtom);
 
    useEffect(async()=>{
-         const response = await axios({
-            method:'get',
-            url:`${API_BASE_URL}/api/users/userdetails`,
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization" :"Bearer " + localStorage.getItem("token")
-            }
-         });
-         const data = response.data;
-         setName(data.name);
-         setEmail(data.email)
+         setName(user.name);
+         setEmail(user.email)
    }, [])
 
   async function update(){
@@ -71,7 +68,6 @@ export default function Documentexport({ismodal, onClose,id , initialtitle, init
       type="text"
       id="description"
       value={description}
-      placeholder='Cover letter for Microsoft'
       className='p-2 w-full h-80 border-2 rounded'
       onChange={e=> setDescription(e.target.value)}
        />
@@ -91,7 +87,6 @@ export default function Documentexport({ismodal, onClose,id , initialtitle, init
       id="title"
       type="text"
       value={title}
-      placeholder="i.e, Microsoft"
       className='p-1 w-full border-2 rounded' 
       onChange={e=> setTitle(e.target.value)}
       />
