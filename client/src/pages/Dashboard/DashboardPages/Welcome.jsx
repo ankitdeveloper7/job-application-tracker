@@ -1,5 +1,4 @@
 import React from 'react';
-import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../../store/atom';
 
