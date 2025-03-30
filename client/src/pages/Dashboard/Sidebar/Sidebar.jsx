@@ -3,15 +3,11 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { ActiveAtom, userAtom } from '../../store/atom';
 
 export default function Sidebar() {
-  const[option, setoption] = useState(false);
 
   const setActiveSegment = useSetRecoilState(ActiveAtom);
   const user = useRecoilValue(userAtom);
   // alert(`this is activeAtom valeu is ${ActiveAtom}`);
 
-  function setingoption(){
-    setoption(!option);
-  }
   function loginout(){
     localStorage.removeItem("token");
     window.open("/", "_self")
@@ -90,12 +86,9 @@ export default function Sidebar() {
               </div>
               <div className='inline-block'>
                 <button className="" aria-label="Settings" onClick={setingoption}>
-                  <span className="material-symbols-outlined align-bottom">settings</span>
+                  <span className="material-symbols-outlined  align-bottom">logout</span>
                 </button>
-                {option && (
-  <div className="w-42 border border-gray-300 shadow-lg absolute right-2 top-2 bg-white z-50 rounded-md">
-    <div className="border-b px-4 py-2 hover:bg-gray-100 cursor-pointer"  onClick={loginout}>Log Out</div>
-  </div>)}
+                
 
               </div>
 
