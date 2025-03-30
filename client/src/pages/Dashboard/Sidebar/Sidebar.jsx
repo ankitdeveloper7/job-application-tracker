@@ -8,6 +8,10 @@ export default function Sidebar() {
   const setActiveSegment = useSetRecoilState(ActiveAtom);
   const user = useRecoilValue(userAtom);
   // alert(`this is activeAtom valeu is ${ActiveAtom}`);
+
+  function setingoption(){
+    setoption(!option);
+  }
   function loginout(){
     localStorage.removeItem("token");
     window.open("/", "_self")
@@ -85,7 +89,7 @@ export default function Sidebar() {
                 <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">{user.name} </span>
               </div>
               <div className='inline-block'>
-                <button className="" aria-label="Settings" onClick={setoption(!option)}>
+                <button className="" aria-label="Settings" onClick={setingoption}>
                   <span className="material-symbols-outlined align-bottom">settings</span>
                 </button>
                 {option && (
