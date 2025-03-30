@@ -71,7 +71,7 @@ export default function Document() {
 
         <div>
        {docdata.map( (item) =>(
-      <Documentbox title={item.title} category={item.category} />
+      <Documentbox id={item._id} title={item.title} category={item.category} />
        ))}
 
         </div>

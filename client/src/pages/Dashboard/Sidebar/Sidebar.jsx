@@ -1,10 +1,11 @@
 import React from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { ActiveAtom } from '../../store/atom';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { ActiveAtom, userAtom } from '../../store/atom';
 
 export default function Sidebar() {
 
   const setActiveSegment = useSetRecoilState(ActiveAtom);
+  const user = useRecoilValue(userAtom);
   // alert(`this is activeAtom valeu is ${ActiveAtom}`);
 
   return (
@@ -76,7 +77,7 @@ export default function Sidebar() {
             <p className="mt-1  text-t1 border p-2 rounded flex flex-row justify-between"> 
         <div className=''>
         <span className="material-symbols-outlined align-bottom">account_circle</span>
-        <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Ankit </span>
+        <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">{user.name} </span>
         </div>
         <div className='inline-block'>
         <button className="" aria-label="Settings">

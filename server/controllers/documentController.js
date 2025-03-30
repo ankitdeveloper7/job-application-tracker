@@ -87,4 +87,28 @@ const getDocument = asynchandler(async(req, res)=>{
     return res.status(200).json(docdata);
 })
 
-module.exports = { uploadDocument,getFile, writeDocument, getDocument };
+const updateDocument = asynchandler(async(req, res) =>{
+    const user = req.user.email;
+    const {docid} = req.params;
+    const{title, description, category} = req.body;
+    const admin = await User.findOne({email:user});
+    if(!admin){
+        return res.status(203).json({message:"some invalid error has occured !"})
+    }
+    const update =await Document.updateOne(
+        { _id: docid },
+        { $set: { title:title, description:description, category:category } }
+      );
+
+    //   await update.save();
+      return res.status(200).json({message:"updated successfully"});
+
+});
+
+const deleteDocument = asynchandler(async(req, res)=>{
+    const {deleteid} = req.params;
+    await Document.deleteOne({_id:deleteid});
+    return res.status(200).json({message:"document deleted successfully"})
+})
+
+module.exports = { uploadDocument,getFile, writeDocument, getDocument , updateDocument, deleteDocument};
