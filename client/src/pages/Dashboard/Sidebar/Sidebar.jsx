@@ -93,7 +93,7 @@ export default function Sidebar() {
                   <span className="material-symbols-outlined align-bottom">settings</span>
                 </button>
                 {option && (
-  <div className="w-42 border border-gray-300 shadow-lg absolute left-2 top-8 bg-white z-50 rounded-md">
+  <div className="w-42 border border-gray-300 shadow-lg absolute right-2 top-2 bg-white z-50 rounded-md">
     <div className="border-b px-4 py-2 hover:bg-gray-100 cursor-pointer"  onClick={loginout}>Log Out</div>
   </div>)}
 
