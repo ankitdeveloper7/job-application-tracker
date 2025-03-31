@@ -76,7 +76,7 @@ function Board() {
                     star
                   </span>
                   <span className='ml-[40px] text-t1 font-[600]'> WISHLIST</span>
-                  <center>{jobwishlist.length} JOBS</center>
+                  <center>0JOBS</center>
                 </div>
 
                 <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
@@ -113,7 +113,7 @@ function Board() {
                     draft
                   </span>
                   <span className='ml-11 text-t1 font-[600]'>APPLIED</span>
-                  <center>{jobapplied.length} JOBS</center>
+                  <center> JOBS</center>
                 </div>
 
                 <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
@@ -146,7 +146,7 @@ function Board() {
                     business_center
                   </span>
                   <span className='ml-11 text-t1 font-[600]'>INTERVIEW</span>
-                  <center>{jobinteview.length} JOBS</center>
+                  <center> JOBS</center>
                 </div>
 
                 <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
@@ -179,7 +179,7 @@ function Board() {
                     emoji_events
                   </span>
                   <span className='ml-11 text-t1 font-[600]'>OFFER</span>
-                  <center>{joboffer.length} JOBS</center>
+                  <center> JOBS</center>
                 </div>
 
                 <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
@@ -212,7 +212,7 @@ function Board() {
                     thumb_down
                   </span>
                   <span className='ml-11 text-t1 font-[600]'>REJECTED</span>
-                  <center>{jobrejected.length} JOBS</center>
+                  <center> JOBS</center>
                 </div>
 
                 <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
