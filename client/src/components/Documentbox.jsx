@@ -31,7 +31,6 @@ export default function Documentbox(props) {
         "Authorization":"Bearer " + localStorage.getItem("tokens")
       }
     });
-    console.log(props.id)
     console.log(response);
     setoption(!option);
  }

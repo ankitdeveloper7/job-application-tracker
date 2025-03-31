@@ -1,151 +1,122 @@
-import React, { useEffect, useState } from 'react';
-import Modal from '../../components/JobModal';
-import axios from 'axios';
-import JobBox from '../../components/JobBox';
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import Modal from "../../components/JobModal";
+import axios from "axios";
+import JobBox from "../../components/JobBox";
 
-function useJobdetail(n){
-  const[job, setJob]= useState([]);
-
+function useJobDetail(n) {
+  const [job, setJob] = useState([]);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  useEffect(()=>{
-     const data = setInterval(()=>{
-      axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("token")
-      }}).then(res=>{
-        setJob(res.data)
-      }
-        
-      )
-     }, n*1000);
-     
-     axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + localStorage.getItem("token")
-    }}).then(res=>{
-      setJob(res.data)
-    }
-     
-     
-    )
 
-    return()=>{
-      clearInterval(data)
-    }
+  useEffect(() => {
+    const fetchJobs = () => {
+      axios
+        .get(`${API_BASE_URL}/api/job/getjobdetails`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
+        .then((res) => setJob(res.data));
+    };
 
-  },[])
+    const interval = setInterval(fetchJobs, n * 1000);
+    fetchJobs();
+
+    return () => clearInterval(interval);
+  }, []);
+
   return job;
 }
 
 function Board() {
-  const[isModalopen, setModalopen] = useState(false);
-  const jobdetail = useJobdetail(3);
-  const jobwishlist = jobdetail.filter( (item) => (item.status==="wishlist"));
-  const jobapplied = jobdetail.filter( (item) => (item.status==="applied"));
-  const jobinteview = jobdetail.filter( (item) => (item.status==="interview"));
-  const joboffer = jobdetail.filter( (item) => (item.status==="offer"));
-  const jobrejected = jobdetail.filter( (item) => (item.status==="rejected"));
+  const [isModalOpen, setModalOpen] = useState(false);
+  const jobDetails = useJobDetail(3);
+  const [columns, setColumns] = useState({});
 
+  useEffect(() => {
+    const groupedJobs = jobDetails.reduce((acc, job) => {
+      if (!acc[job.status]) acc[job.status] = [];
+      acc[job.status].push(job);
+      return acc;
+    }, {});
 
-  function onpress2(){
-    setModalopen(true);
+    setColumns(groupedJobs);
+  }, [jobDetails]);
+
+  function onDragEnd(result) {
+    const { source, destination } = result;
+    if (!destination) return;
+
+    const sourceColumn = [...columns[source.droppableId]];
+    const destColumn = [...columns[destination.droppableId]];
+    const [draggedItem] = sourceColumn.splice(source.index, 1);
+
+    destColumn.splice(destination.index, 0, draggedItem);
+
+    setColumns({
+      ...columns,
+      [source.droppableId]: sourceColumn,
+      [destination.droppableId]: destColumn,
+    });
   }
-  function handleCloseModal(){
-    setModalopen(false);
+
+  function onPressAdd() {
+    setModalOpen(true);
   }
+
+  function handleCloseModal() {
+    setModalOpen(false);
+  }
+
+  const sections = ["wishlist", "applied", "interview", "offer", "rejected"];
 
   return (
     <>
-      <section id="boards" className=" overflow-x-hidden">
-        <div className="flex flex-row">
-          <div className="min-h-screen box-border  border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                star
-              </span>
-               <span className='ml-[40px] text-t1 font-[600]'> WISHLIST</span>
-                <center>{jobwishlist.length} JOBS</center>
-            </div>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <section id="boards" className="overflow-x-hidden">
+          <div className="flex flex-row">
+            {sections.map((section) => (
+              <div
+                key={section}
+                className="min-h-screen box-border border-r-2 inline-block align-top flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]"
+              >
+                <div className="align-bottom pb-[30px] inline">
+                  <span className="material-symbols-outlined">star</span>
+                  <span className="ml-4 text-t1 font-[600]">{section.toUpperCase()}</span>
+                  <center>{(columns[section] || []).length} JOBS</center>
+                </div>
 
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-           {jobwishlist.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
-            
+                <button className="text-t1 border p-2 rounded" onClick={onPressAdd}>
+                  <span className="material-symbols-outlined align-bottom">add</span>
+                </button>
 
+                <Droppable droppableId={section}>
+                  {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                      {(columns[section] || []).map((job, index) => (
+                        <Draggable key={job.id} draggableId={job.id.toString()} index={index}>
+                          {(provided) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              <JobBox title={job.title} company={job.company} />
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </div>
+            ))}
           </div>
-
-          <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                draft
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>APPLIED</span>
-                <center>{jobapplied.length} JOBS</center>
-            </div>
-
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {jobapplied.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
-          </div>
-          <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                business_center
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>INTERVIEW</span>
-                <center>{jobinteview.length} JOBS</center>
-            </div>
-
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {jobinteview.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
-          </div>
-          <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                emoji_events
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>OFFER</span>
-                <center>{joboffer.length} JOBS</center>
-            </div>
-
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {joboffer.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
-          </div>
-          <div className="min-h-screen box-border  inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                thumb_down
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>REJECTED</span>
-                <center>{jobrejected.length} JOBS</center>
-            </div>
-
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {jobrejected.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
-          </div>
-          {/* <div className="h-full box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span class="material-symbols-outlined">
-                service_toolbox
-              </span>
-               <span className='ml-6 text-t1 font-[600]'>JOB PREPARATION</span>
-                <center>{wishlist} JOBS</center>
-            </div>
-
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-
-          </div> */}
-        </div>
-      </section>
-      <Modal isModalopen={isModalopen} onClose={handleCloseModal} />
+        </section>
+      </DragDropContext>
+      <Modal isModalOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 }

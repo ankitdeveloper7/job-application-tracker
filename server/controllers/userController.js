@@ -44,10 +44,7 @@ const getUserDetails = asynchandler(async(req, res)=>{
    if(!user){
        return res.status(403).json({message:"Some Invalid error has occured !"});
    }
-   console.log("this is the value of user", user);
-   const userData = await User.findOne({email:user});
-   console.log("this is the value of userdata", userData);
-   console.log("program ran till here");
+   const userData = await User.findOne({email:user});   
    return res.status(200).json(userData);
 });
 

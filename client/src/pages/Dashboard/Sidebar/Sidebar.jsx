@@ -85,7 +85,7 @@ export default function Sidebar() {
                 <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">{user.name} </span>
               </div>
               <div className='inline-block'>
-                <button className="" aria-label="Settings" onClick={setingoption}>
+                <button className="" aria-label="Settings" onClick={loginout}>
                   <span className="material-symbols-outlined  align-bottom">logout</span>
                 </button>
                 
