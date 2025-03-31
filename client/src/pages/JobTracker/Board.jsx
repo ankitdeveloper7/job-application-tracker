@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from '../../components/JobModal';
 import axios from 'axios';
 import JobBox from '../../components/JobBox';
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 function useJobdetail(n) {
   const [job, setJob] = useState([]);
