@@ -4,7 +4,7 @@ import axios from 'axios';
 import JobBox from '../../components/JobBox';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
-function useJobdetail(n) {
+function useJobdetail(n){
   const [job, setJob] = useState([]);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -20,7 +20,7 @@ function useJobdetail(n) {
       }
 
       )
-    }, n*1000);
+    }, n * 1000);
 
     axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
       headers: {
@@ -59,43 +59,44 @@ function Board() {
     setModalopen(false);
   }
 
-  // function handleDragEnd(result) {
-  //   const { source, destination } = result;
-  //   if (!destination) return;
-  //   // if(source.droppableId === destination.droppableId){
-  //   let updatedList;
+  function handleDragEnd(result) {
+    const { source, destination } = result;
+    if (!destination) return;
+    if(source.droppableId === destination.droppableId){
+    let updatedList;
 
-  //   if (source.droppableId === "wishlist") {
-  //     updatedList = Array.from(jobwishlist);
-  //   } else if (source.droppableId === "applied") {
-  //     updatedList = Array.from(jobapplied);
-  //   } else if (source.droppableId === "interview") {
-  //     updatedList = Array.from(jobinteview);
-  //   } else if (source.droppableId === "offer") {
-  //     updatedList = Array.from(joboffer);
-  //   } else if (source.droppableId === "rejected") {
-  //     updatedList = Array.from(jobrejected);
-  //   }
-  //   const [dragItem] = updatedList.splice(source.droppableId, 1);
-  //   updatedList.splice(destination.droppableId, 0, dragItem);
+    if (source.droppableId === "wishlist") {
+      updatedList = Array.from(jobwishlist);
+    } else if (source.droppableId === "applied") {
+      updatedList = Array.from(jobapplied);
+    } else if (source.droppableId === "interview") {
+      updatedList = Array.from(jobinteview);
+    } else if (source.droppableId === "offer") {
+      updatedList = Array.from(joboffer);
+    } else if (source.droppableId === "rejected") {
+      updatedList = Array.from(jobrejected);
+    }
+    const [dragItem] = updatedList.splice(source.droppableId, 1);
+    updatedList.splice(destination.droppableId, 0, dragItem);
 
-  //   if (destination.droppableId === "wishlist") {
-  //     jobwishlist = updatedList;
-  //   } else if (destination.droppableId === "applied") {
-  //     jobapplied = updatedList;
-  //   } else if (destination.droppableId === "interview") {
-  //     jobinteview = updatedList;
-  //   } else if (destination.droppableId === "offer") {
-  //     joboffer = updatedList;
-  //   } else if (destination.droppableId === "rejected") {
-  //     jobrejected = updatedList;
-  //   }
+    if (destination.droppableId === "wishlist") {
+      jobwishlist = updatedList;
+    } else if (destination.droppableId === "applied") {
+      jobapplied = updatedList;
+    } else if (destination.droppableId === "interview") {
+      jobinteview = updatedList;
+    } else if (destination.droppableId === "offer") {
+      joboffer = updatedList;
+    } else if (destination.droppableId === "rejected") {
+      jobrejected = updatedList;
+    }
+  }
 
-  // }
+  }
 
   return (
     <>
-      <DragDropContext>
+      <DragDropContext onDragEnd={handleDragEnd}>
         <section id="boards" className=" overflow-x-hidden">
           <div className="flex flex-row">
             <div className="min-h-screen box-border  border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
