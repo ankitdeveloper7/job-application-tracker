@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { ActiveAtom, userAtom } from '../../store/atom';
 
+
 export default function Sidebar() {
 
   const setActiveSegment = useSetRecoilState(ActiveAtom);
