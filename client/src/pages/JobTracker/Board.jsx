@@ -20,7 +20,7 @@ function useJobdetail(n) {
       }
 
       )
-    }, n * 1000);
+    }, n*1000);
 
     axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
       headers: {

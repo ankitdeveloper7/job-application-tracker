@@ -18,7 +18,7 @@ function useContact(n){
             setContactdetail(res.data);
             console.log("till now code has ran successfully");
         })
-      }, n*1000);
+      }, n * 1000);
 
       axios.get(`${API_BASE_URL}/api/contact/getcontact`,{ headers:{
         "Content-Type": "application/json",
