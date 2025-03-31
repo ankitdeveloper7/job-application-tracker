@@ -129,7 +129,7 @@ export default function Header() {
                                 <p className="text-2xl mt-3 mb-3 text-[#190445CC]">
                                     Manage your job search in one place—log applications, check their status, and get reminders for interviews. Simplify your career journey today!
                                 </p>
-                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white">
+                                <button className="rounded-lg p-2 mt-2 bg-customColor text-white" href="/board">
                                     Sign up for free
                                 </button>
                             </div>

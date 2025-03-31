@@ -6,7 +6,8 @@ import './App.css'
 import Home from './pages/LandingPage/Home'
 import Signin from './pages/Auth/Signin'
 import Signup from './pages/Auth/Signup'
-import Dashboard from './pages/Dashboard/Dashboard'
+import Dashboard from './pages/Dashboard/Dashboard';
+import Board from './pages/JobTracker/Board'
 
 function App() {
  
@@ -21,7 +22,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Route path="/home" element={<Index />} /> */}
+        <Route path="/board" element={<Board />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
        
         {/* <Route path="/profile" element={<Profile />} />
