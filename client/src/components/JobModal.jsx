@@ -141,11 +141,11 @@ export default function JobModal({ isModalopen, onClose }) {
                 <hr />
                 <center>
                   <div className='m-2'>
-                    <button className="rounded-lg p-2 bg-customColor text-white" onClick={onClose}>
+                    <button className="rounded-lg p-2 bg-customColor px-4 text-white" onClick={onClose}>
                       Discard
                     </button>
 
-                    <button className="rounded-lg p-2 ml-3 bg-customColor text-white" onClick={saveData}>
+                    <button className="rounded-lg p-2 ml-3 bg-customColor px-4 text-white" onClick={saveData}>
                       Add Job
                     </button>
                   </div>

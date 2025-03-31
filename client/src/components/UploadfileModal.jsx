@@ -55,7 +55,7 @@ export default function UploadfileModal({fileuploadmodal, onClose}) {
         <center className='p-2'>
         <button onClick={onClose} className='border-2 rounded p-1'>
         cancel</button>
-        <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white' onClick={uploadfile}>Upload</button>
+        <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white px-4' onClick={uploadfile}>Upload</button>
         </center>
        
 

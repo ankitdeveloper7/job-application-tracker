@@ -59,7 +59,7 @@ function handleclickupload(){
        <hr  className='my-2'/>
 <center  className='m-2'>
 <button onClick={onClose} className='border-2 rounded p-1'>cancel</button>
-       <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white' onClick={saveDocument}>Create</button>
+       <button className='border-2 p-1 rounded ml-2 hover:bg-customColor hover:text-white px-2' onClick={saveDocument}>Create</button>
        
 </center>
 </div>

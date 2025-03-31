@@ -143,7 +143,7 @@ export default function Documentexport({ismodal, onClose,id , initialtitle, init
    </div>
    <hr />
    <center>
-   <button onClick={onClose} className='px-2 border-2 m-2 rounded'>cancel</button>
+   <button onClick={onClose} className='px-2 border-2 m-2 rounded px-2'>cancel</button>
    </center>
 
  </div>

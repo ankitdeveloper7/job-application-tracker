@@ -155,11 +155,11 @@ const sendData = async(e)=>{
    <hr />
    <center>
     <div className='m-2'>
-    <button className="rounded p-1 bg-customColor text-white" onClick={onClose}>
+    <button className="rounded p-1 px-2 bg-customColor text-white" onClick={onClose}>
                     Discard
                 </button>
     
-    <button className="rounded p-1 ml-3 bg-customColor text-white" onClick={sendData}>
+    <button className="rounded p-1 px-2 ml-3 bg-customColor text-white" onClick={sendData}>
                     Save Contacts
                 </button>
     </div>

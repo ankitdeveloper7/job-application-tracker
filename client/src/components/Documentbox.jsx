@@ -31,6 +31,7 @@ export default function Documentbox(props) {
         "Authorization":"Bearer " + localStorage.getItem("tokens")
       }
     });
+    console.log("data deleted succesfully")
     console.log(response);
     setoption(!option);
  }
