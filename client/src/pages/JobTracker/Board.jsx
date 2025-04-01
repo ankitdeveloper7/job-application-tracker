@@ -91,16 +91,13 @@ function Board() {
         }
       );
   
-      if (response.status === 200) {
-        const updatedJobDetail = jobdetail.map((job) =>
-          job._id === draggedItem.id ? { ...job, status: destination.droppableId } : job
-        );
-  
-        setJobdetails(updatedJobDetail); 
-        console.log("Job status updated successfully:", response.data);
-      } else {
-        console.error("Failed to update job status:", response.data);
-      }
+      const updatedData = await axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      
+      setJobdetails(updatedData.data);
     } catch (error) {
       console.error("Error updating job status:", error);
     }
