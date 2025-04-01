@@ -71,7 +71,7 @@ function Board() {
     if (source.droppableId === destination.droppableId) return; 
   
     const draggedItem = jobdetail.find(
-      (job) => job.id.toString() === result.draggableId
+      (job) => job._id.toString() === result.draggableId
     );
   
     if (!draggedItem) return;
@@ -93,7 +93,7 @@ function Board() {
   
       if (response.status === 200) {
         const updatedJobDetail = jobdetail.map((job) =>
-          job.id === draggedItem.id ? { ...job, status: destination.droppableId } : job
+          job._id === draggedItem.id ? { ...job, status: destination.droppableId } : job
         );
   
         setJobdetails(updatedJobDetail); 
