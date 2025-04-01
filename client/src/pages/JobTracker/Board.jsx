@@ -8,34 +8,30 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 function useJobdetail(n){
   const[job, setJob]= useState([]);
 
-  
-  useEffect(()=>{
-     const data = setInterval(()=>{
-      axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("token")
-      }}).then(res=>{
-        setJob(res.data)
+  useEffect(() => {
+    // Initial fetch
+    const fetchJobs = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token")
+          }
+        });
+        setJob(response.data);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
       }
-        
-      )
-     }, n*1000);
-     
-     axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + localStorage.getItem("token")
-    }}).then(res=>{
-      setJob(res.data)
-    }
-     
-     
-    )
+    };
 
-    return()=>{
-      clearInterval(data)
-    }
+    fetchJobs();
+    
+    // Set up interval for periodic updates
+    const interval = setInterval(fetchJobs, n * 1000);
+    
+    return () => clearInterval(interval);
+  }, [n]);
 
-  },[])
   return job;
 }
 
@@ -80,7 +76,7 @@ function Board() {
       const response = await axios.put(
         `${API_BASE_URL}/api/job/updatestatus`,
         {
-          id: draggedItem.id, 
+          id: draggedItem._id,
           newstatus: destination.droppableId,
         },
         {
@@ -90,6 +86,13 @@ function Board() {
           },
         }
       );
+  
+      const updatedJobs = jobdetail.map(job => 
+        job._id === draggedItem._id 
+          ? { ...job, status: destination.droppableId }
+          : job
+      );
+      setJobdetails(updatedJobs);
   
       const updatedData = await axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
         headers: {
@@ -118,7 +121,7 @@ function Board() {
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            <Droppable droppableId="whishlist">
+            <Droppable droppableId="wishlist">
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     {jobwishlist.map((item, index) => (
