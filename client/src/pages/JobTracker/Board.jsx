@@ -3,11 +3,12 @@ import Modal from '../../components/JobModal';
 import axios from 'axios';
 import JobBox from '../../components/JobBox';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function useJobdetail(n){
   const[job, setJob]= useState([]);
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  
   useEffect(()=>{
      const data = setInterval(()=>{
       axios.get(`${API_BASE_URL}/api/job/getjobdetails`,{ headers:{
@@ -39,45 +40,72 @@ function useJobdetail(n){
 }
 
 function Board() {
-  const[isModalopen, setModalopen] = useState(false);
+  const [isModalopen, setModalopen] = useState(false);
   const JobData = useJobdetail(3);
-  const[jobdetail, setJobdetails] = useState([]);
+  const [jobdetail, setJobdetails] = useState([]);
   
-  useEffect(()=>{
-      setJobdetails(JobData);
+  useEffect(() => {
+    setJobdetails(JobData);
   }, [JobData]);
+  
   console.log("this is job details", jobdetail);
-  const jobwishlist = jobdetail.filter( (item) => (item.status==="wishlist"));
-  const jobapplied = jobdetail.filter( (item) => (item.status==="applied"));
-  const jobinteview = jobdetail.filter( (item) => (item.status==="interview"));
-  const joboffer = jobdetail.filter( (item) => (item.status==="offer"));
-  const jobrejected = jobdetail.filter( (item) => (item.status==="rejected"));
-
-
-  function onpress2(){
+  
+  
+  const jobwishlist = jobdetail.filter((item) => item.status === "wishlist");
+  const jobapplied = jobdetail.filter((item) => item.status === "applied");
+  const jobinterview = jobdetail.filter((item) => item.status === "interview");
+  const joboffer = jobdetail.filter((item) => item.status === "offer");
+  const jobrejected = jobdetail.filter((item) => item.status === "rejected");
+  
+  function onpress2() {
     setModalopen(true);
   }
-  function handleCloseModal(){
+  function handleCloseModal() {
     setModalopen(false);
   }
-    function handleDragEnd(result) {
-      const { source, destination } = result;
-      if (!destination) return;
-      if (source.droppableId === destination.droppableId) return;
   
-      const draggedItem = jobdetail.find(
-        (job) => job.id.toString() === result.draggableId
+  async function handleDragEnd(result) {
+    const { source, destination } = result;
+    
+    if (!destination) return;  
+    if (source.droppableId === destination.droppableId) return; 
+  
+    const draggedItem = jobdetail.find(
+      (job) => job.id.toString() === result.draggableId
+    );
+  
+    if (!draggedItem) return;
+  
+    try {
+      const response = await axios.put(
+        `${API_BASE_URL}/api/job/updatestatus`,
+        {
+          jobId: draggedItem.id, 
+          status: destination.droppableId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
       );
   
-      if (!draggedItem) return;
-
-      const updatedJobDetail = jobdetail.map((job) =>
-        job.id === draggedItem.id ? { ...job, status: destination.droppableId } : job
-      );
+      if (response.status === 200) {
+        const updatedJobDetail = jobdetail.map((job) =>
+          job.id === draggedItem.id ? { ...job, status: destination.droppableId } : job
+        );
   
-      setJobdetails(updatedJobDetail);
+        setJobdetails(updatedJobDetail); 
+        console.log("Job status updated successfully:", response.data);
+      } else {
+        console.error("Failed to update job status:", response.data);
+      }
+    } catch (error) {
+      console.error("Error updating job status:", error);
     }
-
+  }
+  
   return (
     <>
     <DragDropContext onDragEnd={handleDragEnd}>
