@@ -9,7 +9,7 @@ function useJobdetail(n){
   const[job, setJob]= useState([]);
 
   useEffect(() => {
-    // Initial fetch
+   
     const fetchJobs = async () => {
       try {
         const response = await axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
@@ -26,7 +26,7 @@ function useJobdetail(n){
 
     fetchJobs();
     
-    // Set up interval for periodic updates
+   
     const interval = setInterval(fetchJobs, n * 1000);
     
     return () => clearInterval(interval);
@@ -61,18 +61,30 @@ function Board() {
   }
   
   async function handleDragEnd(result) {
+    console.log("Drag end triggered", result); 
+    
     const { source, destination } = result;
     
-    if (!destination) return;  
-    if (source.droppableId === destination.droppableId) return; 
-  
+    if (!destination) {
+      console.log("No destination, returning"); 
+      return;
+    }  
+    if (source.droppableId === destination.droppableId) {
+      console.log("Same source and destination, returning");
+    }
+    
     const draggedItem = jobdetail.find(
       (job) => job._id.toString() === result.draggableId
     );
-  
-    if (!draggedItem) return;
-  
-    // Optimistically update the UI first
+    
+    if (!draggedItem) {
+      console.log("No dragged item found", result.draggableId);
+      return;
+    }
+    
+    console.log("Updating item:", draggedItem); 
+    
+   
     const updatedJobs = jobdetail.map(job => 
       job._id === draggedItem._id 
         ? { ...job, status: destination.droppableId }
@@ -81,8 +93,8 @@ function Board() {
     setJobdetails(updatedJobs);
     
     try {
-      // Then update the backend
-      await axios.put(
+      
+      const response = await axios.put(
         `${API_BASE_URL}/api/job/updatestatus`,
         {
           id: draggedItem._id,
@@ -95,8 +107,9 @@ function Board() {
           },
         }
       );
+      console.log("Update successful:", response.data); 
     } catch (error) {
-      // If the update fails, revert the optimistic update
+      
       console.error("Error updating job status:", error);
       setJobdetails(jobdetail);
     }
@@ -119,12 +132,24 @@ function Board() {
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
             <Droppable droppableId="wishlist">
                 {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <div ref={provided.innerRef} {...provided.droppableProps} className="flex-1 overflow-y-auto">
                     {jobwishlist.map((item, index) => (
                       <Draggable key={item._id} draggableId={item._id} index={index}>
-                        {(provided) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <JobBox title={item.title} company={item.company} />
+                        {(provided, snapshot) => (
+                          <div 
+                            ref={provided.innerRef} 
+                            {...provided.draggableProps} 
+                            {...provided.dragHandleProps}
+                            style={{
+                              ...provided.draggableProps.style,
+                              marginBottom: '8px'
+                            }}
+                          >
+                            <JobBox 
+                              title={item.title} 
+                              company={item.company}
+                              isDragging={snapshot.isDragging}
+                            />
                           </div>
                         )}
                       </Draggable>
