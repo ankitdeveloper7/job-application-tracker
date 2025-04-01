@@ -40,7 +40,12 @@ function useJobdetail(n){
 
 function Board() {
   const[isModalopen, setModalopen] = useState(false);
-  const jobdetail = useJobdetail(3);
+  const JobData = useJobdetail(3);
+  const[jobdetail, setJobdetails] = useState([]);
+  
+  useEffect(()=>{
+      setJobdetails(JobData);
+  }, [])
   const jobwishlist = jobdetail.filter( (item) => (item.status==="wishlist"));
   const jobapplied = jobdetail.filter( (item) => (item.status==="applied"));
   const jobinteview = jobdetail.filter( (item) => (item.status==="interview"));
@@ -54,41 +59,23 @@ function Board() {
   function handleCloseModal(){
     setModalopen(false);
   }
-  function handleDragEnd(result){
-    const{source, destination} = result;
-    if(!destination.droppableId) return;
-    if(source.droppableId===destination.droppableId) return;
-    let updatedList;
+    function handleDragEnd(result) {
+      const { source, destination } = result;
+      if (!destination) return;
+      if (source.droppableId === destination.droppableId) return;
+  
+      const draggedItem = jobdetail.find(
+        (job) => job.id.toString() === result.draggableId
+      );
+  
+      if (!draggedItem) return;
 
-    if (source.droppableId === "wishlist") {
-      updatedList = Array.from(jobwishlist);
-    } else if (source.droppableId === "applied") {
-      updatedList = Array.from(jobapplied);
-    } else if (source.droppableId === "interview") {
-      updatedList = Array.from(jobinteview);
-    } else if (source.droppableId === "offer") {
-      updatedList = Array.from(joboffer);
-    } else if (source.droppableId === "rejected") {
-      updatedList = Array.from(jobrejected);
+      const updatedJobDetail = jobdetail.map((job) =>
+        job.id === draggedItem.id ? { ...job, status: destination.droppableId } : job
+      );
+  
+      setJobdetails(updatedJobDetail);
     }
-    const[dragedItem] = updatedList.splice(index, 1);
-    if (destination.droppableId === "wishlist") {
-      jobwishlist.splice(destination.droppableId, 0, dragedItem);      
-      // jobwishlist = jobwishlist
-    } else if (destination.droppableId === "applied") {
-      jobapplied.splice(destination.droppableId, 0, dragedItem);      
-      // jobap = jobwishlist
-    } else if (destination.droppableId === "interview") {
-      jobinteview.splice(destination.droppableId, 0, dragedItem);      
-      // jobwishlist = jobwishlist
-    } else if (destination.droppableId === "offer") {
-      joboffer.splice(destination.droppableId, 0, dragedItem);      
-      // jobwishlist = jobwishlist
-    } else if (destination.droppableId === "rejected") {
-      jobrejected.splice(destination.droppableId, 0, dragedItem);      
-      // jobwishlist = jobwishlist
-    }
-  }
 
   return (
     <>
