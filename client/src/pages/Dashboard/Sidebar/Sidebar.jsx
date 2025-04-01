@@ -58,9 +58,6 @@ export default function Sidebar() {
 
           <div className="flex justify-between mt-3 text-t2 text-xs">
             My Job Trackers?
-            {/* <button aria-label="Add a new job tracker">
-            <span className="material-symbols-outlined align-bottom">add</span>
-          </button> */}
           </div>
           <p
             className="mt-3 text-t1" onClick={() => setActiveSegment("jobtracker")}

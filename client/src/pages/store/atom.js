@@ -4,7 +4,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const ActiveAtom = atom({
     key: "ActiveAtom",
-    default: "index"
+    default: "welcome"
 });
 
 export const userAtom = atom({
