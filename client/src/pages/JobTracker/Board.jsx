@@ -72,8 +72,17 @@ function Board() {
   
     if (!draggedItem) return;
   
+    // Optimistically update the UI first
+    const updatedJobs = jobdetail.map(job => 
+      job._id === draggedItem._id 
+        ? { ...job, status: destination.droppableId }
+        : job
+    );
+    setJobdetails(updatedJobs);
+    
     try {
-      const response = await axios.put(
+      // Then update the backend
+      await axios.put(
         `${API_BASE_URL}/api/job/updatestatus`,
         {
           id: draggedItem._id,
@@ -86,23 +95,10 @@ function Board() {
           },
         }
       );
-  
-      const updatedJobs = jobdetail.map(job => 
-        job._id === draggedItem._id 
-          ? { ...job, status: destination.droppableId }
-          : job
-      );
-      setJobdetails(updatedJobs);
-  
-      const updatedData = await axios.get(`${API_BASE_URL}/api/job/getjobdetails`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
-      
-      setJobdetails(updatedData.data);
     } catch (error) {
+      // If the update fails, revert the optimistic update
       console.error("Error updating job status:", error);
+      setJobdetails(jobdetail);
     }
   }
   
