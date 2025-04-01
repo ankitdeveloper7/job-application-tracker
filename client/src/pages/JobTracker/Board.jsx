@@ -118,163 +118,256 @@ function Board() {
   return (
     <>
     <DragDropContext onDragEnd={handleDragEnd}>
-      <section id="boards" className=" overflow-x-hidden">
+      <section id="boards" className="overflow-x-hidden">
         <div className="flex flex-row">
-          <div className="min-h-screen box-border  border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                star
-              </span>
-               <span className='ml-[40px] text-t1 font-[600]'> WISHLIST</span>
-                <center>{jobwishlist.length} JOBS</center>
+          <div className="min-h-screen box-border border-r-2 inline-block align-top flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
+            <div className='align-bottom pb-[30px] inline'>
+              <span className="material-symbols-outlined">star</span>
+              <span className='ml-[40px] text-t1 font-[600]'> WISHLIST</span>
+              <center>{jobwishlist.length} JOBS</center>
             </div>
 
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
+            <button className='text-t1 border p-2 rounded' onClick={onpress2}>
+              <span className="material-symbols-outlined align-bottom">add</span>
+            </button>
             <Droppable droppableId="wishlist">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps} className="flex-1 overflow-y-auto">
-                    {jobwishlist.map((item, index) => (
-                      <Draggable key={item._id} draggableId={item._id} index={index}>
-                        {(provided, snapshot) => (
-                          <div 
-                            ref={provided.innerRef} 
-                            {...provided.draggableProps} 
-                            {...provided.dragHandleProps}
-                            style={{
-                              ...provided.draggableProps.style,
-                              marginBottom: '8px'
-                            }}
-                          >
-                            <JobBox 
-                              title={item.title} 
-                              company={item.company}
-                              isDragging={snapshot.isDragging}
-                            />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-
+              {(provided) => (
+                <div 
+                  ref={provided.innerRef} 
+                  {...provided.droppableProps} 
+                  className="flex-1 overflow-y-auto min-h-[200px]"
+                >
+                  {jobwishlist.map((item, index) => (
+                    <Draggable 
+                      key={item._id} 
+                      draggableId={item._id} 
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div 
+                          ref={provided.innerRef} 
+                          {...provided.draggableProps} 
+                          {...provided.dragHandleProps}
+                          style={{
+                            ...provided.draggableProps.style,
+                            marginBottom: '8px',
+                            opacity: snapshot.isDragging ? 0.8 : 1
+                          }}
+                        >
+                          <JobBox 
+                            title={item.title} 
+                            company={item.company}
+                            isDragging={snapshot.isDragging}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
 
-          <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                draft
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>APPLIED</span>
-                <center>{jobapplied.length} JOBS</center>
+          <div className="min-h-screen box-border border-r-2 inline-block align-top flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
+            <div className='align-bottom pb-[30px] inline'>
+              <span className="material-symbols-outlined">draft</span>
+              <span className='ml-11 text-t1 font-[600]'>APPLIED</span>
+              <center>{jobapplied.length} JOBS</center>
             </div>
 
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
+            <button className='text-t1 border p-2 rounded' onClick={onpress2}>
+              <span className="material-symbols-outlined align-bottom">add</span>
+            </button>
             <Droppable droppableId="applied">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {jobapplied.map((item, index) => (
-                      <Draggable key={item._id} draggableId={item._id} index={index}>
-                        {(provided) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <JobBox title={item.title} company={item.company} />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+              {(provided) => (
+                <div 
+                  ref={provided.innerRef} 
+                  {...provided.droppableProps} 
+                  className="flex-1 overflow-y-auto min-h-[200px]"
+                >
+                  {jobapplied.map((item, index) => (
+                    <Draggable 
+                      key={item._id} 
+                      draggableId={item._id} 
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div 
+                          ref={provided.innerRef} 
+                          {...provided.draggableProps} 
+                          {...provided.dragHandleProps}
+                          style={{
+                            ...provided.draggableProps.style,
+                            marginBottom: '8px',
+                            opacity: snapshot.isDragging ? 0.8 : 1
+                          }}
+                        >
+                          <JobBox 
+                            title={item.title} 
+                            company={item.company}
+                            isDragging={snapshot.isDragging}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
-          <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                business_center
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>INTERVIEW</span>
-                <center>{jobinterview.length} JOBS</center>
+
+          <div className="min-h-screen box-border border-r-2 inline-block align-top flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
+            <div className='align-bottom pb-[30px] inline'>
+              <span className="material-symbols-outlined">business_center</span>
+              <span className='ml-11 text-t1 font-[600]'>INTERVIEW</span>
+              <center>{jobinterview.length} JOBS</center>
             </div>
 
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
+            <button className='text-t1 border p-2 rounded' onClick={onpress2}>
+              <span className="material-symbols-outlined align-bottom">add</span>
+            </button>
             <Droppable droppableId="interview">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {jobinterview.map((item, index) => (
-                      <Draggable key={item._id} draggableId={item._id} index={index}>
-                        {(provided) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <JobBox title={item.title} company={item.company} />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+              {(provided) => (
+                <div 
+                  ref={provided.innerRef} 
+                  {...provided.droppableProps} 
+                  className="flex-1 overflow-y-auto min-h-[200px]"
+                >
+                  {jobinterview.map((item, index) => (
+                    <Draggable 
+                      key={item._id} 
+                      draggableId={item._id} 
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div 
+                          ref={provided.innerRef} 
+                          {...provided.draggableProps} 
+                          {...provided.dragHandleProps}
+                          style={{
+                            ...provided.draggableProps.style,
+                            marginBottom: '8px',
+                            opacity: snapshot.isDragging ? 0.8 : 1
+                          }}
+                        >
+                          <JobBox 
+                            title={item.title} 
+                            company={item.company}
+                            isDragging={snapshot.isDragging}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
-          <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                emoji_events
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>OFFER</span>
-                <center>{joboffer.length} JOBS</center>
+
+          <div className="min-h-screen box-border border-r-2 inline-block align-top flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
+            <div className='align-bottom pb-[30px] inline'>
+              <span className="material-symbols-outlined">emoji_events</span>
+              <span className='ml-11 text-t1 font-[600]'>OFFER</span>
+              <center>{joboffer.length} JOBS</center>
             </div>
 
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
+            <button className='text-t1 border p-2 rounded' onClick={onpress2}>
+              <span className="material-symbols-outlined align-bottom">add</span>
+            </button>
             <Droppable droppableId="offer">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {joboffer.map((item, index) => (
-                      <Draggable key={item._id} draggableId={item._id} index={index}>
-                        {(provided) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <JobBox title={item.title} company={item.company} />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+              {(provided) => (
+                <div 
+                  ref={provided.innerRef} 
+                  {...provided.droppableProps} 
+                  className="flex-1 overflow-y-auto min-h-[200px]"
+                >
+                  {joboffer.map((item, index) => (
+                    <Draggable 
+                      key={item._id} 
+                      draggableId={item._id} 
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div 
+                          ref={provided.innerRef} 
+                          {...provided.draggableProps} 
+                          {...provided.dragHandleProps}
+                          style={{
+                            ...provided.draggableProps.style,
+                            marginBottom: '8px',
+                            opacity: snapshot.isDragging ? 0.8 : 1
+                          }}
+                        >
+                          <JobBox 
+                            title={item.title} 
+                            company={item.company}
+                            isDragging={snapshot.isDragging}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
-          <div className="min-h-screen box-border  inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
-            <div className=' align-bottom pb-[30px] inline'>
-              <span className="material-symbols-outlined">
-                thumb_down
-              </span>
-               <span className='ml-11 text-t1 font-[600]'>REJECTED</span>
-                <center>{jobrejected.length} JOBS</center>
+
+          <div className="min-h-screen box-border inline-block align-top flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
+            <div className='align-bottom pb-[30px] inline'>
+              <span className="material-symbols-outlined">thumb_down</span>
+              <span className='ml-11 text-t1 font-[600]'>REJECTED</span>
+              <center>{jobrejected.length} JOBS</center>
             </div>
 
-            <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
+            <button className='text-t1 border p-2 rounded' onClick={onpress2}>
+              <span className="material-symbols-outlined align-bottom">add</span>
+            </button>
             <Droppable droppableId="rejected">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {jobrejected.map((item, index) => (
-                      <Draggable key={item._id} draggableId={item._id} index={index}>
-                        {(provided) => (
-                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <JobBox title={item.title} company={item.company} />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+              {(provided) => (
+                <div 
+                  ref={provided.innerRef} 
+                  {...provided.droppableProps} 
+                  className="flex-1 overflow-y-auto min-h-[200px]"
+                >
+                  {jobrejected.map((item, index) => (
+                    <Draggable 
+                      key={item._id} 
+                      draggableId={item._id} 
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div 
+                          ref={provided.innerRef} 
+                          {...provided.draggableProps} 
+                          {...provided.dragHandleProps}
+                          style={{
+                            ...provided.draggableProps.style,
+                            marginBottom: '8px',
+                            opacity: snapshot.isDragging ? 0.8 : 1
+                          }}
+                        >
+                          <JobBox 
+                            title={item.title} 
+                            company={item.company}
+                            isDragging={snapshot.isDragging}
+                          />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
         </div>
       </section>
-      
-      
     </DragDropContext>
-      <Modal isModalopen={isModalopen} onClose={handleCloseModal} />
+    <Modal isModalopen={isModalopen} onClose={handleCloseModal} />
     </>
   );
 }
