@@ -14,7 +14,7 @@ export default function Profile() {
    <Documentbox id={item._id} title={item.title} description={item.description} />
     ))} */}
 
-    <p>this is user detils :- {user}</p>
+    <p>this is profile section</p>
     </>
     
   )
