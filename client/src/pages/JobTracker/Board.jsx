@@ -173,7 +173,7 @@ function Board() {
                 business_center
               </span>
                <span className='ml-11 text-t1 font-[600]'>INTERVIEW</span>
-                <center>{jobinteview.length} JOBS</center>
+                <center>{jobinterview.length} JOBS</center>
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
