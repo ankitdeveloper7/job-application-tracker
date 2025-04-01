@@ -41,7 +41,7 @@ function useJobdetail(n){
 
 function Board() {
   const [isModalopen, setModalopen] = useState(false);
-  const JobData = useJobdetail(3);
+  const JobData = useJobdetail(10);
   const [jobdetail, setJobdetails] = useState([]);
   
   useEffect(() => {
