@@ -54,10 +54,45 @@ function Board() {
   function handleCloseModal(){
     setModalopen(false);
   }
+  function handleDragEnd(result){
+    const{source, destination} = result;
+    if(!destination.droppableId) return;
+    if(source.droppableId===destination.droppableId) return;
+    let updatedList;
+
+    if (source.droppableId === "wishlist") {
+      updatedList = Array.from(jobwishlist);
+    } else if (source.droppableId === "applied") {
+      updatedList = Array.from(jobapplied);
+    } else if (source.droppableId === "interview") {
+      updatedList = Array.from(jobinteview);
+    } else if (source.droppableId === "offer") {
+      updatedList = Array.from(joboffer);
+    } else if (source.droppableId === "rejected") {
+      updatedList = Array.from(jobrejected);
+    }
+    const[dragedItem] = updatedList.splice(index, 1);
+    if (destination.droppableId === "wishlist") {
+      jobwishlist.splice(destination.droppableId, 0, dragedItem);      
+      // jobwishlist = jobwishlist
+    } else if (destination.droppableId === "applied") {
+      jobapplied.splice(destination.droppableId, 0, dragedItem);      
+      // jobap = jobwishlist
+    } else if (destination.droppableId === "interview") {
+      jobinteview.splice(destination.droppableId, 0, dragedItem);      
+      // jobwishlist = jobwishlist
+    } else if (destination.droppableId === "offer") {
+      joboffer.splice(destination.droppableId, 0, dragedItem);      
+      // jobwishlist = jobwishlist
+    } else if (destination.droppableId === "rejected") {
+      jobrejected.splice(destination.droppableId, 0, dragedItem);      
+      // jobwishlist = jobwishlist
+    }
+  }
 
   return (
     <>
-    <DragDropContext>
+    <DragDropContext onDragEnd={handleDragEnd}>
       <section id="boards" className=" overflow-x-hidden">
         <div className="flex flex-row">
           <div className="min-h-screen box-border  border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
