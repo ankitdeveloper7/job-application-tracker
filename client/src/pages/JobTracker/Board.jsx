@@ -80,8 +80,8 @@ function Board() {
       const response = await axios.put(
         `${API_BASE_URL}/api/job/updatestatus`,
         {
-          jobId: draggedItem.id, 
-          status: destination.droppableId,
+          id: draggedItem.id, 
+          newstatus: destination.droppableId,
         },
         {
           headers: {
@@ -180,7 +180,7 @@ function Board() {
             <Droppable droppableId="interview">
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {jobinteview.map((item, index) => (
+                    {jobinterview.map((item, index) => (
                       <Draggable key={item._id} draggableId={item._id} index={index}>
                         {(provided) => (
                           <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
