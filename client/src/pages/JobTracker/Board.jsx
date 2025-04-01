@@ -45,7 +45,8 @@ function Board() {
   
   useEffect(()=>{
       setJobdetails(JobData);
-  }, [])
+  }, [JobData]);
+  console.log("this is job details", jobdetail);
   const jobwishlist = jobdetail.filter( (item) => (item.status==="wishlist"));
   const jobapplied = jobdetail.filter( (item) => (item.status==="applied"));
   const jobinteview = jobdetail.filter( (item) => (item.status==="interview"));
