@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from '../../components/JobModal';
 import axios from 'axios';
 import JobBox from '../../components/JobBox';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 function useJobdetail(n){
   const[job, setJob]= useState([]);
@@ -56,6 +57,7 @@ function Board() {
 
   return (
     <>
+    <DragDropContext>
       <section id="boards" className=" overflow-x-hidden">
         <div className="flex flex-row">
           <div className="min-h-screen box-border  border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
@@ -68,10 +70,22 @@ function Board() {
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-           {jobwishlist.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
-            
+            <Droppable droppableId="whishlist">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {jobwishlist.map((item, index) => (
+                      <Draggable key={item._id} draggableId={item._id} index={index}>
+                        {(provided) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <JobBox title={item.title} company={item.company} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
 
           </div>
 
@@ -85,9 +99,22 @@ function Board() {
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {jobapplied.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
+            <Droppable droppableId="applied">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {jobapplied.map((item, index) => (
+                      <Draggable key={item._id} draggableId={item._id} index={index}>
+                        {(provided) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <JobBox title={item.title} company={item.company} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
           </div>
           <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
@@ -99,9 +126,22 @@ function Board() {
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {jobinteview.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
+            <Droppable droppableId="interview">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {jobinteview.map((item, index) => (
+                      <Draggable key={item._id} draggableId={item._id} index={index}>
+                        {(provided) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <JobBox title={item.title} company={item.company} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
           </div>
           <div className="min-h-screen box-border border-r-2 inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
@@ -113,9 +153,22 @@ function Board() {
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {joboffer.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
+            <Droppable droppableId="offer">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {joboffer.map((item, index) => (
+                      <Draggable key={item._id} draggableId={item._id} index={index}>
+                        {(provided) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <JobBox title={item.title} company={item.company} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
           </div>
           <div className="min-h-screen box-border  inline-block align-top  flex flex-col w-[260px] h-full pt-[30px] pr-[10px] pb-0 pl-[10px]">
             <div className=' align-bottom pb-[30px] inline'>
@@ -127,12 +180,28 @@ function Board() {
             </div>
 
             <button className='text-t1 border p-2 rounded' onClick={onpress2}><span className="material-symbols-outlined align-bottom">add</span></button>
-            {jobrejected.map((item)=>(
-            <JobBox title={item.title} company={item.company} />
-           ))}
+            <Droppable droppableId="rejected">
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    {jobrejected.map((item, index) => (
+                      <Draggable key={item._id} draggableId={item._id} index={index}>
+                        {(provided) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <JobBox title={item.title} company={item.company} />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
           </div>
         </div>
       </section>
+      
+      
+    </DragDropContext>
       <Modal isModalopen={isModalopen} onClose={handleCloseModal} />
     </>
   );

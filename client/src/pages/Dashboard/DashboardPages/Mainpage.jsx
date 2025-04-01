@@ -1,5 +1,5 @@
 import React from 'react'
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { ActiveAtom } from '../../store/atom';
 import Welcome from './Welcome';
 import Contact from './Contact';
