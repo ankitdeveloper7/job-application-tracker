@@ -65,7 +65,7 @@ export default function Signup() {
             <form action="#" method="POST" className="space-y-6">
                <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Name
+                 Full Name
                 </label>
                 <div className="mt-2">
                   <input
@@ -93,7 +93,7 @@ export default function Signup() {
                     type="email"
                     required
                     autoComplete="email"
-                    className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     onChange={((e)=>{
                       setEmail(e.target.value)
                     })}
@@ -114,7 +114,7 @@ export default function Signup() {
                     type="password"
                     required
                     autoComplete="current-password"
-                    className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="p-2 block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     onChange={((e)=>{
                       setPassword(e.target.value)
                     })}
@@ -131,7 +131,7 @@ export default function Signup() {
                   {loading? "Signing up...": "Sign up"}
                 </button>
                
-                   <center className="mt-4 mb-4">or</center>
+                   {/* <center className="mt-4 mb-4">or</center>
                     <button
                   type="submit"
                   className=" mt-3 flex w-full justify-center rounded-md bg-white-600 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:border-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -143,7 +143,7 @@ export default function Signup() {
                   className=" mt-3 flex w-full justify-center rounded-md bg-white-600 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:border-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   <FontAwesomeIcon icon={faApple} size="xl" /> &nbsp; Continue with Apple
-                </button>
+                </button> */}
                 
                 </div>
                 </form>

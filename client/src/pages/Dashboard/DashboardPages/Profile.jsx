@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Documentbox from '../../../components/Documentbox';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../../store/atom';
+import Contactbox from '../../../components/Contactbox';
 
 export default function Profile() {
 
@@ -10,11 +11,11 @@ export default function Profile() {
   
   return (
     <>
-    {/* {userdata.map((item)=>(
-   <Documentbox id={item._id} title={item.title} description={item.description} />
-    ))} */}
-
-    <p>this is profile section</p>
+    {/* <Contactbox name="google" jobtitle="software engineer" companies="microsoft" />
+    <Contactbox name="google" jobtitle="software engineer" companies="microsoft" />
+    <Contactbox name="google" jobtitle="software engineer" companies="microsoft" />
+    <Contactbox name="google" jobtitle="software engineer" companies="microsoft" />
+    <Contactbox name="google" jobtitle="software engineer" companies="microsoft" /> */}
     </>
     
   )

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineLocalPhone } from "react-icons/md";
@@ -6,10 +6,21 @@ import { CiMail } from "react-icons/ci";
 import { IoEllipsisVerticalOutline } from "react-icons/io5";
 
 export default function Contactbox(props) {
+    const[option, setOption] = useState(false);
+
+    function onpress(){
+        setOption(!option);
+    }
+    function editcontact(){
+        alert("contact edited successully")
+    }
+    function deletecon(){
+        alert("deleted contact")
+    }
     return (
         <>
             <div className='inline-block m-2 w-full max-w-80 border-2 rounded shadow-xl'>
-                <div className='grid grid-cols-3 gap-2 p-2'>
+                <div className='relative grid grid-cols-3 gap-2 p-2'>
                     <div>
                        <FaRegUserCircle size={80} />
                     </div>
@@ -18,10 +29,15 @@ export default function Contactbox(props) {
                         <p className="text-[#190445b3] text-sm text-400 leading-[21px]">{props.jobtitle}</p>
                         <p className="text-[#19044566] text-400 text-[13px] leading-[21px]">{props.companies}</p>
                     </div>
-                    <button className='relative left-[30px]' >
-                        <IoEllipsisVerticalOutline  />
-                    </button>
+                    <button className='absolute right-2 top-6' onClick={onpress}><IoEllipsisVerticalOutline  /> </button>
+                            {option && (
+                      <div className="w-42 border border-gray-300 shadow-lg absolute right-3 top-8 bg-white z-50 rounded-md">
+                        <div className="border-b px-4 py-2 hover:bg-gray-100 cursor-pointer"  onClick={editcontact}>Edit Document</div>
+                        <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={deletecon}>Delete Document</div>
+                      </div>
+                      )}
                 </div>
+                
 
                 <hr />
                 <div className='p-2 '>

@@ -7,6 +7,11 @@ export const ActiveAtom = atom({
     default: "welcome"
 });
 
+export const deletedocAtom = atom({
+    key:"deletedocAtom",
+    default:""
+})
+
 export const userAtom = atom({
     key: "userAtom",
     default: selector({

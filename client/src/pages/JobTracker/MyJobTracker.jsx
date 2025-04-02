@@ -33,9 +33,6 @@ export default function MyJobTracker() {
     <div>
       <div className="list-none border-b-2 fixed flex  w-[100vw]">
         <div className="inline-block flex justify-between">
-        {/* <li className="m-3 text-t1 inline-block">
-          <span className="pl-1 align-bottom text-base font-[600]">Job Search 2024</span>
-        </li> */}
         <div className="order-2">
         <div className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("boards")}>
           <span className="material-symbols-outlined align-bottom">home</span>
@@ -46,11 +43,6 @@ export default function MyJobTracker() {
           <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Activities</span>
         </div>
         </div>
-        
-        {/* <li className="m-3 text-t1 inline-block" onClick={() => setActiveSegment("aicoverletters")}>
-          <span className="material-symbols-outlined align-bottom">hotel_class</span>
-          <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Metricsics</span>
-        </li> */}
         <div className="order-3">
         <div className="m-1 text-t1 inline-block ">
             <button className="rounded-lg p-1 mt-2 bg-customColor text-white" onClick={onpress2}>
