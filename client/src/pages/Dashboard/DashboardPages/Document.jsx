@@ -65,7 +65,7 @@ export default function Document() {
       }
     });
     console.log(response.data)
-    setDocument(prevNotes => prevNotes.filter(note => note.id !== id));
+    setDocument(docdetails => docdetails.filter(note => note.id !== _id));
     console.log(`updated setdocument of this is ${id}`)
   }
 
