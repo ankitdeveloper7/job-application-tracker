@@ -24,7 +24,7 @@ export default function Documentbox(props) {
 
   function deletedoc(){  
     setoption(!option);
-    props.ondeonDele();
+    props.ondeonDelete();
  }
  
 
