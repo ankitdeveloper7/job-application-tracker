@@ -15,7 +15,12 @@ export default function Contactbox(props) {
         alert("contact edited successully")
     }
     function deletecon(){
-        alert("deleted contact")
+       let count=0;
+        console.log("this function is runnig many time", count);
+        count++;
+        setOption(!option);
+       props.ondeleteContact();
+       
     }
     return (
         <>

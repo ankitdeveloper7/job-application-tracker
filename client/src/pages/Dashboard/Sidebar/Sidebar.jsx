@@ -80,7 +80,7 @@ export default function Sidebar() {
             <p className="mt-1  text-t1 border p-2 rounded flex flex-row justify-between">
               <div className=''>
                 <span className="material-symbols-outlined align-bottom">account_circle</span>
-                <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">{user.name} </span>
+                {/* <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">{user.name} </span> */}
               </div>
               <div className='inline-block'>
                 <button className="" aria-label="Settings" onClick={loginout}>

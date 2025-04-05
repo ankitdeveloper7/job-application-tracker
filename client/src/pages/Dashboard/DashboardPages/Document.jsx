@@ -5,12 +5,13 @@ import axios from 'axios';
 import Documentbox from '../../../components/Documentbox';
 import { useRecoilValue } from 'recoil';
 import { deletedocAtom } from '../../store/atom';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 function useDocument(n) {
   const [documentdata, setDocumentdata] = useState([]);
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
+  
   useEffect(() => {
 
     const response = setInterval(() => {
@@ -54,7 +55,16 @@ export default function Document() {
   }, [docdata])
   console.log("this is document data", docdetails)
 
-  function handleDeleteNote(id){
+ async function handleDeleteNote(id){
+    const response =  await axios({
+      method:'delete',
+      url:`${API_BASE_URL}/api/document/deletedocument/${id}`,
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer " + localStorage.getItem("tokens")
+      }
+    });
+    console.log(response.data)
     setDocument(prevNotes => prevNotes.filter(note => note.id !== id));
     console.log(`updated setdocument of this is ${id}`)
   }
