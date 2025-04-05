@@ -46,10 +46,10 @@ export default function Document() {
   const [isModalOpen, setModal] = useState(false);
   const docdata = useDocument(3);
   const[docdetails, setDocument] = useState(docdata);
-  console.log("this is document data", docdata)
+  console.log("this is document data", docdetails)
 
   function handleDeleteNote(id){
-    
+    setDocument(prevNotes => prevNotes.filter(note => note.id !== id));
   }
 
   function onPressD() {
