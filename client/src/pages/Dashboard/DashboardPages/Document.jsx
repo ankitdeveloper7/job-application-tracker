@@ -56,6 +56,7 @@ export default function Document() {
 
   function handleDeleteNote(id){
     setDocument(prevNotes => prevNotes.filter(note => note.id !== id));
+    console.log(`updated setdocument of this is ${id}`)
   }
 
   function onPressD() {
