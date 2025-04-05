@@ -94,7 +94,7 @@ export default function Document() {
 
         <div className='ml-8'>
        {docdetails.map( (item) =>(
-      <Documentbox id={item._id} title={item.title} description={item.description} category={item.category} ondeonDelete={() => handleDeleteNote(note._id)}/>
+      <Documentbox id={item._id} title={item.title} description={item.description} category={item.category} ondeonDelete={() => handleDeleteNote(item._id)}/>
        ))}
 
         </div>

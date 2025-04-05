@@ -20,12 +20,11 @@ export default function Documentbox(props) {
   setModalopen(true);
   setoption(!option);
  }
- const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+ 
 
   function deletedoc(){  
     setoption(!option);
     props.ondeonDele();
-    
  }
  
 
