@@ -45,7 +45,13 @@ function useDocument(n) {
 export default function Document() {
   const [isModalOpen, setModal] = useState(false);
   const docdata = useDocument(3);
-  const[docdetails, setDocument] = useState(docdata);
+  const[docdetails, setDocument] = useState(null);
+
+  useEffect(()=>{
+    if(docdata){
+      setDocument(docdata)
+    }
+  }, [docdata])
   console.log("this is document data", docdetails)
 
   function handleDeleteNote(id){
