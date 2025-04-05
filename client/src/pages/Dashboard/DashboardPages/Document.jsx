@@ -45,7 +45,7 @@ function useDocument(n) {
 export default function Document() {
   const [isModalOpen, setModal] = useState(false);
   const docdata = useDocument(3);
-  const[docdetails, setDocument] = useState(null);
+  const[docdetails, setDocument] = useState([]);
 
   useEffect(()=>{
     if(docdata){
