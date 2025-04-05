@@ -32,8 +32,8 @@ export default function Contactbox(props) {
                     <button className='absolute right-2 top-6' onClick={onpress}><IoEllipsisVerticalOutline  /> </button>
                             {option && (
                       <div className="w-42 border border-gray-300 shadow-lg absolute right-3 top-8 bg-white z-50 rounded-md">
-                        <div className="border-b px-4 py-2 hover:bg-gray-100 cursor-pointer"  onClick={editcontact}>Edit Document</div>
-                        <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={deletecon}>Delete Document</div>
+                        <div className="border-b px-4 py-2 hover:bg-gray-100 cursor-pointer"  onClick={editcontact}>Edit Contact</div>
+                        <div className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={deletecon}>Delete Contact</div>
                       </div>
                       )}
                 </div>

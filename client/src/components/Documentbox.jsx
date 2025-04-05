@@ -32,7 +32,9 @@ export default function Documentbox(props) {
       }
     });
     console.log("data deleted succesfully")
-    console.log(response);
+    if(props.ndeonDelete){
+      props.ndeonDelete();
+    }
     setoption(!option);
  }
  

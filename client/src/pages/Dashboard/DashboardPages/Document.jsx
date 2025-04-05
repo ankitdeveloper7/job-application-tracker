@@ -3,6 +3,8 @@ import Documentoption from '../../../components/Documentoption';
 import { use } from 'react';
 import axios from 'axios';
 import Documentbox from '../../../components/Documentbox';
+import { useRecoilValue } from 'recoil';
+import { deletedocAtom } from '../../store/atom';
 
 function useDocument(n) {
   const [documentdata, setDocumentdata] = useState([]);
@@ -43,8 +45,12 @@ function useDocument(n) {
 export default function Document() {
   const [isModalOpen, setModal] = useState(false);
   const docdata = useDocument(3);
+  const[docdetails, setDocument] = useState(docdata);
   console.log("this is document data", docdata)
 
+  function handleDeleteNote(id){
+    
+  }
 
   function onPressD() {
     setModal(true);
@@ -70,8 +76,8 @@ export default function Document() {
         </div>
 
         <div className='ml-8'>
-       {docdata.map( (item) =>(
-      <Documentbox id={item._id} title={item.title} description={item.description} category={item.category} />
+       {docdetails.map( (item) =>(
+      <Documentbox id={item._id} title={item.title} description={item.description} category={item.category} ondeonDelete={() => handleDeleteNote(note.id)}/>
        ))}
 
         </div>

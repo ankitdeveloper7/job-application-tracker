@@ -33,6 +33,33 @@ const getContact = asynchandler(async(req, res)=>{
        const data = contactdata.contact;
        console.log("this is contact information", data);
        res.status(200).json(data);
+});
+
+const updateContact = asynchandler(async(req, res)=>{
+    const user = req.user.email;
+    const {contactid} = req.params;
+    const{name,jobtitle,companies,location,email,phonenumber,media} = req.body;
+    const admin = await User.findOne({email:user});
+    if(!admin){
+        return res.status(203).json({message:"some invalid error has occured try to login in again"})
+    }
+    const response = await Contact.updateOne(
+        {_id:contactid},
+        {$set:{name:name, jobtitle:jobtitle, companies:companies, location:location, email:email, phonenumber:phonenumber, media:media}}
+    );
+    console.log(response);
+    res.status(200).json({message:"contact details updated succesfully"})
+});
+
+const deleteContact = asynchandler(async(req,res)=>{
+    const user = req.user.email;
+    const {contactid} = req.params;
+    const admin = await User.findOne({email:user});
+    if(!admin){
+        return res.status(203).json({message:"some invalid error has occured try to login in again"})
+    };
+    await Contact.deleteOne({_id:contactid});
+    res.status(200).json({message:"contact details deleted successfully"})
 })
 
-module.exports = {saveContact, getContact};
+module.exports = {saveContact, getContact, updateContact, deleteContact};
