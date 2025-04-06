@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import ContactModal from '../../../components/ContactModal';
 import axios from 'axios';
 import Contactbox from '../../../components/Contactbox';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function useContact(n){
   const[contactdetail, setContactdetail] = useState([]);
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  
 
   useEffect(()=>{   
       const data = setInterval(()=>{
@@ -40,8 +41,14 @@ function useContact(n){
 
 export default function Contact() {
   const[isModalOpen, setModalopen] = useState(false); 
-  const contactdetails = useContact(5);
-  console.log("the value of contactdetails", contactdetails);
+  const condata = useContact(1);
+  const[contactdetails, setContactdetails] = useState([]);
+
+  useEffect(()=>{
+    if(condata){
+      setContactdetails(condata)
+    }
+  },[condata])
  
 
  function onPressC(){
@@ -50,6 +57,29 @@ export default function Contact() {
 
  function handleclick(){
   setModalopen(false);
+ }
+
+ async function handlecontactdel(id){
+  try{
+    setContactdetails(prevcont => prevcont.filter(contact => contact._id !== id));
+
+    const response = await axios({
+      method:'delete',
+      url:`${API_BASE_URL}/api/contact//deletecontact/${id}`,
+      headers:{
+        "Content-Type":"application/json" ,
+        "Authorization":"Bearer " + localStorage.getItem("token")
+      }
+    });
+    console.log(response.data);
+    console.log("item get delted");
+
+
+
+  }catch(error){
+    console.log("some invalid error has occured", error);
+    setContactdetails([...contactdetails])
+  }
  }
 
   return (
@@ -74,7 +104,9 @@ export default function Contact() {
  companies={item.companies} 
  location={item.location} 
  email={item.email} 
- phoneno={item.phonenumber}/>
+ phoneno={item.phonenumber}
+ ondeleteContact={() =>handlecontactdel(item._id)}
+ />
   )
    
   )}
