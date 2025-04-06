@@ -4,13 +4,35 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { faGetPocket } from '@fortawesome/free-brands-svg-icons';
 
-export default function ContactModal({isModalOpen, onClose}) {
+export default function ContactModal({isModalOpen, onClose, initialname,initialjobtitle, initialcompanies, initiallocation, initialemail, initialphone}) {
   const[name, getName] = useState("");
   const[jobtitle, getJobtitle] = useState("");
   const[companies, getCompanie] = useState("");
   const[location, getLocation] = useState("");
   const[email,getEmail] = useState("");
   const[phonenumber, getPhonenumber] = useState("");
+  const[updateoption, setupdateoption] = useState(false);
+
+ useEffect(()=>{
+  if(initialname){
+    setupdateoption(true);
+    getName(initialname);
+    getJobtitle(initialjobtitle);
+    getCompanie(initialcompanies);
+    getLocation(initiallocation);
+    getEmail(initialemail);
+    getPhonenumber(initialphone);
+
+  }else{
+    setupdateoption(false);
+    getName("");
+    getJobtitle("");
+    getCompanie("");
+    getLocation("");
+    getEmail("");
+    getPhonenumber("");
+  }
+ },[initialname])
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -37,9 +59,14 @@ const sendData = async(e)=>{
      console.log("data send successfully");
      console.log(data);
      onClose();
+     setupdateoption(false);
   }catch(error){
     console.log(error);
   }
+}
+
+function updateData(){
+  alert("data updated succesfully")
 }
 
   
@@ -64,6 +91,7 @@ const sendData = async(e)=>{
         <input
         type="text"
         id='name'
+        value={name}
         placeholder='i.e:Ankur Kumar'
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
@@ -80,6 +108,7 @@ const sendData = async(e)=>{
         <input
         type="text"
         id='jobtitle'
+        value={jobtitle}
         placeholder='i.e:Software Engineer'
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
@@ -96,6 +125,7 @@ const sendData = async(e)=>{
         <input
         type="text"
         id='companies'
+        value={companies}
         placeholder='i.e:Microsoft' 
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
@@ -112,6 +142,7 @@ const sendData = async(e)=>{
         <input
         type="text"
         id='location'
+        value={location}
         placeholder='i.e:New Delhi' 
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
@@ -128,6 +159,7 @@ const sendData = async(e)=>{
         <input
         type="text"
         id='email'
+        value={email}
         placeholder='i.e:example@gmail.com' 
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
@@ -144,6 +176,7 @@ const sendData = async(e)=>{
         <input
         type="text"
         id='phoneno'
+        value={phonenumber}
         placeholder='i.e: +913456789837'
         className="border-2 rounded p-1 w-full focus:border-formoutline-700 focus:outline-4 focus:outline-formoutline-700"
         onChange={(e)=>{
@@ -158,10 +191,16 @@ const sendData = async(e)=>{
     <button className="rounded p-1 px-2 bg-customColor text-white" onClick={onClose}>
                     Discard
                 </button>
-    
-    <button className="rounded p-1 px-2 ml-3 bg-customColor text-white" onClick={sendData}>
-                    Save Contacts
+                {updateoption? 
+                <button className="rounded p-1 px-2 ml-3 bg-customColor text-white" onClick={updateData}>
+                    Update Contact
                 </button>
+                : 
+                <button className="rounded p-1 px-2 ml-3 bg-customColor text-white" onClick={sendData}>
+                    Save Contact
+                </button>}
+    
+    
     </div>
   
    </center>
