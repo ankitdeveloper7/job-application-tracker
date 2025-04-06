@@ -58,7 +58,6 @@ export default function Document() {
  async function handleDeleteNote(id) {
     try {
       setDocument(docdetails => docdetails.filter(note => note._id !== id));
-
       const response = await axios({
         method: 'delete',
         url: `${API_BASE_URL}/api/document/deletedocument/${id}`,
@@ -71,7 +70,7 @@ export default function Document() {
       console.log("Document deleted successfully:", response.data);
     } catch (error) {
       console.error("Error deleting document:", error);
-      setDocument(docdetails => [...docdetails]);
+      setDocument([...docdetails]);
     }
   }
 
