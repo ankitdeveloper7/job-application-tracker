@@ -26,7 +26,7 @@ export default function Documentbox(props) {
   async function deletedoc() {
     const response = await axios({
       method: 'delete',
-      url: `${API_BASE_URL}/api/document/deletedocument/${id}`,
+      url: `${API_BASE_URL}/api/document/deletedocument/${props.id}`,
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("tokens")
