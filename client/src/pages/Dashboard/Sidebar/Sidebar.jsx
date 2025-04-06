@@ -7,7 +7,7 @@ export default function Sidebar() {
 
   const setActiveSegment = useSetRecoilState(ActiveAtom);
   const user = useRecoilValue(userAtom);
-  // alert(`this is activeAtom valeu is ${ActiveAtom}`);
+  
 
   function loginout(){
     localStorage.removeItem("token");
