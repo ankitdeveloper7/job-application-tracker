@@ -4,6 +4,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { CiMail } from "react-icons/ci";
 import { IoEllipsisVerticalOutline } from "react-icons/io5";
+import ContactModal from './ContactModal';
 
 export default function Contactbox(props) {
     const[option, setOption] = useState(false);
