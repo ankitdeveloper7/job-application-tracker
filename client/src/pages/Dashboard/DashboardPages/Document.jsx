@@ -8,22 +8,22 @@ import { deletedocAtom } from '../../store/atom';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
-function useDocument(n) {
+function useDocument() {
   const [documentdata, setDocumentdata] = useState([]);
 
   
   useEffect(() => {
 
-    const response = setInterval(() => {
-      axios.get(`${API_BASE_URL}/api/document/getdocument`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + localStorage.getItem("token")
-        }
-      }).then(res => {
-        setDocumentdata(res.data);
-      })
-    }, n * 1000)
+    // const response = setInterval(() => {
+    //   axios.get(`${API_BASE_URL}/api/document/getdocument`, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Authorization": "Bearer " + localStorage.getItem("token")
+    //     }
+    //   }).then(res => {
+    //     setDocumentdata(res.data);
+    //   })
+    // }, n * 1000)
 
     axios.get(`${API_BASE_URL}/api/document/getdocument`, {
       headers: {
@@ -45,7 +45,7 @@ function useDocument(n) {
 }
 export default function Document() {
   const [isModalOpen, setModal] = useState(false);
-  const docdata = useDocument(3);
+  const docdata = useDocument();
   const[docdetails, setDocument] = useState([]);
 
   useEffect(()=>{
@@ -56,16 +56,9 @@ export default function Document() {
   console.log("this is document data", docdetails)
 
  async function handleDeleteNote(id){
-    const response =  await axios({
-      method:'delete',
-      url:`${API_BASE_URL}/api/document/deletedocument/${id}`,
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization":"Bearer " + localStorage.getItem("tokens")
-      }
-    });
     console.log(response.data)
     setDocument(docdetails => docdetails.filter(note => note._id !== id));
+    console.log("this is the details of the new docdetails", docdetails);
     console.log(`updated setdocument of this is ${id}`)
   }
 
