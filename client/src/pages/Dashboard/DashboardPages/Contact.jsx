@@ -41,7 +41,7 @@ function useContact(n){
 
 export default function Contact() {
   const[isModalOpen, setModalopen] = useState(false); 
-  const condata = useContact(1);
+  const condata = useContact(3);
   const[contactdetails, setContactdetails] = useState([]);
 
   useEffect(()=>{
