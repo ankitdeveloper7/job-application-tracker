@@ -53,20 +53,26 @@ export default function Document() {
       setDocument(docdata)
     }
   }, [docdata])
-  console.log("this is document data", docdetails)
+  
 
- async function handleDeleteNote(id){
-    const response =  await axios({
-      method:'delete',
-      url:`${API_BASE_URL}/api/document/deletedocument/${id}`,
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization":"Bearer " + localStorage.getItem("tokens")
-      }
-    });
-    console.log(response.data)
-    setDocument(docdetails => docdetails.filter(note => note._id !== id));
-    console.log(`updated setdocument of this is ${id}`)
+ async function handleDeleteNote(id) {
+    try {
+      setDocument(docdetails => docdetails.filter(note => note._id !== id));
+      
+      const response = await axios({
+        method: 'delete',
+        url: `${API_BASE_URL}/api/document/deletedocument/${id}`,
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("token")
+        }
+      });
+      
+      console.log("Document deleted successfully:", response.data);
+    } catch (error) {
+      console.error("Error deleting document:", error);
+      setDocument([...docdetails]);
+    }
   }
 
   function onPressD() {

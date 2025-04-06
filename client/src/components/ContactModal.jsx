@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { faGetPocket } from '@fortawesome/free-brands-svg-icons';
 
-export default function ContactModal({isModalOpen, onClose, udpateid,  initialname,initialjobtitle, initialcompanies, initiallocation, initialemail, initialphone}) {
+export default function ContactModal({isModalOpen, onClose, id,  initialname,initialjobtitle, initialcompanies, initiallocation, initialemail, initialphone}) {
   const[name, getName] = useState("");
   const[jobtitle, getJobtitle] = useState("");
   const[companies, getCompanie] = useState("");
@@ -33,7 +33,7 @@ export default function ContactModal({isModalOpen, onClose, udpateid,  initialna
     getPhonenumber("");
   }
  },[initialname])
-console.log("this is contact id", udpateid)
+console.log("this is contact id", id)
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const sendData = async(e)=>{
@@ -70,7 +70,7 @@ const updateData = async(e) =>{
   try{
     const response = await axios({
       method:'put',
-      url:`${API_BASE_URL}/api/contact/udpatecontact/${udpateid}`,
+      url:`${API_BASE_URL}/api/contact/udpatecontact/${id}`,
       data:{
         name:name,
         jobtitle:jobtitle,
