@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { ActiveAtom } from '../../store/atom';
 import Welcome from './Welcome';
@@ -11,29 +11,46 @@ import MyJobTracker from '../../JobTracker/MyJobTracker';
 
 export default function Mainpage() {
   const mainpage = useRecoilValue(ActiveAtom);
-  function setmainpage(){
-    switch(mainpage){
-      case "welcome":
-        return <Welcome />;
-      case "skilltracker":
-        return <Skilltracker />;
-      case "taskscheduler":
-        return <Taskscheduler />;
-      case "profile":
-        return <Profile />;
-      case "contact":
-        return <Contact />;
-      case "document":
-        return <Document />;
-      case "jobtracker":
-        return <MyJobTracker />;
-      default:
-        return <Welcome />;
-    }
-  }
+  const [currentComponent, setCurrentComponent] = useState(null);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      switch(mainpage) {
+        case "welcome":
+          setCurrentComponent(<Welcome />);
+          break;
+        case "skilltracker":
+          setCurrentComponent(<Skilltracker />);
+          break;
+        case "taskscheduler":
+          setCurrentComponent(<Taskscheduler />);
+          break;
+        case "profile":
+          setCurrentComponent(<Profile />);
+          break;
+        case "contact":
+          setCurrentComponent(<Contact />);
+          break;
+        case "document":
+          setCurrentComponent(<Document />);
+          break;
+        case "jobtracker":
+          setCurrentComponent(<MyJobTracker />);
+          break;
+        default:
+          setCurrentComponent(<Welcome />);
+      }
+    }, 50); 
+    
+    
+    return () => clearTimeout(timer);
+  }, [mainpage]);
+  
   return (
     <>
-   <div className=''> {setmainpage()}</div>
+      <div className=''>
+        {currentComponent}
+      </div>
     </>
-  )
+  );
 }
