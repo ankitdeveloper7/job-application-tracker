@@ -15,6 +15,7 @@ export default function Contactbox(props) {
     }
     function editcontact(){
         setModal(true);
+        setOption(!option);
     }
     function handleclick(){
         setModal(false);
@@ -55,7 +56,7 @@ export default function Contactbox(props) {
                     <p className="text-[#19044599] text-400 text-[13px] leading-[18px]"><MdOutlineLocalPhone className='inline-block' /> {props.phoneno}</p>
                 </div>
             </div>
-            <ContactModal isModalOpen={isModalOpen} onClose={handleclick} initialname={props.name} initialjobtitle={props.jobtitle} initialcompanies={props.companies} initiallocation={props.location} initialemail={props.email} initialphone={props.phoneno} /> 
+            <ContactModal isModalOpen={isModalOpen} onClose={handleclick} id={props.id} initialname={props.name} initialjobtitle={props.jobtitle} initialcompanies={props.companies} initiallocation={props.location} initialemail={props.email} initialphone={props.phoneno} /> 
  
 
         </>

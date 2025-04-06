@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { faGetPocket } from '@fortawesome/free-brands-svg-icons';
 
-export default function ContactModal({isModalOpen, onClose, initialname,initialjobtitle, initialcompanies, initiallocation, initialemail, initialphone}) {
+export default function ContactModal({isModalOpen, onClose, udpateid,  initialname,initialjobtitle, initialcompanies, initiallocation, initialemail, initialphone}) {
   const[name, getName] = useState("");
   const[jobtitle, getJobtitle] = useState("");
   const[companies, getCompanie] = useState("");
@@ -33,7 +33,7 @@ export default function ContactModal({isModalOpen, onClose, initialname,initialj
     getPhonenumber("");
   }
  },[initialname])
-
+console.log("this is contact id", udpateid)
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const sendData = async(e)=>{
@@ -65,8 +65,33 @@ const sendData = async(e)=>{
   }
 }
 
-function updateData(){
-  alert("data updated succesfully")
+const updateData = async(e) =>{
+  e.preventDefault();
+  try{
+    const response = await axios({
+      method:'put',
+      url:`${API_BASE_URL}/api/contact/udpatecontact/${udpateid}`,
+      data:{
+        name:name,
+        jobtitle:jobtitle,
+        companies:companies,
+        location:location,
+        email:email,
+        phonenumber:phonenumber
+      },
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }
+    });
+    console.log(response.data);
+    consol.log("contact details updated succesfully")
+    onClose();
+
+  }catch(error){
+    console.log("some invalid error has occure", error);
+    onClose();
+  }
 }
 
   

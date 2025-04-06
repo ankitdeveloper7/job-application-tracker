@@ -98,7 +98,7 @@ export default function Contact() {
 <div className='m-3'>
   {contactdetails.map((item)=>(
  <Contactbox 
- key={item._id}
+ id={item._id}
  name={item.name} 
  jobtitle={item.jobtitle} 
  companies={item.companies} 
