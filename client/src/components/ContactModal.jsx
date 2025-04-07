@@ -81,6 +81,13 @@ const updateData = async(e) =>{
         "Authorization": "Bearer " + localStorage.getItem("token")
       }
     });
+    
+    getName("");
+    getJobtitle("");
+    getCompanie("")
+    getEmail("");
+    getLocation("");
+    getPhonenumber("");
     onClose();
 
   }catch(error){
