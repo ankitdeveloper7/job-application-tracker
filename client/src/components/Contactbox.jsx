@@ -9,19 +9,16 @@ import ContactModal from './ContactModal';
 export default function Contactbox(props) {
     const[option, setOption] = useState(false);
     const[isModalOpen, setModal]  = useState(false);
-    const[update, setupdate] = useState(false);
 
     function onpress(){
         setOption(!option);
     }
     function editcontact(){
         setModal(true);
-        setupdate(true);
         setOption(!option);
     }
     function handleclick(){
         setModal(false);
-        setupdate(false);
     }
     function deletecon(){
         setOption(!option);
@@ -59,7 +56,7 @@ export default function Contactbox(props) {
                     <p className="text-[#19044599] text-400 text-[13px] leading-[18px]"><MdOutlineLocalPhone className='inline-block' /> {props.phoneno}</p>
                 </div>
             </div>
-           {update && <ContactModal isModalOpen={isModalOpen} onClose={handleclick} id={props.id} initialname={props.name} initialjobtitle={props.jobtitle} initialcompanies={props.companies} initiallocation={props.location} initialemail={props.email} initialphone={props.phoneno} /> }
+            <ContactModal isModalOpen={isModalOpen} onClose={handleclick} id={props.id} initialname={props.name} initialjobtitle={props.jobtitle} initialcompanies={props.companies} initiallocation={props.location} initialemail={props.email} initialphone={props.phoneno} /> 
  
 
         </>
