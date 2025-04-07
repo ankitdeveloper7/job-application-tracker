@@ -33,7 +33,7 @@ export default function ContactModal({isModalOpen, onClose, id,  initialname,ini
     getPhonenumber("");
   }
  },[initialname])
-console.log("this is contact id", id)
+
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const sendData = async(e)=>{
@@ -55,9 +55,6 @@ const sendData = async(e)=>{
         "Authorization": "Bearer " + localStorage.getItem("token")
       }
      });
-     const data = response.data;
-     console.log("data send successfully");
-     console.log(data);
      onClose();
      setupdateoption(false);
   }catch(error){
@@ -84,8 +81,6 @@ const updateData = async(e) =>{
         "Authorization": "Bearer " + localStorage.getItem("token")
       }
     });
-    console.log(response.data);
-    consol.log("contact details updated succesfully")
     onClose();
 
   }catch(error){
