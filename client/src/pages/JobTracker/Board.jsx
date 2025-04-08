@@ -114,9 +114,23 @@ function Board() {
       setJobdetails(jobdetail);
     }
   }
+  // function onpress2(){
+  //   setModalopen(true);
+  // }
+  // function handleCloseModal(){
+  //   setModalopen(false);
+  // }
   
   return (
     <>
+    <div className='m-1 flex flex-row justify-between'>
+  <div className='text-color2 font-semibold text-center'>Board</div>
+  <div className='last-order'>
+    <button className='p-1 rounded bg-customColor text-white' onClick={onpress2}>
+      Create
+    </button>
+  </div>
+</div>
     <DragDropContext onDragEnd={handleDragEnd}>
       <section id="boards" className="overflow-x-hidden">
         <div className="flex flex-row">

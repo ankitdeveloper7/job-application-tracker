@@ -8,6 +8,7 @@ import Profile from './Profile';
 import Skilltracker from './Skilltracker';
 import Taskscheduler from './Taskscheduler';
 import MyJobTracker from '../../JobTracker/MyJobTracker';
+import Board from '../../JobTracker/Board';
 
 export default function Mainpage() {
   const mainpage = useRecoilValue(ActiveAtom);
@@ -26,7 +27,7 @@ export default function Mainpage() {
       case "document":
         return <Document />;
       case "jobtracker":
-        return <MyJobTracker />;
+        return <Board />;
       default:
         return <Welcome />;
     }

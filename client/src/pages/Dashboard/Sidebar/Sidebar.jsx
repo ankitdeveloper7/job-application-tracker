@@ -24,18 +24,18 @@ export default function Sidebar() {
             <span className="material-symbols-outlined align-bottom">home</span>
             <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Home</span>
           </p>
-          <p
+          {/* <p
             className="mt-3 text-t1" onClick={() => setActiveSegment("skilltracker")}
           >
             <span className="material-symbols-outlined align-bottom">description</span>
             <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Skill Tracker</span>
-          </p>
-          <p
+          </p> */}
+          {/* <p
             className="mt-3 text-t1" onClick={() => setActiveSegment("taskscheduler")}
           >
             <span className="material-symbols-outlined align-bottom">hotel_class</span>
             <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Task Scheduler</span>
-          </p>
+          </p> */}
 
           <p
             className="mt-3 text-t1" onClick={() => setActiveSegment("profile")}
@@ -63,7 +63,7 @@ export default function Sidebar() {
             className="mt-3 text-t1" onClick={() => setActiveSegment("jobtracker")}
           >
             <span className="material-symbols-outlined align-bottom">folder</span>
-            <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Job Search 2024</span>
+            <span className="pl-1 align-bottom text-base font-[600] cursor-pointer">Job Tracker</span>
           </p>
 
         </div>
